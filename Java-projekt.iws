@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="1 message&#10;">
+    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
     </list>
     <ignored path="Java-projekt.iws" />
@@ -105,7 +105,7 @@
       <file leaf-file-name="GamePanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="36" selection-start="277" selection-end="277" vertical-scroll-proportion="0.27868852" vertical-offset="0" max-vertical-offset="2380">
+            <state line="8" column="3" selection-start="180" selection-end="180" vertical-scroll-proportion="0.22295082" vertical-offset="0" max-vertical-offset="2380">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,7 +219,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Worm/Worm.ipr" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
   </component>
@@ -465,12 +465,16 @@
       <created>1394751167385</created>
       <updated>1394751167385</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1 message&#10;">
+      <created>1394751363083</created>
+      <updated>1394751363083</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -657,7 +661,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="36" selection-start="277" selection-end="277" vertical-scroll-proportion="0.27868852" vertical-offset="0" max-vertical-offset="2380">
+        <state line="8" column="3" selection-start="180" selection-end="180" vertical-scroll-proportion="0.22295082" vertical-offset="0" max-vertical-offset="2380">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
