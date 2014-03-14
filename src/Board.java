@@ -4,10 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-/**
- * Created by DannePanne on 2014-03-13.
- */
-public class GamePanel extends JPanel implements Runnable {
+public class Board extends JPanel implements Runnable {
     private static int PWIDTH = 500;
     private static int PHEIGHT = 300;
 
@@ -29,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Point playerPoint;
 
-    public GamePanel() throws HeadlessException {
+    public Board() throws HeadlessException {
 
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
@@ -50,19 +47,19 @@ public class GamePanel extends JPanel implements Runnable {
     private void testKey(int keyCode) {
         switch (keyCode){
             case KeyEvent.VK_W:
-                System.out.println("W");
+            case KeyEvent.VK_UP:
                 p.move(0, -MOVEMENT);
                 break;
             case KeyEvent.VK_A:
-                System.out.println("A");
+            case KeyEvent.VK_LEFT:
                 p.move(-MOVEMENT,0);
                 break;
             case KeyEvent.VK_S:
-                System.out.println("S");
+            case KeyEvent.VK_DOWN:
                 p.move(0,MOVEMENT);
                 break;
             case KeyEvent.VK_D:
-                System.out.println("D");
+            case KeyEvent.VK_RIGHT:
                 p.move(MOVEMENT,0);
                 break;
             default:

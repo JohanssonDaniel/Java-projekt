@@ -1,8 +1,5 @@
 import java.awt.*;
 
-/**
- * Created by DannePanne on 2014-03-13.
- */
 public class Player implements Shape {
     private int positionX, positionY;
     private Dimension playerSize = new Dimension();

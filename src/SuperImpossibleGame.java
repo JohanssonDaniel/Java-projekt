@@ -2,13 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
-/**
- * Created by DannePanne on 2014-03-13.
- */
 public class SuperImpossibleGame extends JFrame implements WindowListener{
 
-    private GamePanel gp;       // This is where the game is drawn
+    private Board gp;       // This is where the game is drawn
 
     public SuperImpossibleGame() {
         super("SuperImpossibleGame"); //Title
@@ -21,7 +17,7 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
 
     private void createGui(){
         Container c = getContentPane(); //Creates the pane that stores the content
-        gp = new GamePanel();
+        gp = new Board();
         c.add(gp, "Center");    //Adds the component gp and sets its placement
     }
     

@@ -1,9 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * Created by DannePanne on 2014-03-13.
- */
 public class Obstacle implements Shape {
     private int BOXLENGTH = 30;
     private ArrayList obstacles;
