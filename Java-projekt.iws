@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\Board.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\Obstacle.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Obstacle.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\Player.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\Shape.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Shape.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/SuperImpossibleGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
     </list>
     <ignored path="Java-projekt.iws" />
@@ -499,7 +494,11 @@
       <created>1394804838193</created>
       <updated>1394804838193</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1 message&#10;">
+      <created>1395221138297</created>
+      <updated>1395221138297</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
