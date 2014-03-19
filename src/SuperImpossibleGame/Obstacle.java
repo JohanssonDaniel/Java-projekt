@@ -1,3 +1,5 @@
+package SuperImpossibleGame;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -13,6 +15,12 @@ public class Obstacle implements Shape {
         obstacles.add(new Rectangle(x,y,BOXLENGTH, BOXLENGTH));
     }
 
+    public void remove(){
+        if (obstacles.size() > 0){
+            obstacles.remove(0);
+        }
+    }
+
     public boolean collide(Point p, int size){
         Rectangle r = new Rectangle(p.x,p.y,size,size);
         Rectangle obs;
@@ -25,8 +33,6 @@ public class Obstacle implements Shape {
         }
         return false;
     }
-
-
 
     @Override
     public void draw(Graphics g) {

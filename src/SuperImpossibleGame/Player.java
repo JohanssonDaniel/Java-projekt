@@ -1,3 +1,5 @@
+package SuperImpossibleGame;
+
 import java.awt.*;
 
 public class Player implements Shape {
