@@ -7,23 +7,21 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Board extends JPanel implements Runnable {
-    private static int PWIDTH = 500;
-    private static int PHEIGHT = 300;
+    private static int PWIDTH = 800;
+    private static int PHEIGHT = 600;
 
     private Thread animator;
 
     private Player p;
-    private Obstacle obs;
+    private Brick obs;
 
     private Graphics dbg;
     private Image dbImage = null;
 
-    private Random rand = new Random();
-
+    private static boolean isPaused = false;
     private static boolean running = false;
     private boolean gameOver = false;
 
-    private final int MOVEMENT = 10;
     private long period;
 
 
@@ -36,20 +34,15 @@ public class Board extends JPanel implements Runnable {
     // no. of frames that can be skipped in any one animation loop
     // i.e the games state is updated but not rendered
 
-    private long framesSkipped = 0L;
-
-
-    private Point playerPoint;
-
     public Board(long period) throws HeadlessException {
         this.period = period;
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
-        obs = new Obstacle();
-        p = new Player(PWIDTH, PHEIGHT); //Creates a player who knows how big the game is and what obstacles there are
+        obs = new Brick(PWIDTH, PHEIGHT);
+        p = new Player(PWIDTH, PHEIGHT, obs); //Creates a player who knows how big the game is and what obstacles there are;
 
         setFocusable(true);
-        requestFocus();    // the JPanel now has focus which allows it to recieve keyboard evens
+        requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
 
         addKeyListener(new KeyAdapter() {
             @Override
@@ -60,26 +53,14 @@ public class Board extends JPanel implements Runnable {
     }
 
     private void testKey(int keyCode) {
-        if (!gameOver){
+        if (!gameOver && !isPaused){
             switch (keyCode){
                 case KeyEvent.VK_W:
                 case KeyEvent.VK_UP:
-                    p.move(0, -MOVEMENT);
-                    break;
-                case KeyEvent.VK_A:
-                case KeyEvent.VK_LEFT:
-                    p.move(-MOVEMENT,0);
-                    break;
-                case KeyEvent.VK_S:
-                case KeyEvent.VK_DOWN:
-                    p.move(0,MOVEMENT);
-                    break;
-                case KeyEvent.VK_D:
-                case KeyEvent.VK_RIGHT:
-                    p.move(MOVEMENT,0);
+                    p.jump();
                     break;
                 default:
-                    p.move(0,0);
+                    p.move();
             }
         }
     }
@@ -98,6 +79,22 @@ public class Board extends JPanel implements Runnable {
             animator.start();
         }
     }
+
+    public void resumeGame()
+    // called when the JFrame is activated / deiconified
+    { //if (!showHelp)    // CHANGED
+        isPaused = false;
+    }
+
+
+    public void pauseGame()
+    // called when the JFrame is deactivated / iconified
+    { isPaused = true;   }
+
+
+    public void stopGame()
+    // called when the JFrame is closing
+    {  running = false;   }
 
     public void run(){
         //Main thread
@@ -146,35 +143,27 @@ public class Board extends JPanel implements Runnable {
                 gameUpdate();    // update state but don't render
                 skips++;
             }
-            framesSkipped += skips;
         }
         System.exit(0);
     }
 
     private void gameUpdate(){
-        if(!gameOver){
-            obs.remove(); //Removes an obstacle so that the board does not get overcrowded
-            obs.add(rand.nextInt(PWIDTH),rand.nextInt(PHEIGHT)); //Adds an obstacle at a random place
-
-            playerPoint = new Point(p.getPositionX(),p.getPositionY());
-
-            if (obs.collide(playerPoint,p.getPlayerSize().height)){
-                gameOver = true;
-            }
+        if(!gameOver && !isPaused) {
+            p.updatePlayer();
         }
     }
 
     private void gameRender()
     {//Creates the image that is later printed out
         if (dbImage == null){
-        dbImage = createImage(PWIDTH, PHEIGHT);
-        if (dbImage == null) {
-            System.out.println("dbImage is null");
-            return;
+            dbImage = createImage(PWIDTH, PHEIGHT);
+            if (dbImage == null) {
+                System.out.println("dbImage is null");
+                return;
+            }
+            else
+                dbg = dbImage.getGraphics();
         }
-        else
-            dbg = dbImage.getGraphics();
-    }
         dbg.setColor(Color.white);
         dbg.fillRect (0, 0, PWIDTH, PHEIGHT);
 
@@ -193,8 +182,5 @@ public class Board extends JPanel implements Runnable {
         }
         catch (Exception e)
         { System.out.println("Graphics context error: " + e);  }
-
     }
-
-
 }
