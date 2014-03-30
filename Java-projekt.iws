@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="1 message&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Brick.java" />
-      <change type="DELETED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\Obstacle.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.ipr" afterPath="$PROJECT_DIR$/Java-projekt.ipr" />
+    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/SuperImpossibleGame.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/SuperImpossibleGame.java" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -502,7 +496,11 @@
       <created>1395221138297</created>
       <updated>1395221138297</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1 message&#10;">
+      <created>1396199291595</created>
+      <updated>1396199291595</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
