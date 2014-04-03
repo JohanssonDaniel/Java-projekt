@@ -11,6 +11,7 @@ public class Player implements Shape {
     private int vertMoveMode;
 
     private Brick br;
+    private Obstacle obstacles;
 
     private int positionX, positionY;
     private boolean moving;
@@ -26,7 +27,8 @@ public class Player implements Shape {
         return playerSize;
     }
 
-    public Player(int PWIDTH, int PHEIGHT, Brick br) {
+    public Player(int PWIDTH, int PHEIGHT, Brick br, Obstacle obstacles) {
+        this.obstacles = obstacles;
         this.br = br;
         positionX = 0;
         positionY = br.findFloor();
@@ -49,6 +51,12 @@ public class Player implements Shape {
     public void move() {
         if (moving){
             positionX += horizontalStep;
+        }
+    }
+
+    public void stop(){
+        if (moving) {
+            moving = false;
         }
     }
 
@@ -83,7 +91,7 @@ public class Player implements Shape {
                 vertMoveMode = FALLING;   // start falling
                 upCount = 0;
             }
-            translate(0, -yTrans);
+            translate(-yTrans);
             yWorld -= yTrans;
             upCount++;
         }
@@ -98,13 +106,12 @@ public class Player implements Shape {
         if (yTrans == 0)   // hit the top of a brick
             finishJumping();
         else {    // can move downwards another step
-            translate(0, yTrans);
+            translate(yTrans);
             yWorld += yTrans;   // update position
         }
     }
 
-    private void translate(int xDist, int yDist) {
-        positionX += xDist;
+    private void translate(int yDist) {
         positionY += yDist;
     }
 
@@ -117,5 +124,15 @@ public class Player implements Shape {
     public void draw(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(positionX, positionY, playerSize.width, playerSize.height);
+    }
+
+    public boolean willCollide(){
+        playerNextPositionX = positionX + horizontalStep + playerSize.width/2;
+        Point point = new Point(positionX, positionY);
+        System.out.println(playerNextPositionX);
+        if (obstacles.collide(point)){
+            return true;
+        }
+        return false;
     }
 }

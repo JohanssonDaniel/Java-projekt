@@ -7,7 +7,7 @@ public class Brick implements Shape {
     private final int PWIDTH;
     private final int PHEIGHT;
     private int BOXLENGTH = 30;
-    private ArrayList<Rectangle> obstacles;
+    private ArrayList<Rectangle> brick;
 
     private final static double MOVE_FACTOR = 0.25;
     private int moveSize;
@@ -19,7 +19,7 @@ public class Brick implements Shape {
     public Brick(int PWIDTH, int PHEIGHT) {
         this.PWIDTH = PWIDTH;
         this.PHEIGHT = PHEIGHT;
-        obstacles = new ArrayList<Rectangle>();
+        brick = new ArrayList<Rectangle>();
 
         moveSize = (int)(PWIDTH * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
         if (moveSize == 0){
@@ -33,18 +33,18 @@ public class Brick implements Shape {
 
     public void createFloor(){
         for (int i = 0; i <= PWIDTH; i+= BOXLENGTH){
-            obstacles.add(new Rectangle(i,PHEIGHT-BOXLENGTH,BOXLENGTH,BOXLENGTH));
+            brick.add(new Rectangle(i, PHEIGHT - BOXLENGTH, BOXLENGTH, BOXLENGTH));
         }
     }
 
     public void add(int x, int y){
-        obstacles.add(new Rectangle(x,y,BOXLENGTH, BOXLENGTH));
+        brick.add(new Rectangle(x, y, BOXLENGTH, BOXLENGTH));
     }
 
     public boolean collide(Point p){
         Rectangle playerPoint = new Rectangle(p.x,p.y,BOXLENGTH,BOXLENGTH);
 
-        for(Rectangle r : obstacles){
+        for(Rectangle r : brick){
             if (r.intersects(playerPoint)){
                 return true;
             }
@@ -54,7 +54,7 @@ public class Brick implements Shape {
 
     public int findFloor(){
         int locY = PHEIGHT;
-        for (Rectangle r : obstacles) {
+        for (Rectangle r : brick) {
             if (r.getY() < locY)
                 locY = (int) r.getY();   // reduce locY (i.e. move up)
         }
@@ -76,7 +76,7 @@ public class Brick implements Shape {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.DARK_GRAY);
-        for(Rectangle r : obstacles) {
+        for(Rectangle r : brick) {
             g.fillRect(r.x,r.y,r.width,r.height);
         }
     }

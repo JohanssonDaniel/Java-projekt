@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Random;
 
 public class Board extends JPanel implements Runnable {
     private static int PWIDTH = 800;
@@ -13,7 +12,8 @@ public class Board extends JPanel implements Runnable {
     private Thread animator;
 
     private Player p;
-    private Brick obs;
+    private Brick brick;
+    private Obstacle obstacle;
 
     private Graphics dbg;
     private Image dbImage = null;
@@ -38,8 +38,9 @@ public class Board extends JPanel implements Runnable {
         this.period = period;
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
-        obs = new Brick(PWIDTH, PHEIGHT);
-        p = new Player(PWIDTH, PHEIGHT, obs); //Creates a player who knows how big the game is and what obstacles there are;
+        brick = new Brick(PWIDTH, PHEIGHT);
+        obstacle = new Obstacle(PWIDTH, PHEIGHT);
+        p = new Player(PWIDTH, PHEIGHT, brick, obstacle); //Creates a player who knows how big the game is and what obstacles there are;
 
         setFocusable(true);
         requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
@@ -149,6 +150,9 @@ public class Board extends JPanel implements Runnable {
 
     private void gameUpdate(){
         if(!gameOver && !isPaused) {
+            if (p.willCollide()) {
+                p.stop();
+            }
             p.updatePlayer();
         }
     }
@@ -167,8 +171,9 @@ public class Board extends JPanel implements Runnable {
         dbg.setColor(Color.white);
         dbg.fillRect (0, 0, PWIDTH, PHEIGHT);
 
-        obs.draw(dbg);
+        brick.draw(dbg);
         p.draw(dbg);
+        obstacle.draw(dbg);
     }
 
     private void paintScreen()
