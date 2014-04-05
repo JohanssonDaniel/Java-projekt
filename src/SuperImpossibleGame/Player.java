@@ -39,8 +39,8 @@ public class Player implements Shape {
         playerSize.width = 30;
         playerSize.height = 30;
 
-        vertStep = br.getBOXLENGTH() / 2; //A players jump half a box per tick
-        horizontalStep = br.getBOXLENGTH() / 10;
+        vertStep = br.getBoxWidth() / 2; //A players jump half a box per tick
+        horizontalStep = br.getBoxWidth() / 10;
 
         vertMoveMode = NOT_JUMPING;
         upCount = 0;
@@ -84,7 +84,7 @@ public class Player implements Shape {
             vertMoveMode = FALLING;
             upCount = 0;
         } else {
-            playerNextPositionX = xWorld + br.getBOXLENGTH() / 2;
+            playerNextPositionX = xWorld + br.getBoxWidth() / 2;
             playerNextPositionY = yWorld - vertStep;
             int yTrans = br.checkTopOfObstacle(playerNextPositionX, playerNextPositionY, vertStep);
             if (yTrans == 0) {   // hit the base of a brick
@@ -98,8 +98,8 @@ public class Player implements Shape {
     }
 
     private void updateFalling() {
-        playerNextPositionX = xWorld + br.getBOXLENGTH() / 2;
-        playerNextPositionY = yWorld + br.getBOXLENGTH() / 2 + br.getBOXLENGTH();
+        playerNextPositionX = xWorld + br.getBoxWidth() / 2;
+        playerNextPositionY = yWorld + br.getBoxWidth() / 2 + br.getBoxWidth();
 
         int yTrans = br.checkTopOfObstacle(playerNextPositionX,
                 playerNextPositionY, vertStep);

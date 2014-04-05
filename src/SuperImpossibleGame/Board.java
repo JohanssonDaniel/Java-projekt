@@ -6,8 +6,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Board extends JPanel implements Runnable {
-    private static int PWIDTH = 800;
-    private static int PHEIGHT = 600;
+    private static int PIXEL_WIDTH = 800;
+    private static int PIXEL_HEIGHT = 600;
 
     private Thread animator;
 
@@ -37,10 +37,10 @@ public class Board extends JPanel implements Runnable {
     public Board(long period) throws HeadlessException {
         this.period = period;
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
-        brick = new Brick(PWIDTH, PHEIGHT);
-        obstacle = new Obstacle(PWIDTH, PHEIGHT);
-        p = new Player(PWIDTH, PHEIGHT, brick, obstacle); //Creates a player who knows how big the game is and what obstacles there are;
+        setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
+        brick = new Brick(PIXEL_WIDTH, PIXEL_HEIGHT);
+        obstacle = new Obstacle(PIXEL_WIDTH, PIXEL_HEIGHT);
+        p = new Player(PIXEL_WIDTH, PIXEL_HEIGHT, brick, obstacle); //Creates a player who knows how big the game is and what obstacles there are;
 
         setFocusable(true);
         requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
@@ -167,7 +167,7 @@ public class Board extends JPanel implements Runnable {
     private void gameRender()
     {//Creates the image that is later printed out
         if (dbImage == null){
-            dbImage = createImage(PWIDTH, PHEIGHT);
+            dbImage = createImage(PIXEL_WIDTH, PIXEL_HEIGHT);
             if (dbImage == null) {
                 System.out.println("dbImage is null");
                 return;
@@ -176,7 +176,7 @@ public class Board extends JPanel implements Runnable {
                 dbg = dbImage.getGraphics();
         }
         dbg.setColor(Color.white);
-        dbg.fillRect (0, 0, PWIDTH, PHEIGHT);
+        dbg.fillRect (0, 0, PIXEL_WIDTH, PIXEL_HEIGHT);
 
         brick.draw(dbg);
         p.draw(dbg);
