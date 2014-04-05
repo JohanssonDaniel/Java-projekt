@@ -2,7 +2,7 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 
-public class Player implements gameObject {
+public class Player implements Shape {
 
     private static final int NOT_JUMPING = 0;
     private static final int RISING = 1;
@@ -10,8 +10,8 @@ public class Player implements gameObject {
     private final int horizontalStep;
     private int vertMoveMode;
 
-    private Board board;
-    private SuperImpossibleGame.Brick obstacles;
+    private Brick br;
+    private Obstacle obstacles;
 
     private int positionX, positionY;
     private boolean moving;
@@ -27,17 +27,20 @@ public class Player implements gameObject {
         return playerSize;
     }
 
-    public Player(int PWIDTH, int PHEIGHT, Board board, SuperImpossibleGame.Brick obstacles) {
+    public Player(int PWIDTH, int PHEIGHT, Brick br, Obstacle obstacles) {
         this.obstacles = obstacles;
-        this.board = board;
+        this.br = br;
         positionX = 0;
-        positionY = board.findFloor();
+        positionY = br.findFloor();
 
         xWorld = positionX;
         yWorld = positionY;
 
-        vertStep = board.getBrickSize().height / 2; //A player jumps half a box each update
-        horizontalStep = board.getBrickSize().width / 5; //A player moves 1/5 of box eaxh update
+        playerSize.width = 30;
+        playerSize.height = 30;
+
+        vertStep = br.getBoxWidth() / 2; //A players jump half a box per tick
+        horizontalStep = br.getBoxWidth() / 10;
 
         vertMoveMode = NOT_JUMPING;
         upCount = 0;
@@ -81,18 +84,24 @@ public class Player implements gameObject {
             vertMoveMode = FALLING;
             upCount = 0;
         } else {
-            yWorld -= vertStep;
-            positionY -= vertStep;
+            playerNextPositionX = xWorld + br.getBoxWidth() / 2;
+            playerNextPositionY = yWorld - vertStep;
+            int yTrans = br.checkTopOfObstacle(playerNextPositionX, playerNextPositionY, vertStep);
+            if (yTrans == 0) {   // hit the base of a brick
+                vertMoveMode = FALLING;   // start falling
+                upCount = 0;
+            }
+            yWorld -= yTrans;
+            positionY -= yTrans;
             upCount++;
         }
     }
 
     private void updateFalling() {
+        playerNextPositionX = xWorld + br.getBoxWidth() / 2;
+        playerNextPositionY = yWorld + br.getBoxWidth() / 2 + br.getBoxWidth();
 
-        playerNextPositionX = xWorld + board.getBrickSize().height / 2;
-        playerNextPositionY = yWorld + board.getBrickSize().height / 2;
-
-        int yTrans = board.checkTopOfBrick(playerNextPositionX,
+        int yTrans = br.checkTopOfObstacle(playerNextPositionX,
                 playerNextPositionY, vertStep);
         if (yTrans == 0)   // hit the top of a brick
             finishJumping();
