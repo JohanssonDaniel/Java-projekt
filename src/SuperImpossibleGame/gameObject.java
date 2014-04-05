@@ -2,6 +2,6 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 
-public interface Shape {
+public interface gameObject {
     public void draw(Graphics g);
 }

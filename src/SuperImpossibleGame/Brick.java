@@ -3,81 +3,34 @@ package SuperImpossibleGame;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Brick implements Shape {
-    private final int PWIDTH;
-    private final int PHEIGHT;
-    private int BOXLENGTH = 30;
-    private ArrayList<Rectangle> brick;
+/**
+ * Created by DannePanne on 2014-03-31.
+ */
+public class Brick implements gameObject {
 
-    private final static double MOVE_FACTOR = 0.25;
-    private int moveSize;
+    private final static Dimension brickSize = new Dimension(30,30);
+    private int positionX, positionY;
 
-    public int getBOXLENGTH() {
-        return BOXLENGTH;
+    public Brick(int x, int y) {
+        positionX = x;
+        positionY = y;
     }
 
-    public Brick(int PWIDTH, int PHEIGHT) {
-        this.PWIDTH = PWIDTH;
-        this.PHEIGHT = PHEIGHT;
-        brick = new ArrayList<Rectangle>();
-
-        moveSize = (int)(PWIDTH * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
-        if (moveSize == 0){
-            moveSize = 1;
-        }
-        add(PWIDTH-100,PHEIGHT-BOXLENGTH);
-        //xMapHead later
-
-        createFloor();
+    public int getPositionX() {
+        return positionX;
     }
 
-    public void createFloor(){
-        for (int i = 0; i <= PWIDTH; i+= BOXLENGTH){
-            brick.add(new Rectangle(i, PHEIGHT - BOXLENGTH, BOXLENGTH, BOXLENGTH));
-        }
+    public int getPositionY() {
+        return positionY;
     }
 
-    public void add(int x, int y){
-        brick.add(new Rectangle(x, y, BOXLENGTH, BOXLENGTH));
-    }
-
-    public boolean collide(Point p){
-        Rectangle playerPoint = new Rectangle(p.x,p.y,BOXLENGTH,BOXLENGTH);
-
-        for(Rectangle r : brick){
-            if (r.intersects(playerPoint)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int findFloor(){
-        int locY = PHEIGHT;
-        for (Rectangle r : brick) {
-            if (r.getY() < locY)
-                locY = (int) r.getY();   // reduce locY (i.e. move up)
-        }
-        return locY-BOXLENGTH;
-    }
-
-    public int checkTopOfObstacle(int nextX, int nextY, int step){
-        Point p = new Point(nextX,nextY);
-        if (collide(p)){
-            int yMapWorld = nextY - PHEIGHT + BOXLENGTH;/*-height*/
-            int mapY = yMapWorld/BOXLENGTH;  // map y- index
-            int topOffset = yMapWorld - (mapY * BOXLENGTH);
-            int smallStep = step - topOffset;
-            return smallStep;
-        }
-        return step;
+    public static Dimension getBrickSize() {
+        return brickSize;
     }
 
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.DARK_GRAY);
-        for(Rectangle r : brick) {
-            g.fillRect(r.x,r.y,r.width,r.height);
-        }
+        g.fillRect(positionX,positionY, brickSize.width, brickSize.height);
     }
 }
