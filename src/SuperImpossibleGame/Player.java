@@ -91,8 +91,8 @@ public class Player implements Shape {
                 vertMoveMode = FALLING;   // start falling
                 upCount = 0;
             }
-            translate(-yTrans);
             yWorld -= yTrans;
+            positionY -= yTrans;
             upCount++;
         }
     }
@@ -106,13 +106,9 @@ public class Player implements Shape {
         if (yTrans == 0)   // hit the top of a brick
             finishJumping();
         else {    // can move downwards another step
-            translate(yTrans);
             yWorld += yTrans;   // update position
+            positionY += yTrans;
         }
-    }
-
-    private void translate(int yDist) {
-        positionY += yDist;
     }
 
     private void finishJumping() {
@@ -129,7 +125,6 @@ public class Player implements Shape {
     public boolean willCollide(){
         playerNextPositionX = positionX + horizontalStep + playerSize.width/2;
         Point point = new Point(positionX, positionY);
-        System.out.println(playerNextPositionX);
         if (obstacles.collide(point)){
             return true;
         }

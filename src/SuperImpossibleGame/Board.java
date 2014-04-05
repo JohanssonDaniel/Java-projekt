@@ -97,22 +97,22 @@ public class Board extends JPanel implements Runnable {
     // called when the JFrame is closing
     {  running = false;   }
 
-    public void run(){
+    public void run() {
         //Main thread
-        long beforeTime, afterTime, timeDiff, sleepTime;
+        /*long beforeTime, afterTime, timeDiff, sleepTime;
         long overSleepTime = 0L;
         int noDelays = 0;
         long excess = 0L;
-        beforeTime = System.nanoTime();
+        beforeTime = System.nanoTime();*/
 
         running = true;
 
-        while (running){
+        while (running) {
             gameUpdate();
             gameRender();
             paintScreen();
 
-            afterTime = System.nanoTime();
+            /*afterTime = System.nanoTime();
             timeDiff = afterTime - beforeTime;
             sleepTime = (period - timeDiff) - overSleepTime;
 
@@ -138,20 +138,27 @@ public class Board extends JPanel implements Runnable {
       /* If frame animation is taking too long, update the game state
          without rendering it, to get the updates/sec nearer to
          the required FPS. */
-            int skips = 0;
+         /*   int skips = 0;
             while((excess > period) && (skips < MAX_FRAME_SKIPS)) {
                 excess -= period;
                 gameUpdate();    // update state but don't render
                 skips++;
             }
+        }*/
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        System.exit(0);
+            System.exit(0);
     }
 
     private void gameUpdate(){
         if(!gameOver && !isPaused) {
             if (p.willCollide()) {
                 p.stop();
+               gameOver = true;
             }
             p.updatePlayer();
         }
