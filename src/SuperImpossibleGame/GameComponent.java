@@ -6,17 +6,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GameComponent extends JPanel implements Runnable {
-    private static int PWIDTH = 800;
-    private static int PHEIGHT = 600;
+    private static final int PIXEL_WIDTH = 800;
+    private static final int PIXEL_HEIGHT = 600;
 
     private Thread animator;
 
-    private Player p;
+    private Player player;
     private Board board;
-    private SuperImpossibleGame.Brick brick;
 
-    private Graphics dbg;
-    private Image dbImage = null;
+    private Graphics doubleBufferedGraphic;
+    private Image doubleBufferedImage = null;
 
     private static boolean isPaused = false;
     private static boolean running = false;
@@ -36,11 +35,12 @@ public class GameComponent extends JPanel implements Runnable {
 
     public GameComponent(long period) throws HeadlessException {
         this.period = period;
+
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
-        board = new Board(PWIDTH, PHEIGHT);
-        brick = new SuperImpossibleGame.Brick(PWIDTH, PHEIGHT);
-        p = new Player(PWIDTH, PHEIGHT, board, brick); //Creates a player who knows how big the game is and what obstacles there are;
+        setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
+
+        board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
+        player = new Player(board); //Creates a player who knows how big the game is and what obstacles there are;
 
         setFocusable(true);
         requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
@@ -58,10 +58,10 @@ public class GameComponent extends JPanel implements Runnable {
             switch (keyCode){
                 case KeyEvent.VK_W:
                 case KeyEvent.VK_UP:
-                    p.jump();
+                    player.jump();
                     break;
                 default:
-                    p.move();
+                    player.move();
             }
         }
     }
@@ -156,31 +156,30 @@ public class GameComponent extends JPanel implements Runnable {
 
     private void gameUpdate(){
         if(!gameOver && !isPaused) {
-            if (p.willCollide()) {
-                p.stop();
+            if (player.willCollide()) {
+                player.stop();
                gameOver = true;
             }
-            p.updatePlayer();
+            player.updatePlayer();
         }
     }
 
     private void gameRender()
     {//Creates the image that is later printed out
-        if (dbImage == null){
-            dbImage = createImage(PWIDTH, PHEIGHT);
-            if (dbImage == null) {
-                System.out.println("dbImage is null");
+        if (doubleBufferedImage == null){
+            doubleBufferedImage = createImage(PIXEL_WIDTH, PIXEL_HEIGHT);
+            if (doubleBufferedImage == null) {
+                System.out.println("doubleBufferedImage is null");
                 return;
             }
             else
-                dbg = dbImage.getGraphics();
+                doubleBufferedGraphic = doubleBufferedImage.getGraphics();
         }
-        dbg.setColor(Color.white);
-        dbg.fillRect (0, 0, PWIDTH, PHEIGHT);
+        doubleBufferedGraphic.setColor(Color.white);
+        doubleBufferedGraphic.fillRect(0, 0, PIXEL_WIDTH, PIXEL_HEIGHT);
 
-        board.display(dbg);
-        p.draw(dbg);
-        brick.draw(dbg);
+        board.displayBoard(doubleBufferedGraphic);
+        player.draw(doubleBufferedGraphic);
     }
 
     private void paintScreen()
@@ -188,8 +187,8 @@ public class GameComponent extends JPanel implements Runnable {
         Graphics g;
         try { //Apparently the g.dispose() gives out a warning if you do not use a try-catch block
             g = this.getGraphics();
-            if ((g != null) && (dbImage != null))
-                g.drawImage(dbImage, 0, 0, null);
+            if ((g != null) && (doubleBufferedImage != null))
+                g.drawImage(doubleBufferedImage, 0, 0, null);
             g.dispose();
         }
         catch (Exception e)

@@ -1,198 +1,82 @@
 package SuperImpossibleGame;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
-public class Board extends JPanel implements Runnable {
-    private static int PIXEL_WIDTH = 800;
-    private static int PIXEL_HEIGHT = 600;
-
-    private Thread animator;
-
-    private Player p;
+public class Board {
+    private final int PIXEL_WIDTH;
+    private final int PIXEL_HEIGHT;
+    private ArrayList<Brick> brickArrayList;
     private Brick brick;
-    private Obstacle obstacle;
 
-    private Graphics dbg;
-    private Image dbImage = null;
+    private final static double MOVE_FACTOR = 0.25;
+    private int moveSize;
 
-    private static boolean isPaused = false;
-    private static boolean running = false;
-    private boolean gameOver = false;
+    private int heightOffset;
 
-    private long period;
+    public Board(int pixelWidth, int pixelHeight) {
+        this.PIXEL_WIDTH = pixelWidth;
+        this.PIXEL_HEIGHT = pixelHeight;
+        brickArrayList = new ArrayList<Brick>();
 
+        heightOffset = PIXEL_HEIGHT - brick.getBrickDimension().height; // Moves the coords for the bricks one brick height up
 
-
-    private static final int NO_DELAYS_PER_YIELD = 16;
-  /* Number of frames with a delay of 0 ms before the animation thread yields
-     to other running threads. */
-
-    private static int MAX_FRAME_SKIPS = 5;   // was 2;
-    // no. of frames that can be skipped in any one animation loop
-    // i.e the games state is updated but not rendered
-
-    public Board(long period) throws HeadlessException {
-        this.period = period;
-        setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
-        brick = new Brick(PIXEL_WIDTH, PIXEL_HEIGHT);
-        obstacle = new Obstacle(PIXEL_WIDTH, PIXEL_HEIGHT);
-        p = new Player(PIXEL_WIDTH, PIXEL_HEIGHT, brick, obstacle); //Creates a player who knows how big the game is and what obstacles there are;
-
-        setFocusable(true);
-        requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
-
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                testKey(e.getKeyCode());
-            }
-        });
+        moveSize = (int)(pixelWidth * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
+        if (moveSize == 0){
+            moveSize = 1;
+        }
+        brickArrayList.add(new Brick(500, PIXEL_HEIGHT-60));
+        createFloor();
     }
 
-    private void testKey(int keyCode) {
-        if (!gameOver && !isPaused){
-            switch (keyCode){
-                case KeyEvent.VK_W:
-                case KeyEvent.VK_UP:
-                    p.jump();
-                    break;
-                default:
-                    p.move();
-            }
+    public void createFloor(){
+        for (int i = 0; i <= PIXEL_WIDTH; i+= brick.getBrickDimension().width){
+            brickArrayList.add(new Brick(i, heightOffset));
         }
     }
 
-    public void addNotify()
-    { //Start the JComponent thread
-        super.addNotify();
-        startGame();
+    public int findFloor(){
+        int locationY = PIXEL_HEIGHT;
+        for (Brick brick : brickArrayList) {
+            if (brick.getPositionY() < locationY && brick.getPositionX() == 0)
+                locationY = (int) brick.getPositionY();   // reduces locationY and sends that y value to the player
+        }
+        return locationY - brick.getBrickDimension().height; //Puts the player on brick above the floors y value
     }
 
+    public boolean collideWithSideOfBrick(Point player) {
 
-    private void startGame()
-    {//Creates an new animator thread and then starts it
-        if (animator == null || !running) {
-            animator = new Thread(this);
-            animator.start();
+        Brick playerBrick = new Brick(player.x,player.y);
+
+        for (Brick bricks : brickArrayList){
+            if (bricks.collideSide(playerBrick)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int checkTopOfBrick(Point nextPoint, int step){
+        Brick playerBrick = new Brick(nextPoint.x, nextPoint.y);
+
+        for (Brick bricks : brickArrayList){
+            if (bricks.collideTop(playerBrick)){
+                int yMapWorld = nextPoint.y - PIXEL_HEIGHT + playerBrick.getBrickDimension().height;    /*-height*/
+                int mapY = (int) (yMapWorld/bricks.getBrickDimension().height);  // map y- index
+                int topOffset = yMapWorld - (mapY*bricks.getBrickDimension().height);
+                int smallStep = step - topOffset;
+                System.out.println(smallStep);
+                return smallStep;
+            }
+        }
+        return step;
+    }
+    public void displayBoard(Graphics g) {
+        g.setColor(Color.DARK_GRAY);
+        for(Brick b : brickArrayList) {
+            b.draw(g);
         }
     }
 
-    public void resumeGame()
-    // called when the JFrame is activated / deiconified
-    { //if (!showHelp)    // CHANGED
-        isPaused = false;
-    }
 
-
-    public void pauseGame()
-    // called when the JFrame is deactivated / iconified
-    { isPaused = true;   }
-
-
-    public void stopGame()
-    // called when the JFrame is closing
-    {  running = false;   }
-
-    public void run() {
-        //Main thread
-        /*long beforeTime, afterTime, timeDiff, sleepTime;
-        long overSleepTime = 0L;
-        int noDelays = 0;
-        long excess = 0L;
-        beforeTime = System.nanoTime();*/
-
-        running = true;
-
-        while (running) {
-            gameUpdate();
-            gameRender();
-            paintScreen();
-
-            /*afterTime = System.nanoTime();
-            timeDiff = afterTime - beforeTime;
-            sleepTime = (period - timeDiff) - overSleepTime;
-
-            if (sleepTime > 0) {   // some time left in this cycle
-                try {
-                    Thread.sleep(sleepTime/1000000L);  // nano -> ms
-                }
-                catch(InterruptedException ex){}
-                overSleepTime = (System.nanoTime() - afterTime) - sleepTime;
-            }
-            else {    // sleepTime <= 0; the frame took longer than the period
-                excess -= sleepTime;  // store excess time value
-                overSleepTime = 0L;
-
-                if (++noDelays >= NO_DELAYS_PER_YIELD) {
-                    Thread.yield();   // give another thread a chance to run
-                    noDelays = 0;
-                }
-            }
-
-            beforeTime = System.nanoTime();
-
-      /* If frame animation is taking too long, update the game state
-         without rendering it, to get the updates/sec nearer to
-         the required FPS. */
-         /*   int skips = 0;
-            while((excess > period) && (skips < MAX_FRAME_SKIPS)) {
-                excess -= period;
-                gameUpdate();    // update state but don't render
-                skips++;
-            }
-        }*/
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-            System.exit(0);
-    }
-
-    private void gameUpdate(){
-        if(!gameOver && !isPaused) {
-            if (p.willCollide()) {
-                p.stop();
-               gameOver = true;
-            }
-            p.updatePlayer();
-        }
-    }
-
-    private void gameRender()
-    {//Creates the image that is later printed out
-        if (dbImage == null){
-            dbImage = createImage(PIXEL_WIDTH, PIXEL_HEIGHT);
-            if (dbImage == null) {
-                System.out.println("dbImage is null");
-                return;
-            }
-            else
-                dbg = dbImage.getGraphics();
-        }
-        dbg.setColor(Color.white);
-        dbg.fillRect (0, 0, PIXEL_WIDTH, PIXEL_HEIGHT);
-
-        brick.draw(dbg);
-        p.draw(dbg);
-        obstacle.draw(dbg);
-    }
-
-    private void paintScreen()
-    {//Takes the image created by gameRender and paints it onto the screen
-        Graphics g;
-        try { //Apparently the g.dispose() gives out a warning if you do not use a try-catch block
-            g = this.getGraphics();
-            if ((g != null) && (dbImage != null))
-                g.drawImage(dbImage, 0, 0, null);
-            g.dispose();
-        }
-        catch (Exception e)
-        { System.out.println("Graphics context error: " + e);  }
-    }
 }
