@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class GameComponent extends JPanel implements Runnable {
+public class GamePanel extends JPanel implements Runnable {
     private static final int PIXEL_WIDTH = 800;
     private static final int PIXEL_HEIGHT = 600;
 
@@ -33,7 +33,7 @@ public class GameComponent extends JPanel implements Runnable {
     // no. of frames that can be skipped in any one animation loop
     // i.e the games state is updated but not rendered
 
-    public GameComponent(long period) throws HeadlessException {
+    public GamePanel(long period) throws HeadlessException {
         this.period = period;
 
         setBackground(Color.WHITE);

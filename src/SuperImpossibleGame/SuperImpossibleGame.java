@@ -7,10 +7,13 @@ import java.awt.event.*;
 public class SuperImpossibleGame extends JFrame implements WindowListener{
     private static int DEFAULT_FPS = 30;
 
-    private GameComponent gameComponent;       // This is where the game is drawn
+    private GamePanel gameComponent;       // This is where the game is drawn
 
-    public SuperImpossibleGame(long period) {
+    public SuperImpossibleGame() {
         super("SuperImpossibleGame"); //Title
+        int fps = DEFAULT_FPS;
+        long period = (long) 1000.0/fps; //The period decides how long a game update can be
+        //Creates a new SuperImpossibleGame.SuperImpossibleGame! with a period of 40/1000 * 1000000L
         createGui(period);
         addWindowListener(this);
         pack();
@@ -20,7 +23,7 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
 
     private void createGui(long period){
         Container c = getContentPane(); //Creates the pane that stores the content
-        gameComponent = new GameComponent(period);
+        gameComponent = new GamePanel(period);
         c.add(gameComponent, "Center");    //Adds the component board and sets its placement
     }
 
@@ -57,13 +60,5 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
     @Override
     public void windowDeactivated(WindowEvent e) {
 
-    }
-
-    public static void main(String[] args) {
-        int fps = DEFAULT_FPS;
-
-        long period = (long) 1000.0/fps; //The period decides how long a game update can be
-
-        new SuperImpossibleGame(period*1000000L); //Creates a new SuperImpossibleGame.SuperImpossibleGame! with a period of 40/1000 * 1000000L
     }
 }

@@ -5,9 +5,8 @@ import java.awt.*;
 /**
  * Created by DannePanne on 2014-04-06.
  */
-public class Brick implements gameObject{
+public class Brick implements gameObject {
     private static final Dimension brickDimension = new Dimension(30,30);
-
     private int positionX, positionY;
 
     public static Dimension getBrickDimension() {

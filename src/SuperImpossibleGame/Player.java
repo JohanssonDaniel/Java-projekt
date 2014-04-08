@@ -2,7 +2,7 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 
-public class Player implements gameObject {
+public class Player extends Rectangle implements gameObject {
 
     private static final int NOT_JUMPING = 0;
     private static final int RISING = 1;
@@ -11,31 +11,29 @@ public class Player implements gameObject {
     private int vertMoveMode;
 
     private Board board;
-
-    private int positionX, positionY;
     private boolean moving;
-    private static final Dimension playerSize = new Dimension(30, 30);
 
+    // ERSATT MED RECTANGLE ABSTRACTION
+    //private int positionX, positionY;
+    //private static final Dimension playerSize = new Dimension(30, 30);
+    //public Dimension getPlayerSize() { return playerSize; }
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
     private int xWorld, yWorld; //Players poistion in the "world"
     private int playerNextPositionX, playerNextPositionY;
     private int vertStep;
 
-    public Dimension getPlayerSize() {
-        return playerSize;
-    }
-
     public Player(Board board) {
+        super(0, board.findFloor());
         this.board = board;
-        positionX = 0;
-        positionY = board.findFloor();
+        //positionX = 0;
+        //positionY = board.findFloor();
 
-        xWorld = positionX;
-        yWorld = positionY;
+        xWorld = getPositionX();
+        yWorld = getPositionY();
 
-        vertStep = playerSize.height; //A players jump of its height each update
-        horizontalStep = playerSize.width / 10;
+        vertStep = getSize().height; //A players jump of its height each update
+        horizontalStep = getSize().width / 10;
 
         vertMoveMode = NOT_JUMPING;
         upCount = 0;
@@ -45,7 +43,9 @@ public class Player implements gameObject {
 
     public void move() {
         if (moving){
-            positionX += horizontalStep;
+            int newPositionX = getPositionX();
+            newPositionX += horizontalStep;
+            setPositionX(newPositionX);
         }
     }
 
@@ -80,7 +80,10 @@ public class Player implements gameObject {
         } else {
 
             yWorld -= vertStep;
-            positionY -= vertStep;
+            int newPositionY = getPositionY();
+            newPositionY -= vertStep;
+            setPositionY(newPositionY);
+            //positionY -= vertStep;
             upCount++;
         }
     }
@@ -97,7 +100,11 @@ public class Player implements gameObject {
             finishJumping();
         else {    // can move downwards another step
             yWorld += yTrans;   // update position
-            positionY += yTrans;
+
+            int newPositionY = getPositionY();
+            newPositionY += yTrans;
+            setPositionY(newPositionY);
+            //positionY += yTrans;
         }
     }
 
@@ -109,14 +116,14 @@ public class Player implements gameObject {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
-        g.fillRect(positionX, positionY, playerSize.width, playerSize.height);
+        g.fillRect(getPositionX(), getPositionY(), getSize().width, getSize().height);
         g.setColor(Color.CYAN);
     }
 
     public boolean willCollide(){
 
-        playerNextPositionX = positionX + horizontalStep;
-        playerNextPositionY = positionY + vertStep;
+        playerNextPositionX = getPositionX() + horizontalStep;
+        playerNextPositionY = getPositionY() + vertStep;
 
         Point point = new Point(playerNextPositionX, playerNextPositionY);
 
