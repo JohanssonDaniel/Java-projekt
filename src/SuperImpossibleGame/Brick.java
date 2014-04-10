@@ -5,39 +5,24 @@ import java.awt.*;
 /**
  * Created by DannePanne on 2014-04-06.
  */
-public class Brick implements gameObject {
-    private static final Dimension brickDimension = new Dimension(30,30);
-    private int positionX, positionY;
-
-    public static Dimension getBrickDimension() {
-        return brickDimension;
-    }
-
-    public int getPositionX() {
-        return positionX;
-    }
-
-    public int getPositionY() {
-        return positionY;
-    }
+public class Brick extends RectangleObject implements gameObject {
 
     public Brick(int positionX, int positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+        super(positionX, positionY);
     }
 
     public boolean collideSide(Brick brick){ //Based on the intersect from the Rectangel class
 
-        int brickWidth = this.brickDimension.width;
-        int brickHeight = this.brickDimension.height;
-        int playerWidth = brick.brickDimension.width;
-        int playerHeight = brick.brickDimension.height;
+        int brickWidth = getSize().width;
+        int brickHeight = getSize().height;
+        int playerWidth = getSize().width;
+        int playerHeight = getSize().height;
 
         if (playerWidth <= 0 || playerHeight <= 0 || brickWidth <= 0 || brickHeight <= 0) {
             return false;
         }
-        int brickPositionX = this.positionX;
-        int brickPositionY = this.positionY;
+        int brickPositionX = getPositionX();
+        int brickPositionY = getPositionY();
         int playerPositionX = brick.getPositionX();
         int playerPositionY = brick.getPositionY();
 
@@ -54,16 +39,16 @@ public class Brick implements gameObject {
 
     public boolean collideTop(Brick brick){
 
-        int brickWidth = brickDimension.width;
-        int brickHeight = brickDimension.height;
-        int playerWidth = brick.brickDimension.width;
-        int playerHeight = brick.brickDimension.height;
+        int brickWidth = getSize().width;
+        int brickHeight = getSize().height;
+        int playerWidth = brick.getSize().width;
+        int playerHeight = brick.getSize().height;
 
         if (playerWidth <= 0 || playerHeight <= 0 || brickWidth <= 0 || brickHeight <= 0) {
             return false;
         }
-        int brickPositionX = positionX;
-        int brickPositionY = positionY;
+        int brickPositionX = super.getPositionX();
+        int brickPositionY = super.getPositionY();
         int playerPositionX = brick.getPositionX();
         int playerPositionY = brick.getPositionY();
 
@@ -83,6 +68,6 @@ public class Brick implements gameObject {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.black);
-        g.fillRect(positionX,positionY,brickDimension.width,brickDimension.height);
+        g.fillRect(super.getPositionX(),super.getPositionY(),super.getSize().width,super.getSize().height);
     }
 }

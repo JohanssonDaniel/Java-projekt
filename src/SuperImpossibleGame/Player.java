@@ -2,7 +2,7 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 
-public class Player extends Rectangle implements gameObject {
+public class Player extends RectangleObject implements gameObject {
 
     private static final int NOT_JUMPING = 0;
     private static final int RISING = 1;
@@ -26,8 +26,6 @@ public class Player extends Rectangle implements gameObject {
     public Player(Board board) {
         super(0, board.findFloor());
         this.board = board;
-        //positionX = 0;
-        //positionY = board.findFloor();
 
         xWorld = getPositionX();
         yWorld = getPositionY();
@@ -113,13 +111,6 @@ public class Player extends Rectangle implements gameObject {
         upCount = 0;
     }
 
-    @Override
-    public void draw(Graphics g) {
-        g.setColor(Color.BLUE);
-        g.fillRect(getPositionX(), getPositionY(), getSize().width, getSize().height);
-        g.setColor(Color.CYAN);
-    }
-
     public boolean willCollide(){
 
         playerNextPositionX = getPositionX() + horizontalStep;
@@ -132,4 +123,13 @@ public class Player extends Rectangle implements gameObject {
         }
         return false;
     }
+
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(Color.BLUE);
+        g.fillRect(getPositionX(), getPositionY(), getSize().width, getSize().height);
+        g.setColor(Color.CYAN);
+    }
+
+
 }

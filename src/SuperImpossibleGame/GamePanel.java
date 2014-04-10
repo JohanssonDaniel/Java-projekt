@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Player player;
     private Board board;
+    private Brick brick;
 
     private Graphics doubleBufferedGraphic;
     private Image doubleBufferedImage = null;

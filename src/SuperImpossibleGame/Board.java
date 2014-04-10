@@ -19,7 +19,7 @@ public class Board {
         this.PIXEL_HEIGHT = pixelHeight;
         brickArrayList = new ArrayList<Brick>();
 
-        heightOffset = PIXEL_HEIGHT - brick.getBrickDimension().height; // Moves the coords for the bricks one brick height up
+        heightOffset = PIXEL_HEIGHT - brick.getSize().height; // Moves the coords for the bricks one brick height up
 
         moveSize = (int)(pixelWidth * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
         if (moveSize == 0){
@@ -30,7 +30,7 @@ public class Board {
     }
 
     public void createFloor(){
-        for (int i = 0; i <= PIXEL_WIDTH; i+= brick.getBrickDimension().width){
+        for (int i = 0; i <= PIXEL_WIDTH; i+= brick.getSize().width){
             brickArrayList.add(new Brick(i, heightOffset));
         }
     }
@@ -41,7 +41,7 @@ public class Board {
             if (brick.getPositionY() < locationY && brick.getPositionX() == 0)
                 locationY = (int) brick.getPositionY();   // reduces locationY and sends that y value to the player
         }
-        return locationY - brick.getBrickDimension().height; //Puts the player on brick above the floors y value
+        return locationY - brick.getSize().height; //Puts the player on brick above the floors y value
     }
 
     public boolean collideWithSideOfBrick(Point player) {
@@ -61,9 +61,9 @@ public class Board {
 
         for (Brick bricks : brickArrayList){
             if (bricks.collideTop(playerBrick)){
-                int yMapWorld = nextPoint.y - PIXEL_HEIGHT + playerBrick.getBrickDimension().height;    /*-height*/
-                int mapY = (int) (yMapWorld/bricks.getBrickDimension().height);  // map y- index
-                int topOffset = yMapWorld - (mapY*bricks.getBrickDimension().height);
+                int yMapWorld = nextPoint.y - PIXEL_HEIGHT + playerBrick.getSize().height;    /*-height*/
+                int mapY = (int) (yMapWorld/bricks.getSize().height);  // map y- index
+                int topOffset = yMapWorld - (mapY*bricks.getSize().height);
                 int smallStep = step - topOffset;
                 System.out.println(smallStep);
                 return smallStep;
