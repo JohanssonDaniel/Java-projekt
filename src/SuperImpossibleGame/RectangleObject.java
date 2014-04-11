@@ -8,7 +8,7 @@ import java.awt.*;
 public abstract class RectangleObject implements gameObject{
     private Dimension rectangle;
     private int positionX, positionY;
-    private static int WIDTH = 30;
+    public static int WIDTH = 30;
     private static int HEIGHT = 30;
 
     public RectangleObject(int positionX, int positionY) {

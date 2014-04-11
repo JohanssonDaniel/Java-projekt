@@ -7,7 +7,8 @@ public class Board {
     private final int PIXEL_WIDTH;
     private final int PIXEL_HEIGHT;
     private ArrayList<Brick> brickArrayList;
-    private Brick brick;
+    private final int BRICK_SIZE = Brick.WIDTH;
+    //TOG BORT fältet private Brick brick, brick i denna klass användes endast för att hämta strleken på en rektangel så vi behöver bara hämta konstanten.
 
     private final static double MOVE_FACTOR = 0.25;
     private int moveSize;
@@ -19,7 +20,7 @@ public class Board {
         this.PIXEL_HEIGHT = pixelHeight;
         brickArrayList = new ArrayList<Brick>();
 
-        heightOffset = PIXEL_HEIGHT - brick.getSize().height; // Moves the coords for the bricks one brick height up
+        heightOffset = PIXEL_HEIGHT - BRICK_SIZE; // Moves the coords for the bricks one brick height up
 
         moveSize = (int)(pixelWidth * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
         if (moveSize == 0){
@@ -30,7 +31,7 @@ public class Board {
     }
 
     public void createFloor(){
-        for (int i = 0; i <= PIXEL_WIDTH; i+= brick.getSize().width){
+        for (int i = 0; i <= PIXEL_WIDTH; i+= BRICK_SIZE){
             brickArrayList.add(new Brick(i, heightOffset));
         }
     }
@@ -41,7 +42,7 @@ public class Board {
             if (brick.getPositionY() < locationY && brick.getPositionX() == 0)
                 locationY = (int) brick.getPositionY();   // reduces locationY and sends that y value to the player
         }
-        return locationY - brick.getSize().height; //Puts the player on brick above the floors y value
+        return locationY - BRICK_SIZE; //Puts the player on brick above the floors y value
     }
 
     public boolean collideWithSideOfBrick(Point player) {
