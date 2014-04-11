@@ -7,7 +7,7 @@ public class Board {
     private final int PIXEL_WIDTH;
     private final int PIXEL_HEIGHT;
     private ArrayList<Brick> brickArrayList;
-    private final int BRICK_SIZE = Brick.WIDTH;
+    private final int BRICK_SIZE = Brick.SIZE;
     //TOG BORT fältet private Brick brick, brick i denna klass användes endast för att hämta strleken på en rektangel så vi behöver bara hämta konstanten.
 
     private final static double MOVE_FACTOR = 0.25;
