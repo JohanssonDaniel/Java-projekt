@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Brick.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Brick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/RectangleObject.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/RectangleObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/gameObject.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/gameObject.java" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -126,7 +120,7 @@
       <file leaf-file-name="Player.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SuperImpossibleGame/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2530446" vertical-offset="910" max-vertical-offset="2108">
+            <state vertical-scroll-proportion="0.63193506" vertical-offset="1369" max-vertical-offset="2108">
               <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
               <folding />
             </state>
@@ -722,11 +716,15 @@
       <created>1397302327917</created>
       <updated>1397302327917</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="1 message&#10;">
+      <created>1397318183230</created>
+      <updated>1397318183230</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1254,7 +1252,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperImpossibleGame/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2530446" vertical-offset="910" max-vertical-offset="2108">
+        <state vertical-scroll-proportion="0.63193506" vertical-offset="1369" max-vertical-offset="2108">
           <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding />
         </state>
