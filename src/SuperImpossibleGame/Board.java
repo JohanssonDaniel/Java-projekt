@@ -106,11 +106,11 @@ public class Board {
                 int brickLeftSide = bricks.getPositionX();
                 int brickRightSide = brickLeftSide + BRICK_SIZE;
                 if ((brickLeftSide <= nextPlayerPositionLeft && nextPlayerPositionLeft <= brickRightSide )  ||
-                        ((brickLeftSide <= nextPlayerPositionRight) && (nextPlayerPositionRight <= brickRightSide))){
-                    return false;
+                        ((brickLeftSide >= nextPlayerPositionRight) && (nextPlayerPositionRight >= brickRightSide))){
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 }
