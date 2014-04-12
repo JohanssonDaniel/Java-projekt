@@ -11,7 +11,7 @@ public class Brick extends RectangleObject implements gameObject {
         super(positionX, positionY);
     }
 
-    public boolean collideSide(Brick brick){ //Based on the intersect from the Rectangel class
+    public boolean collideSide(Brick player){ //Based on the intersect from the Rectangel class
 
         int brickWidth = getSize().width;
         int brickHeight = getSize().height;
@@ -23,8 +23,8 @@ public class Brick extends RectangleObject implements gameObject {
         }
         int brickPositionX = getPositionX();
         int brickPositionY = getPositionY();
-        int playerPositionX = brick.getPositionX();
-        int playerPositionY = brick.getPositionY();
+        int playerPositionX = player.getPositionX();
+        int playerPositionY = player.getPositionY();
 
         playerWidth += playerPositionX;
         playerHeight = playerPositionY - playerHeight;

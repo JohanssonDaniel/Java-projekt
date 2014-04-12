@@ -13,13 +13,8 @@ public class Player extends RectangleObject implements gameObject {
     private Board board;
     private boolean moving;
 
-    // ERSATT MED RECTANGLE ABSTRACTION
-    //private int positionX, positionY;
-    //private static final Dimension playerSize = new Dimension(30, 30);
-    //public Dimension getPlayerSize() { return playerSize; }
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
-    private int playerNextPositionX, playerNextPositionY;
     private int vertStep;
 
     public Player(Board board) {
@@ -81,8 +76,8 @@ public class Player extends RectangleObject implements gameObject {
 
     private void updateFalling() {
 
-        playerNextPositionX = getPositionX() + horizontalStep;
-        playerNextPositionY = getPositionY() + getSize().height + vertStep;
+        int playerNextPositionX = getPositionX() + horizontalStep;
+        int playerNextPositionY = getPositionY() + getSize().height + vertStep;
 
         Point nextPoint = new Point(playerNextPositionX, playerNextPositionY);
 
@@ -106,8 +101,8 @@ public class Player extends RectangleObject implements gameObject {
 
     public boolean willCollide(){
 
-        playerNextPositionX = getPositionX() + horizontalStep;
-        playerNextPositionY = getPositionY() + vertStep;
+        int playerNextPositionX = getPositionX() + horizontalStep;
+        int playerNextPositionY = getPositionY() + vertStep;
 
         Point point = new Point(playerNextPositionX, playerNextPositionY);
 

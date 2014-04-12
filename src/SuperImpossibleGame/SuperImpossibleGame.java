@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class SuperImpossibleGame extends JFrame implements WindowListener{
     private static int DEFAULT_FPS = 30;
 
-    private GamePanel gameComponent;       // This is where the game is drawn
+    private GamePanel gamePanel;       // This is where the game is drawn
 
     public SuperImpossibleGame() {
         super("SuperImpossibleGame"); //Title
@@ -23,8 +23,8 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
 
     private void createGui(long period){
         Container c = getContentPane(); //Creates the pane that stores the content
-        gameComponent = new GamePanel(period);
-        c.add(gameComponent, "Center");    //Adds the component board and sets its placement
+        gamePanel = new GamePanel(period);
+        c.add(gamePanel, "Center");    //Adds the component board and sets its placement
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
 
     @Override
     public void windowClosing(WindowEvent e) {
-        gameComponent.stopGame();
+        gamePanel.stopGame();
     }
 
     @Override
@@ -44,17 +44,17 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
 
     @Override
     public void windowIconified(WindowEvent e) {
-        gameComponent.pauseGame();
+        gamePanel.pauseGame();
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        gameComponent.resumeGame();
+        gamePanel.resumeGame();
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        gameComponent.resumeGame();
+        gamePanel.resumeGame();
     }
 
     @Override
