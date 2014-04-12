@@ -19,16 +19,12 @@ public class Player extends RectangleObject implements gameObject {
     //public Dimension getPlayerSize() { return playerSize; }
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
-    private int xWorld, yWorld; //Players poistion in the "world"
     private int playerNextPositionX, playerNextPositionY;
     private int vertStep;
 
     public Player(Board board) {
         super(0, board.findFloor());
         this.board = board;
-
-        xWorld = getPositionX();
-        yWorld = getPositionY();
 
         vertStep = getSize().height; //A players jump of its height each update
         horizontalStep = getSize().width / 10;
@@ -76,33 +72,30 @@ public class Player extends RectangleObject implements gameObject {
             vertMoveMode = FALLING;
             upCount = 0;
         } else {
-
-            yWorld -= vertStep;
             int newPositionY = getPositionY();
             newPositionY -= vertStep;
             setPositionY(newPositionY);
-            //positionY -= vertStep;
             upCount++;
         }
     }
 
     private void updateFalling() {
 
-        playerNextPositionX = xWorld + horizontalStep;
-        playerNextPositionY = yWorld + vertStep;
+        playerNextPositionX = getPositionX() + horizontalStep;
+        playerNextPositionY = getPositionY() + getSize().height + vertStep;
 
         Point nextPoint = new Point(playerNextPositionX, playerNextPositionY);
 
         int yTrans = board.checkTopOfBrick(nextPoint, vertStep);
-        if (yTrans == 0)   // hit the top of a brick
+        if (yTrans == 0) {   // hit the top of a brick
+            setPositionY(playerNextPositionY);
             finishJumping();
+        }
         else {    // can move downwards another step
-            yWorld += yTrans;   // update position
 
             int newPositionY = getPositionY();
             newPositionY += yTrans;
             setPositionY(newPositionY);
-            //positionY += yTrans;
         }
     }
 
@@ -130,6 +123,4 @@ public class Player extends RectangleObject implements gameObject {
         g.fillRect(getPositionX(), getPositionY(), getSize().width, getSize().height);
         g.setColor(Color.CYAN);
     }
-
-
 }

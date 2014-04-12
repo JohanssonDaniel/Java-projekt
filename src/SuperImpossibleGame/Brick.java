@@ -30,14 +30,14 @@ public class Brick extends RectangleObject implements gameObject {
         playerHeight = playerPositionY - playerHeight;
         brickWidth += brickPositionX;
         brickHeight += brickPositionY;
-        if ((playerHeight == brickPositionY) && (playerWidth >= brickPositionX  )){
+        if ((playerHeight >= brickPositionY) && (playerWidth >= brickPositionX  )){
             return true;
         }
     //    return (!(playerHeight >= brickPositionY) && (playerWidth > brickPositionX)); //Checks that the player is not above the brick and that the width is inside the brick
         return false;
     }
 
-    public boolean collideTop(Brick brick){
+    /*public boolean collideTop(Brick brick){
 
         int brickWidth = getSize().width;
         int brickHeight = getSize().height;
@@ -53,17 +53,38 @@ public class Brick extends RectangleObject implements gameObject {
         int playerPositionY = brick.getPositionY();
 
         playerWidth += playerPositionX;
-        playerHeight -= playerPositionY;
+        playerHeight = playerPositionY + playerHeight;
         brickWidth += brickPositionX;
         brickHeight += brickPositionY;
-        if ((playerHeight >= brickPositionY &&
+        if ((playerHeight == brickPositionY &&
                 ((playerWidth >= brickPositionX) ||
                         (playerWidth >= brickWidth)))){
-            System.out.println("2");
             return true;
         } //Checks that the player is above the brick and that the width is inside the brick
         return false;
-}
+}*/
+    public boolean intersects(Brick brick) {
+        int brickWidth = getSize().width;
+        int brickHeight = getSize().height;
+        int playerWidth = brick.getSize().width;
+        int playerHeight = brick.getSize().height;
+        if (playerWidth <= 0 || playerHeight <= 0 || brickWidth <= 0 || brickHeight <= 0) {
+            return false;
+        }
+        int brickPositionX = super.getPositionX();
+        int brickPositionY = super.getPositionY();
+        int playerPositionX = brick.getPositionX();
+        int playerPositionY = brick.getPositionY();
+        playerWidth += playerPositionX;
+        playerHeight += playerPositionY;
+        brickWidth += brickPositionX;
+        brickHeight += brickPositionY;
+        //      overflow || intersect
+        return ((playerWidth < playerPositionX || playerWidth > brickPositionX) &&
+                (playerHeight < playerPositionY || playerHeight > brickPositionY) &&
+                (brickWidth < brickPositionX || brickWidth > playerPositionX) &&
+                (brickHeight < brickPositionY || brickHeight > playerPositionY));
+    }
 
     @Override
     public void draw(Graphics g) {

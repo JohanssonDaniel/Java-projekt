@@ -57,27 +57,45 @@ public class Board {
         return false;
     }
 
-    public int checkTopOfBrick(Point nextPoint, int step){
-        Brick playerBrick = new Brick(nextPoint.x, nextPoint.y);
-
-        for (Brick bricks : brickArrayList){
-            if (bricks.collideTop(playerBrick)){
-                int yMapWorld = nextPoint.y - PIXEL_HEIGHT + playerBrick.getSize().height;    /*-height*/
-                int mapY = (int) (yMapWorld/bricks.getSize().height);  // map y- index
-                int topOffset = yMapWorld - (mapY*bricks.getSize().height);
-                int smallStep = step - topOffset;
-                System.out.println(smallStep);
-                return smallStep;
+    private Brick biggestY(int positionX){//Picks out the biggest positionY aka, the brick that is highest
+        Brick highestBrick = null;
+        for (Brick brick : brickArrayList){
+            System.out.println(positionX + ": " + brick.getPositionX());
+            if (brick.getPositionX() == positionX){
+                if (highestBrick == null){
+                    System.out.println("Bajs");
+                    highestBrick = brick;
+                }
+                else if (brick.getPositionY() <= highestBrick.getPositionY() ){
+                    System.out.println("Hej");
+                    highestBrick = brick;
+                }
             }
         }
-        return step;
+        return highestBrick;
     }
+
+    public int checkTopOfBrick(Point nextPoint, int step) {
+        Brick brick = biggestY(nextPoint.x);
+        int tempStep = step;
+        if (brick == null)
+            return tempStep;
+
+        else{
+            if (nextPoint.y == brick.getPositionY()) {
+                int yMapWorld = nextPoint.y - brick.getPositionY();    /*-height*/
+                int topOffset = yMapWorld;
+                int smallStep = 0;
+                tempStep = smallStep;
+                }
+            }
+        return tempStep;
+    }
+
     public void displayBoard(Graphics g) {
         g.setColor(Color.DARK_GRAY);
         for(Brick b : brickArrayList) {
             b.draw(g);
         }
     }
-
-
 }
