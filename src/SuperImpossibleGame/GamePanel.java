@@ -6,7 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GamePanel extends JPanel implements Runnable {
-    private static final int PIXEL_WIDTH = 800;
+    private static final int PIXEL_WIDTH = 900;
     private static final int PIXEL_HEIGHT = 600;
 
     private Thread animator;

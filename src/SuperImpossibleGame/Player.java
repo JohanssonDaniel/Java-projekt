@@ -2,7 +2,7 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 
-public class Player extends RectangleObject implements gameObject {
+public class Player extends RectangleObject{
 
     private static final int NOT_JUMPING = 0;
     private static final int RISING = 1;
@@ -111,11 +111,8 @@ public class Player extends RectangleObject implements gameObject {
         }
         return false;
     }
-
-    @Override
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
         g.fillRect(getPositionX(), getPositionY(), getSize().width, getSize().height);
-        g.setColor(Color.CYAN);
     }
 }

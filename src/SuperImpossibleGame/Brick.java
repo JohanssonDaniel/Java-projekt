@@ -87,8 +87,9 @@ public class Brick extends RectangleObject implements gameObject {
     }
 
     @Override
-    public void draw(Graphics g) {
+    public void draw(Graphics g, int PIXEL_HEIGHT, int pixelX, int numRows) {
+        int pixelY = PIXEL_HEIGHT - ((numRows-getPositionY())); //Räknar ut vart y ska vara baserat på dess kolumn
         g.setColor(Color.black);
-        g.fillRect(super.getPositionX(),super.getPositionY(),super.getSize().width,super.getSize().height);
+        g.fillRect(pixelX, pixelY, getSize().width, getSize().height);
     }
 }

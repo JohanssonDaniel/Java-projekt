@@ -5,9 +5,10 @@ import java.awt.*;
 /**
  * Created by pierre on 4/8/14.
  */
-public abstract class RectangleObject implements gameObject{
+public abstract class RectangleObject{
     private Dimension rectangle;
     private int positionX, positionY;
+    private int pixelX, pixelY;
     public static int SIZE = 30;
 
     public RectangleObject(int positionX, int positionY) {
@@ -22,6 +23,15 @@ public abstract class RectangleObject implements gameObject{
     public int getPositionY() {
         return positionY;
     }
+
+    public int getPixelX() {
+        return pixelX;
+    }
+
+    public int getPixelY() {
+        return pixelY;
+    }
+
     public Dimension getSize() { return rectangle; }
 
     public void setPositionX(int newPosition) {
@@ -30,5 +40,13 @@ public abstract class RectangleObject implements gameObject{
 
     public void setPositionY(int newPosition) {
         positionY = newPosition;
+    }
+
+    public void setPixelX(int pixelX) {
+        this.pixelX = pixelX;
+    }
+
+    public void setPixelY(int pixelY) {
+        this.pixelY = pixelY;
     }
 }
