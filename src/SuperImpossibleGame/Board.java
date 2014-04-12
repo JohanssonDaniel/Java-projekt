@@ -6,10 +6,7 @@ import java.util.ArrayList;
 public class Board {
     private final int PIXEL_WIDTH;
     private final int PIXEL_HEIGHT;
-
     private ArrayList<Brick> brickArrayList;
-    private ArrayList[] columnList; //List of all the bricks in a column
-
     private final int BRICK_SIZE = Brick.SIZE;
     //TOG BORT fältet private Brick brick, brick i denna klass användes endast för att hämta strleken på en rektangel så vi behöver bara hämta konstanten.
 
@@ -17,18 +14,10 @@ public class Board {
     private int moveSize;
 
     private int heightOffset;
-    private int numCols, numRows;
-
-    private static final int floorCoord = 0;
 
     public Board(int pixelWidth, int pixelHeight) {
-
-        PIXEL_WIDTH = pixelWidth;
-        PIXEL_HEIGHT = pixelHeight;
-
-        numCols = PIXEL_WIDTH / BRICK_SIZE; //calculates the number of columns a static screen can have
-        numRows = PIXEL_HEIGHT / BRICK_SIZE; //calculates the number of rows a static screen can have
-
+        this.PIXEL_WIDTH = pixelWidth;
+        this.PIXEL_HEIGHT = pixelHeight;
         brickArrayList = new ArrayList<Brick>();
 
         heightOffset = PIXEL_HEIGHT - BRICK_SIZE; // Moves the coords for the bricks one brick height up
@@ -36,55 +25,24 @@ public class Board {
         moveSize = (int)(pixelWidth * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
         if (moveSize == 0){
             moveSize = 1;
-        };
+        }
+        brickArrayList.add(new Brick(500, PIXEL_HEIGHT-60));
         createFloor();
-
-
-        createColumns();
-
     }
 
     public void createFloor(){
-        for (int x = 0; x <= numCols; x ++){
-            brickArrayList.add(new Brick(x, floorCoord));
+        for (int i = 0; i <= PIXEL_WIDTH; i+= BRICK_SIZE){
+            brickArrayList.add(new Brick(i, heightOffset));
         }
     }
 
     public int findFloor(){
-
         int locationY = PIXEL_HEIGHT;
-
-        return locationY - BRICK_SIZE*2; //Puts the player on brick above the floors y value
-    }
-
-    private void createColumns(){ //Lägger till rätt bricks i rätt kolumn
-        columnList = new ArrayList[numCols+1];
-        for (int c = 0; c <= numCols; c++) {
-            columnList[c] = new ArrayList();
+        for (Brick brick : brickArrayList) {
+            if (brick.getPositionY() < locationY && brick.getPositionX() == 0)
+                locationY = brick.getPositionY();   // reduces locationY and sends that y value to the player
         }
-        Brick brick;
-        for (int b = 0; b < brickArrayList.size(); b++){
-            brick = (Brick) brickArrayList.get(b);
-            columnList[brick.getPositionX()].add(brick); //Adds the bricks with same x-coord to the same list
-        }
-    }
-
-    public boolean collideWithSideOfBrick(Point player) {
-        Point coordPlayer = pixelToCoord(player.x, player.y);
-        ArrayList column = columnList[coordPlayer.x];
-
-        for (Brick bricks : brickArrayList){
-            if (coordPlayer.y == bricks.getPositionY()){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private Point pixelToCoord(int pixelX, int pixelY){ //Gör om spelarens pixelPosition till koordinat
-        int coordX =  (pixelX % PIXEL_WIDTH)/PIXEL_WIDTH;
-        int coordY =  (pixelY % PIXEL_HEIGHT)/PIXEL_HEIGHT;
-        return new Point(coordX, coordY-1);
+        return locationY - BRICK_SIZE; //Puts the player on brick above the floors y value
     }
 
     private Brick biggestY(int positionX){//Picks out the biggest positionY aka, the brick that is highest
@@ -102,34 +60,57 @@ public class Board {
         return highestBrick;
     }
 
-    public int checkTopOfBrick(Point nextPoint, int step) {
-        Brick brick = biggestY(nextPoint.x);
-        int tempStep = step;
-        if (brick == null)
-            return tempStep;
+    public boolean willHitFloor(int nextPlayerPositionY) {
+        if (nextPlayerPositionY >=  heightOffset){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
-        else{
-            if (nextPoint.y == brick.getPositionY()) {
-                int yMapWorld = nextPoint.y - brick.getPositionY();    /*-height*/
-                int topOffset = yMapWorld;
-                int smallStep = 0;
-                tempStep = smallStep;
+
+    public boolean collideWithSideOfBrick(int nextPlayerX) {
+        for (Brick bricks : brickArrayList){
+            if (bricks.getPositionY() < heightOffset){
+                if (nextPlayerX >= bricks.getPositionX()){
+                    return true;
                 }
             }
-        return tempStep;
+        }
+        return false;
+    }
+
+    public boolean collideWhileJumping(int nextPlayerX, int nextPlayerY){
+        Brick playerBrick = new Brick(nextPlayerX, nextPlayerY);
+        for (Brick bricks : brickArrayList){
+            if (bricks.getPositionY() < heightOffset){
+                if (bricks.intersects(playerBrick)){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void displayBoard(Graphics g) {
-        ArrayList column;
-        int xCoord = 0;
         g.setColor(Color.DARK_GRAY);
-        for (int pixelX = 0; pixelX < PIXEL_WIDTH; pixelX += BRICK_SIZE) {
-            column = columnList[xCoord];
-            for (int i = 0; i < column.size(); i++) { //Ritar ut spelplanen kolumn för kolumn
-                Brick brick = (Brick) column.get(i);
-                brick.draw(g, PIXEL_HEIGHT, pixelX, numRows);
-            }
-            xCoord++;
+        for(Brick b : brickArrayList) {
+            b.draw(g);
         }
+    }
+
+    public boolean willFallOfBrick(int nextPlayerPositionLeft, int nextPlayerPositionRight) {
+        for (Brick bricks : brickArrayList){
+            if (bricks.getPositionY() < heightOffset){
+                int brickLeftSide = bricks.getPositionX();
+                int brickRightSide = brickLeftSide + BRICK_SIZE;
+                if ((brickLeftSide <= nextPlayerPositionLeft && nextPlayerPositionLeft <= brickRightSide )  ||
+                        ((brickLeftSide <= nextPlayerPositionRight) && (nextPlayerPositionRight <= brickRightSide))){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

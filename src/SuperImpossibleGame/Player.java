@@ -2,7 +2,7 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 
-public class Player extends RectangleObject{
+public class Player extends RectangleObject implements gameObject{
 
     private static final int NOT_JUMPING = 0;
     private static final int RISING = 1;
@@ -52,8 +52,10 @@ public class Player extends RectangleObject{
     }
 
     public void updatePlayer() {
-
-        if (vertMoveMode == RISING) {
+        if (vertMoveMode == NOT_JUMPING){
+           checkWillFall();
+        }
+        else if (vertMoveMode == RISING) {
             updateRising();
         }
         else if (vertMoveMode == FALLING) {
@@ -74,39 +76,37 @@ public class Player extends RectangleObject{
         }
     }
 
-    private void updateFalling() {
-
-        int playerNextPositionX = getPositionX() + horizontalStep;
-        int playerNextPositionY = getPositionY() + getSize().height + vertStep;
-
-        Point nextPoint = new Point(playerNextPositionX, playerNextPositionY);
-
-        int yTrans = board.checkTopOfBrick(nextPoint, vertStep);
-        if (yTrans == 0) {   // hit the top of a brick
-            setPositionY(playerNextPositionY);
-            finishJumping();
-        }
-        else {    // can move downwards another step
-
-            int newPositionY = getPositionY();
-            newPositionY += yTrans;
-            setPositionY(newPositionY);
-        }
-    }
-
     private void finishJumping() {
         vertMoveMode = NOT_JUMPING;
         upCount = 0;
     }
 
+    private void checkWillFall(){
+        int nextPlayerPositionX = getPositionX() + horizontalStep;
+        int nextPlayerPositionXWidth = nextPlayerPositionX + getSize().width;
+
+        if (board.willFallOfBrick(nextPlayerPositionX, nextPlayerPositionXWidth)){
+            vertMoveMode = FALLING;
+        }
+    }
+
+    private void updateFalling() {
+        int nextPlayerPositionY = getPositionY() + vertStep;
+        int nextPlayerPositionX = getPositionX() + horizontalStep;
+        if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)){
+            setPositionY(getPositionY());
+            finishJumping();
+        }
+        else{
+            setPositionY(nextPlayerPositionY);
+        }
+
+    }
+
     public boolean willCollide(){
 
-        int playerNextPositionX = getPositionX() + horizontalStep;
-        int playerNextPositionY = getPositionY() + vertStep;
-
-        Point point = new Point(playerNextPositionX, playerNextPositionY);
-
-        if (board.collideWithSideOfBrick(point)){
+        int nextPlayerPositionX = getPositionX() + horizontalStep;
+        if (board.collideWhileJumping(nextPlayerPositionX, getPositionY())){
             return true;
         }
         return false;

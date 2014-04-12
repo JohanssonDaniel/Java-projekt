@@ -3,5 +3,5 @@ package SuperImpossibleGame;
 import java.awt.*;
 
 public interface gameObject {
-    public void draw(Graphics g,int PIXEL_HEIGHT, int pixelX, int numRows);
+    public void draw(Graphics g);
 }
