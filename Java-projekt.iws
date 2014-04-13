@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="Enumeration for playerStates">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Brick.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Brick.java" />
+    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Player.java" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -605,11 +602,15 @@
       <created>1397335678583</created>
       <updated>1397335678583</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Enumeration for playerStates">
+      <created>1397395791710</created>
+      <updated>1397395791710</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
