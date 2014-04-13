@@ -24,14 +24,6 @@ public abstract class RectangleObject{
         return positionY;
     }
 
-    public int getPixelX() {
-        return pixelX;
-    }
-
-    public int getPixelY() {
-        return pixelY;
-    }
-
     public Dimension getSize() { return rectangle; }
 
     public void setPositionX(int newPosition) {
@@ -42,11 +34,4 @@ public abstract class RectangleObject{
         positionY = newPosition;
     }
 
-    public void setPixelX(int pixelX) {
-        this.pixelX = pixelX;
-    }
-
-    public void setPixelY(int pixelY) {
-        this.pixelY = pixelY;
-    }
 }

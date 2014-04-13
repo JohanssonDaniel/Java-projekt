@@ -7,9 +7,8 @@ public class Board {
     private final int PIXEL_WIDTH;
     private final int PIXEL_HEIGHT;
     private ArrayList<Brick> brickArrayList;
-
+    private ArrayList<Brick> brickEnemies;
     private final int BRICK_SIZE = Brick.SIZE;
-    //TOG BORT fältet private Brick brick, brick i denna klass användes endast för att hämta strleken på en rektangel så vi behöver bara hämta konstanten.
 
     private final static double MOVE_FACTOR = 0.25;
     private int moveSize;
@@ -20,6 +19,7 @@ public class Board {
         this.PIXEL_WIDTH = pixelWidth;
         this.PIXEL_HEIGHT = pixelHeight;
         brickArrayList = new ArrayList<Brick>();
+        brickEnemies = new ArrayList<Brick>();
 
         heightOffset = PIXEL_HEIGHT - BRICK_SIZE; // Moves the coords for the bricks one brick height up
 
@@ -29,11 +29,20 @@ public class Board {
         }
         brickArrayList.add(new Brick(500, PIXEL_HEIGHT-60));
         createFloor();
+        seperateEnemies();
     }
 
     public void createFloor(){
         for (int i = 0; i <= PIXEL_WIDTH; i+= BRICK_SIZE){
             brickArrayList.add(new Brick(i, heightOffset));
+        }
+    }
+
+    public void seperateEnemies() {
+        for (Brick brick : brickArrayList){
+            if (brick.getPositionY() < heightOffset){
+                brickEnemies.add(brick);
+            }
         }
     }
 
@@ -55,25 +64,23 @@ public class Board {
 
     public boolean collideWhileJumping(int nextPlayerX, int nextPlayerY){
         Brick playerBrick = new Brick(nextPlayerX, nextPlayerY);
-        for (Brick bricks : brickArrayList){
-            if (bricks.getPositionY() < heightOffset){
-                if (bricks.intersects(playerBrick)){
-                    return true;
-                }
+        for (Brick bricks : brickEnemies){
+            if (bricks.intersects(playerBrick)){
+                return true;
             }
+
         }
         return false;
     }
 
     public boolean willFallOfBrick(int nextPlayerPositionLeft, int nextPlayerPositionRight) {
-        for (Brick bricks : brickArrayList){
-            if (bricks.getPositionY() < heightOffset){
-                int brickLeftSide = bricks.getPositionX();
-                int brickRightSide = brickLeftSide + BRICK_SIZE;
-                if ((brickLeftSide <= nextPlayerPositionLeft && nextPlayerPositionLeft <= brickRightSide )  ||
-                        ((brickLeftSide >= nextPlayerPositionRight) && (nextPlayerPositionRight >= brickRightSide))){
-                    return true;
-                }
+        for (Brick bricks : brickEnemies){
+            int brickLeftSide = bricks.getPositionX();
+            int brickRightSide = brickLeftSide + BRICK_SIZE;
+            if ((brickLeftSide <= nextPlayerPositionLeft && nextPlayerPositionLeft <= brickRightSide )  ||
+                  ((brickLeftSide <= nextPlayerPositionRight) && (nextPlayerPositionRight <= brickRightSide))){
+                return true;
+
             }
         }
         return false;
