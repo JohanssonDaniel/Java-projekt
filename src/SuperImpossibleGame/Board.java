@@ -2,6 +2,7 @@ package SuperImpossibleGame;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Board {
     private final int PIXEL_WIDTH;
@@ -28,7 +29,13 @@ public class Board {
         if (moveSize == 0){
             moveSize = 1;
         }
-        brickArrayList.add(new Brick(500, PIXEL_HEIGHT-60));
+        brickArrayList.add(new Brick(500, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(700, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(730, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(800, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(2000, heightOffset - BRICK_SIZE));
+
+
         createFloor();
         seperateEnemies();
     }
@@ -47,11 +54,36 @@ public class Board {
         }
     }
 
-    public void moveEnemies() {
-        for (Brick brick : brickEnemies){
-            int newPosition_X = brick.getPositionX()-SPEED;
+    public void updateEnemies() {
+        Iterator<Brick> brickIterator = brickEnemies.iterator();
+
+        while (brickIterator.hasNext()) {
+            Brick brick = brickIterator.next();
+            int newPosition_X = brick.getPositionX() - SPEED;
+            if (newPosition_X > -BRICK_SIZE) {
+                brick.setPositionX(newPosition_X);
+            } else {
+                brickIterator.remove();
+                brickArrayList.remove(brick);
+            }
+        }
+        /*
+        for (Brick brick : brickEnemies) {
+            int newPosition_X = brick.getPositionX();
             brick.setPositionX(newPosition_X);
         }
+        /*
+        int lengthofBrickEnemies = brickEnemies.size();
+        for (int i = 0; i < lengthofBrickEnemies; i++) {
+            Brick brick = brickEnemies.get(i);
+            int newPosition_X = brick.getPositionX() - SPEED;
+            if (newPosition_X > 0) {
+                brick.setPositionX(newPosition_X);
+            } else {
+                brickEnemies.remove(i);
+            }
+
+        }*/
     }
 
     public int findFloor(){
@@ -85,8 +117,8 @@ public class Board {
         for (Brick bricks : brickEnemies){
             int brickLeftSide = bricks.getPositionX();
             int brickRightSide = brickLeftSide + BRICK_SIZE;
-            if ((brickLeftSide <= nextPlayerPositionLeft && nextPlayerPositionLeft <= brickRightSide )  ||
-                  ((brickLeftSide <= nextPlayerPositionRight) && (nextPlayerPositionRight <= brickRightSide))){
+            if ((brickLeftSide < nextPlayerPositionLeft && nextPlayerPositionLeft < brickRightSide )  ||
+                  ((brickLeftSide < nextPlayerPositionRight) && (nextPlayerPositionRight < brickRightSide))){
                 return true;
 
             }

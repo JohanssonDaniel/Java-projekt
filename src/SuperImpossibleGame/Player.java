@@ -16,7 +16,7 @@ public class Player extends RectangleObject implements gameObject{
     private final int vertStep;
 
     public Player(Board board) {
-        super(0, board.findFloor());
+        super(300, board.findFloor());
         this.board = board;
 
         vertStep = getSize().height; //A players jump of its height each update
@@ -59,10 +59,10 @@ public class Player extends RectangleObject implements gameObject{
         else if (playerState == State.FALLING) {
             updateFalling();
         }
-
-        if(moving) {
-            board.moveEnemies();
-        }
+        //move();
+        //if(moving) {
+        //    board.moveEnemies();
+        //}
     }
 
     private void updateRising() {

@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
                     break;
                 default:
                     //player.move();
-                    board.moveEnemies();
+                    //board.updateEnemies();
             }
         }
     }
@@ -162,6 +162,7 @@ public class GamePanel extends JPanel implements Runnable {
                gameOver = true;
             }
             player.updatePlayer();
+            board.updateEnemies();
         }
     }
 
