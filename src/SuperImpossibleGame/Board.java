@@ -9,6 +9,7 @@ public class Board {
     private ArrayList<Brick> brickArrayList;
     private ArrayList<Brick> brickEnemies;
     private final int BRICK_SIZE = Brick.SIZE;
+    private final int SPEED = 3;
 
     private final static double MOVE_FACTOR = 0.25;
     private int moveSize;
@@ -43,6 +44,13 @@ public class Board {
             if (brick.getPositionY() < heightOffset){
                 brickEnemies.add(brick);
             }
+        }
+    }
+
+    public void moveEnemies() {
+        for (Brick brick : brickEnemies){
+            int newPosition_X = brick.getPositionX()-SPEED;
+            brick.setPositionX(newPosition_X);
         }
     }
 

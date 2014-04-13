@@ -28,13 +28,13 @@ public class Player extends RectangleObject implements gameObject{
         moving = true;
     }
 
-    public void move() {
+    /*public void move() {
         if (moving){
             int newPositionX = getPositionX();
             newPositionX += horizontalStep;
             setPositionX(newPositionX);
         }
-    }
+    }*/
 
     public void stop(){
         if (moving) {
@@ -59,7 +59,10 @@ public class Player extends RectangleObject implements gameObject{
         else if (playerState == State.FALLING) {
             updateFalling();
         }
-        move();
+
+        if(moving) {
+            board.moveEnemies();
+        }
     }
 
     private void updateRising() {

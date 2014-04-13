@@ -61,7 +61,8 @@ public class GamePanel extends JPanel implements Runnable {
                     player.jump();
                     break;
                 default:
-                    player.move();
+                    //player.move();
+                    board.moveEnemies();
             }
         }
     }
