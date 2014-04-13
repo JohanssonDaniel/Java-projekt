@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="Startmeny">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.ipr" afterPath="$PROJECT_DIR$/Java-projekt.ipr" />
+    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
     </list>
     <ignored path="Java-projekt.iws" />
@@ -651,7 +648,11 @@
       <created>1397395791710</created>
       <updated>1397395791710</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Startmeny">
+      <created>1397419452198</created>
+      <updated>1397419452198</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
