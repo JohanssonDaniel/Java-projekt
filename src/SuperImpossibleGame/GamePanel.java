@@ -1,12 +1,16 @@
 package SuperImpossibleGame;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable {
-    private static final int PIXEL_WIDTH = 900;
+    private static final int PIXEL_WIDTH = 800;
     private static final int PIXEL_HEIGHT = 600;
 
     private Thread animator;
@@ -17,9 +21,13 @@ public class GamePanel extends JPanel implements Runnable {
     private Graphics doubleBufferedGraphic;
     private Image doubleBufferedImage = null;
 
-    private static boolean isPaused = false;
-    private static boolean running = false;
-    private boolean gameOver = false;
+    private volatile static boolean isPaused = false;
+    private volatile static boolean running = false;
+    private volatile boolean gameOver = false;
+
+    private boolean showMenu;
+
+    private BufferedImage menuImage;
 
     private long period;
 
@@ -39,6 +47,16 @@ public class GamePanel extends JPanel implements Runnable {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
 
+        isPaused = true;
+
+        showMenu = true;
+        try {
+            menuImage = ImageIO.read(new File("C:\\Users\\DannePanne\\IdeaProjects\\Java-projekt\\src\\Images\\gameMenu.png"));
+        }   catch (IOException ex){
+            System.out.println("Error: " + ex);
+        }
+
+
         board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
         player = new Player(board); //Creates a player who knows how big the game is and what obstacles there are;
 
@@ -54,16 +72,22 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void testKey(int keyCode) {
-        if (!gameOver && !isPaused){
-            switch (keyCode){
-                case KeyEvent.VK_W:
-                case KeyEvent.VK_UP:
-                    player.jump();
-                    break;
-                default:
-                    //player.move();
-                    //board.updateEnemies();
-            }
+        switch (keyCode){
+            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
+                player.jump();
+                break;
+            case KeyEvent.VK_M:
+                if (showMenu){
+                    isPaused = false;
+                    showMenu = false;
+                }
+                else{
+                    isPaused = true;
+                    showMenu = true;
+                }
+                break;
+            default:
         }
     }
 
@@ -84,8 +108,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resumeGame()
     // called when the JFrame is activated / deiconified
-    { //if (!showHelp)    // CHANGED
+    { if (!showMenu) {
         isPaused = false;
+        }
     }
 
 
@@ -159,7 +184,7 @@ public class GamePanel extends JPanel implements Runnable {
         if(!gameOver && !isPaused) {
             if (player.willCollide()) {
                 player.stop();
-               gameOver = true;
+                gameOver = true;
             }
             player.updatePlayer();
             board.updateEnemies();
@@ -182,6 +207,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         board.displayBoard(doubleBufferedGraphic);
         player.draw(doubleBufferedGraphic);
+
+        if (showMenu){
+            showMenu(doubleBufferedGraphic);
+        }
+    }
+
+    private void showMenu(Graphics graphics){
+        graphics.drawImage(menuImage, 0, 0, null);
     }
 
     private void paintScreen()

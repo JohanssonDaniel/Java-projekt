@@ -71,6 +71,7 @@ public class Board {
         for (Brick brick : brickEnemies) {
             int newPosition_X = brick.getPositionX();
             brick.setPositionX(newPosition_X);
+            brickEnemies.remove(brick);
         }
         /*
         int lengthofBrickEnemies = brickEnemies.size();
