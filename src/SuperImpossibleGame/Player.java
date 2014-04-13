@@ -3,19 +3,17 @@ package SuperImpossibleGame;
 import java.awt.*;
 
 public class Player extends RectangleObject implements gameObject{
-
-    private static final int NOT_JUMPING = 0;
-    private static final int RISING = 1;
-    private static final int FALLING = 2;
-    private final int horizontalStep;
-    private int vertMoveMode;
+    private enum State{NOT_JUMPING, RISING, FALLING}
+    private State playerState;
 
     private Board board;
     private boolean moving;
 
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
-    private int vertStep;
+
+    private final int horizontalStep;
+    private final int vertStep;
 
     public Player(Board board) {
         super(0, board.findFloor());
@@ -24,7 +22,7 @@ public class Player extends RectangleObject implements gameObject{
         vertStep = getSize().height; //A players jump of its height each update
         horizontalStep = getSize().width / 10;
 
-        vertMoveMode = NOT_JUMPING;
+        playerState = State.NOT_JUMPING;
         upCount = 0;
 
         moving = true;
@@ -45,20 +43,20 @@ public class Player extends RectangleObject implements gameObject{
     }
 
     public void jump() {
-        if (vertMoveMode == NOT_JUMPING) {
-            vertMoveMode = RISING;
+        if (playerState == State.NOT_JUMPING) {
+            playerState = State.RISING;
             upCount = 0;
         }
     }
 
     public void updatePlayer() {
-        if (vertMoveMode == NOT_JUMPING){
+        if (playerState == State.NOT_JUMPING){
            checkWillFall();
         }
-        else if (vertMoveMode == RISING) {
+        else if (playerState == State.RISING) {
             updateRising();
         }
-        else if (vertMoveMode == FALLING) {
+        else if (playerState == State.FALLING) {
             updateFalling();
         }
         move();
@@ -66,7 +64,7 @@ public class Player extends RectangleObject implements gameObject{
 
     private void updateRising() {
         if (upCount == MAX_UP_COUNT) {
-            vertMoveMode = FALLING;
+            playerState = State.FALLING;
             upCount = 0;
         } else {
             int newPositionY = getPositionY();
@@ -77,22 +75,25 @@ public class Player extends RectangleObject implements gameObject{
     }
 
     private void finishJumping() {
-        vertMoveMode = NOT_JUMPING;
+        playerState = State.NOT_JUMPING;
         upCount = 0;
     }
 
     private void checkWillFall(){
+
         int nextPlayerPositionX = getPositionX() + horizontalStep;
         int nextPlayerPositionXWidth = nextPlayerPositionX + getSize().width;
 
         if (board.willFallOfBrick(nextPlayerPositionX, nextPlayerPositionXWidth)){
-            vertMoveMode = FALLING;
+            playerState = State.FALLING;
         }
     }
 
     private void updateFalling() {
+
         int nextPlayerPositionY = getPositionY() + vertStep;
         int nextPlayerPositionX = getPositionX() + horizontalStep;
+
         if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)){
             setPositionY(getPositionY());
             finishJumping();

@@ -7,6 +7,7 @@ public class Board {
     private final int PIXEL_WIDTH;
     private final int PIXEL_HEIGHT;
     private ArrayList<Brick> brickArrayList;
+
     private final int BRICK_SIZE = Brick.SIZE;
     //TOG BORT fältet private Brick brick, brick i denna klass användes endast för att hämta strleken på en rektangel så vi behöver bara hämta konstanten.
 
@@ -45,38 +46,9 @@ public class Board {
         return locationY - BRICK_SIZE; //Puts the player on brick above the floors y value
     }
 
-    private Brick biggestY(int positionX){//Picks out the biggest positionY aka, the brick that is highest
-        Brick highestBrick = null;
-        for (Brick brick : brickArrayList){
-            if (brick.getPositionX() == positionX){
-                if (highestBrick == null){
-                    highestBrick = brick;
-                }
-                else if (brick.getPositionY() <= highestBrick.getPositionY() ){
-                    highestBrick = brick;
-                }
-            }
-        }
-        return highestBrick;
-    }
-
     public boolean willHitFloor(int nextPlayerPositionY) {
         if (nextPlayerPositionY >=  heightOffset){
             return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-
-    public boolean collideWithSideOfBrick(int nextPlayerX) {
-        for (Brick bricks : brickArrayList){
-            if (bricks.getPositionY() < heightOffset){
-                if (nextPlayerX >= bricks.getPositionX()){
-                    return true;
-                }
-            }
         }
         return false;
     }
@@ -93,13 +65,6 @@ public class Board {
         return false;
     }
 
-    public void displayBoard(Graphics g) {
-        g.setColor(Color.DARK_GRAY);
-        for(Brick b : brickArrayList) {
-            b.draw(g);
-        }
-    }
-
     public boolean willFallOfBrick(int nextPlayerPositionLeft, int nextPlayerPositionRight) {
         for (Brick bricks : brickArrayList){
             if (bricks.getPositionY() < heightOffset){
@@ -112,5 +77,11 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public void displayBoard(Graphics g) {
+        for(Brick b : brickArrayList) {
+            b.draw(g);
+        }
     }
 }
