@@ -15,8 +15,10 @@ public class Player extends RectangleObject implements gameObject{
     private final int horizontalStep;
     private final int verticalStep;
 
+    private final static int PLAYER_START_POSITION = 300;
+
     public Player(Board board) {
-        super(300, board.findFloor());
+        super(PLAYER_START_POSITION, board.findFloor());
         this.board = board;
 
         verticalStep = getSize().height; //A players jump of its height each update
@@ -58,9 +60,11 @@ public class Player extends RectangleObject implements gameObject{
             playerState = State.FALLING;
             upCount = 0;
         } else {
+
             int newPositionY = getPositionY();
             newPositionY -= verticalStep;
             setPositionY(newPositionY);
+
             upCount++;
         }
     }

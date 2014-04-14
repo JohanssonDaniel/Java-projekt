@@ -3,6 +3,7 @@ package SuperImpossibleGame;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -30,6 +31,9 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedImage menuImage;
     private BufferedImage gameOverImage;
 
+    private Font resetFont;
+    private volatile int resetCounter;
+
     public GamePanel() throws HeadlessException {
 
         setBackground(Color.WHITE);
@@ -49,6 +53,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
         player = new Player(board); //Creates a player who knows how big the game is and what obstacles there are;
+
+        resetFont = new Font("FreesiaUFC", Font.BOLD, 28);
+        resetCounter = 0;
 
         setFocusable(true);
         requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
@@ -75,6 +82,14 @@ public class GamePanel extends JPanel implements Runnable {
         else if (keyCode == KeyEvent.VK_ESCAPE) {
             stopGame();
         }
+        else if (keyCode == KeyEvent.VK_P){
+            if (isPaused){
+                isPaused = false;
+            }
+            else {
+                pauseGame();
+            }
+        }
         else if (keyCode == KeyEvent.VK_R){
             resetGame();
         }
@@ -91,6 +106,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameOver){
             gameOver = false;
         }
+        resetCounter++;
     }
 
     public void addNotify()
@@ -133,6 +149,7 @@ public class GamePanel extends JPanel implements Runnable {
             gameUpdate();
             gameRender();
             paintScreen();
+
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
@@ -169,7 +186,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         board.displayBoard(doubleBufferedGraphic);
         player.draw(doubleBufferedGraphic);
-
+        showResets(doubleBufferedGraphic);
 
         if (gameOver){
             showGameOver(doubleBufferedGraphic);
@@ -179,8 +196,18 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    private void showResets(Graphics graphics){
+        if (!showMenu) {
+            graphics.setColor(Color.black);
+            graphics.setFont(resetFont);
+            graphics.drawString("Resets: " + resetCounter, 0, 30);
+        }
+    }
+
     private void showGameOver(Graphics graphics){
-        graphics.drawImage(gameOverImage, 200, 100, null);
+        if (!showMenu) {
+            graphics.drawImage(gameOverImage, 200, 100, null);
+        }
     }
 
     private void showMenu(Graphics graphics){
