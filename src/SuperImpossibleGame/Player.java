@@ -49,14 +49,17 @@ public class Player extends RectangleObject implements gameObject{
         }
     }
 
+    int count = 0;
     public void updatePlayer() {
         if (playerState == State.NOT_JUMPING){
-           checkWillFall();
+            //checkWillFall();
+            updateFalling();
         }
         else if (playerState == State.RISING) {
             updateRising();
         }
         else if (playerState == State.FALLING) {
+            System.out.println("FALLING" + count++);
             updateFalling();
         }
         //move();
@@ -89,6 +92,7 @@ public class Player extends RectangleObject implements gameObject{
 
         if (board.willFallOfBrick(nextPlayerPositionX, nextPlayerPositionXWidth)){
             playerState = State.FALLING;
+            System.out.println("STATE FALLING");
         }
     }
 
@@ -100,9 +104,11 @@ public class Player extends RectangleObject implements gameObject{
         if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)){
             setPositionY(getPositionY());
             finishJumping();
+            System.out.println("FINISHED JUMPING");
         }
         else{
             setPositionY(nextPlayerPositionY);
+            System.out.println("GOLVET");
         }
 
     }

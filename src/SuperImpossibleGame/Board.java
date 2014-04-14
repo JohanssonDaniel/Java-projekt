@@ -10,10 +10,7 @@ public class Board {
     private ArrayList<Brick> brickArrayList;
     private ArrayList<Brick> brickEnemies;
     private final int BRICK_SIZE = Brick.SIZE;
-    private final int SPEED = 3;
-
-    private final static double MOVE_FACTOR = 0.25;
-    private int moveSize;
+    private final int SPEED = 6;
 
     private int heightOffset;
 
@@ -25,14 +22,21 @@ public class Board {
 
         heightOffset = PIXEL_HEIGHT - BRICK_SIZE; // Moves the coords for the bricks one brick height up
 
-        moveSize = (int)(pixelWidth * MOVE_FACTOR); //Decides how many pixels the image moves to the right each update
-        if (moveSize == 0){
-            moveSize = 1;
-        }
         brickArrayList.add(new Brick(500, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(700, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(730, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(800, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(830, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(860, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(890, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(920, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(950, heightOffset - 2*BRICK_SIZE));
+
+        brickArrayList.add(new Brick(980, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(1010, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(1040, heightOffset - 2*BRICK_SIZE));
+
+
         brickArrayList.add(new Brick(2000, heightOffset - BRICK_SIZE));
 
 
@@ -113,14 +117,17 @@ public class Board {
         }
         return false;
     }
-
+    int count = 0;
     public boolean willFallOfBrick(int nextPlayerPositionLeft, int nextPlayerPositionRight) {
         for (Brick bricks : brickEnemies){
             int brickLeftSide = bricks.getPositionX();
             int brickRightSide = brickLeftSide + BRICK_SIZE;
             if ((brickLeftSide < nextPlayerPositionLeft && nextPlayerPositionLeft < brickRightSide )  ||
                   ((brickLeftSide < nextPlayerPositionRight) && (nextPlayerPositionRight < brickRightSide))){
+                count++;
+                System.out.println("fall" + " " + count);
                 return true;
+
 
             }
         }

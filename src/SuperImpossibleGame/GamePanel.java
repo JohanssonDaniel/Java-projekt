@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         showMenu = true;
         try {
-            menuImage = ImageIO.read(new File("C:\\Users\\DannePanne\\IdeaProjects\\Java-projekt\\src\\Images\\gameMenu.png"));
+            menuImage = ImageIO.read(new File("/home/pierre/Java/Java-projekt/src/Images/gameMenu.png"));
         }   catch (IOException ex){
             System.out.println("Error: " + ex);
         }
