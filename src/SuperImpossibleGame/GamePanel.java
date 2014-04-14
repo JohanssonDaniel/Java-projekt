@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         showMenu = true;
         try {
-            menuImage = ImageIO.read(new File("/home/pierre/Java/Java-projekt/src/Images/gameMenu.png"));
+            menuImage = ImageIO.read(new File("src/images/gameMenu.png"));
         }   catch (IOException ex){
             System.out.println("Error: " + ex);
         }
@@ -72,22 +72,23 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void testKey(int keyCode) {
-        switch (keyCode){
-            case KeyEvent.VK_W:
-            case KeyEvent.VK_UP:
+        if (keyCode == KeyEvent.VK_M){
+            if (showMenu){
+                isPaused = false;
+                showMenu = false;
+            }
+            else{
+                isPaused = true;
+                showMenu = true;
+            }
+        }
+        else if (keyCode == KeyEvent.VK_ESCAPE) {
+            stopGame();
+        }
+        if (!isPaused && !gameOver){
+            if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
                 player.jump();
-                break;
-            case KeyEvent.VK_M:
-                if (showMenu){
-                    isPaused = false;
-                    showMenu = false;
-                }
-                else{
-                    isPaused = true;
-                    showMenu = true;
-                }
-                break;
-            default:
+            }
         }
     }
 

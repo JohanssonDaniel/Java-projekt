@@ -101,7 +101,14 @@ public class Player extends RectangleObject implements gameObject{
         int nextPlayerPositionY = getPositionY() + vertStep;
         int nextPlayerPositionX = getPositionX() + horizontalStep;
 
-        if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)){
+        if (board.willHitFloor(nextPlayerPositionY)){
+            setPositionY(getPositionY());
+            finishJumping();
+        }
+        else if (board.willFallOfBrick(nextPlayerPositionX, nextPlayerPositionY)){
+            setPositionY(nextPlayerPositionY);
+        }
+        else if (board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)) {
             setPositionY(getPositionY());
             finishJumping();
             System.out.println("FINISHED JUMPING");
