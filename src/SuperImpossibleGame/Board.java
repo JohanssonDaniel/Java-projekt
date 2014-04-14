@@ -29,12 +29,12 @@ public class Board {
         brickArrayList.add(new Brick(830, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(860, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(890, heightOffset - 2*BRICK_SIZE));
-        brickArrayList.add(new Brick(920, heightOffset - 2*BRICK_SIZE));
+        //brickArrayList.add(new Brick(920, heightOffset - 2*BRICK_SIZE));
         brickArrayList.add(new Brick(950, heightOffset - 2*BRICK_SIZE));
 
-        brickArrayList.add(new Brick(980, heightOffset - 2*BRICK_SIZE));
-        brickArrayList.add(new Brick(1010, heightOffset - 2*BRICK_SIZE));
-        brickArrayList.add(new Brick(1040, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(1010, heightOffset - 3*BRICK_SIZE));
+        //brickArrayList.add(new Brick(1040, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1070, heightOffset - 3*BRICK_SIZE));
 
 
         brickArrayList.add(new Brick(2000, heightOffset - BRICK_SIZE));
@@ -58,7 +58,7 @@ public class Board {
         }
     }
 
-    public void updateEnemies() {
+    public void moveEnemiesCloser() {
         Iterator<Brick> brickIterator = brickEnemies.iterator();
 
         while (brickIterator.hasNext()) {
