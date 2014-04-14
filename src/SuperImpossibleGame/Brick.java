@@ -26,7 +26,6 @@ public class Brick extends RectangleObject implements gameObject {
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
         brickWidth += brickPositionX;
-        brickHeight += brickPositionY;
 
         return ((playerWidth >= brickPositionX && !(playerPositionX > brickWidth)) && (playerHeight > brickPositionY));
     }

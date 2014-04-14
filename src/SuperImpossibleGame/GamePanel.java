@@ -30,20 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedImage menuImage;
     private BufferedImage gameOverImage;
 
-    private long period;
-
-
-
-    private static final int NO_DELAYS_PER_YIELD = 16;
-  /* Number of frames with a delay of 0 ms before the animation thread yields
-     to other running threads. */
-
-    private static int MAX_FRAME_SKIPS = 5;   // was 2;
-    // no. of frames that can be skipped in any one animation loop
-    // i.e the games state is updated but not rendered
-
-    public GamePanel(long period) throws HeadlessException {
-        this.period = period;
+    public GamePanel() throws HeadlessException {
 
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
@@ -139,12 +126,6 @@ public class GamePanel extends JPanel implements Runnable {
     {  running = false;   }
 
     public void run() {
-        //Main thread
-        /*long beforeTime, afterTime, timeDiff, sleepTime;
-        long overSleepTime = 0L;
-        int noDelays = 0;
-        long excess = 0L;
-        beforeTime = System.nanoTime();*/
 
         running = true;
 
@@ -152,40 +133,6 @@ public class GamePanel extends JPanel implements Runnable {
             gameUpdate();
             gameRender();
             paintScreen();
-
-            /*afterTime = System.nanoTime();
-            timeDiff = afterTime - beforeTime;
-            sleepTime = (period - timeDiff) - overSleepTime;
-
-            if (sleepTime > 0) {   // some time left in this cycle
-                try {
-                    Thread.sleep(sleepTime/1000000L);  // nano -> ms
-                }
-                catch(InterruptedException ex){}
-                overSleepTime = (System.nanoTime() - afterTime) - sleepTime;
-            }
-            else {    // sleepTime <= 0; the frame took longer than the period
-                excess -= sleepTime;  // store excess time value
-                overSleepTime = 0L;
-
-                if (++noDelays >= NO_DELAYS_PER_YIELD) {
-                    Thread.yield();   // give another thread a chance to run
-                    noDelays = 0;
-                }
-            }
-
-            beforeTime = System.nanoTime();
-
-      /* If frame animation is taking too long, update the game state
-         without rendering it, to get the updates/sec nearer to
-         the required FPS. */
-         /*   int skips = 0;
-            while((excess > period) && (skips < MAX_FRAME_SKIPS)) {
-                excess -= period;
-                gameUpdate();    // update state but don't render
-                skips++;
-            }
-        }*/
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
@@ -249,7 +196,7 @@ public class GamePanel extends JPanel implements Runnable {
                 g.drawImage(doubleBufferedImage, 0, 0, null);
             g.dispose();
         }
-        catch (Exception e)
+        catch (NullPointerException e)
         { System.out.println("Graphics context error: " + e);  }
     }
 }

@@ -71,24 +71,6 @@ public class Board {
                 brickArrayList.remove(brick);
             }
         }
-        /*
-        for (Brick brick : brickEnemies) {
-            int newPosition_X = brick.getPositionX();
-            brick.setPositionX(newPosition_X);
-            brickEnemies.remove(brick);
-        }
-        /*
-        int lengthofBrickEnemies = brickEnemies.size();
-        for (int i = 0; i < lengthofBrickEnemies; i++) {
-            Brick brick = brickEnemies.get(i);
-            int newPosition_X = brick.getPositionX() - SPEED;
-            if (newPosition_X > 0) {
-                brick.setPositionX(newPosition_X);
-            } else {
-                brickEnemies.remove(i);
-            }
-
-        }*/
     }
 
     public int findFloor(){
@@ -117,15 +99,12 @@ public class Board {
         }
         return false;
     }
-    int count = 0;
     public boolean willFallOfBrick(int nextPlayerPositionLeft, int nextPlayerPositionRight) {
         for (Brick bricks : brickEnemies){
             int brickLeftSide = bricks.getPositionX();
             int brickRightSide = brickLeftSide + BRICK_SIZE;
             if ((brickLeftSide < nextPlayerPositionLeft && nextPlayerPositionLeft < brickRightSide )  ||
                   ((brickLeftSide < nextPlayerPositionRight) && (nextPlayerPositionRight < brickRightSide))){
-                count++;
-                System.out.println("fall" + " " + count);
                 return true;
 
 

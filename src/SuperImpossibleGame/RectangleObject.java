@@ -5,10 +5,9 @@ import java.awt.*;
 /**
  * Created by pierre on 4/8/14.
  */
-public abstract class RectangleObject{
+public abstract class RectangleObject implements gameObject{
     private Dimension rectangle;
     private int positionX, positionY;
-    private int pixelX, pixelY;
     public static int SIZE = 30;
 
     public RectangleObject(int positionX, int positionY) {

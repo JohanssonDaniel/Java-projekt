@@ -13,13 +13,13 @@ public class Player extends RectangleObject implements gameObject{
     private int upCount;
 
     private final int horizontalStep;
-    private final int vertStep;
+    private final int verticalStep;
 
     public Player(Board board) {
         super(300, board.findFloor());
         this.board = board;
 
-        vertStep = getSize().height; //A players jump of its height each update
+        verticalStep = getSize().height; //A players jump of its height each update
         horizontalStep = getSize().width / 10;
 
         playerState = State.NOT_JUMPING;
@@ -41,23 +41,16 @@ public class Player extends RectangleObject implements gameObject{
         }
     }
 
-    int count = 0;
     public void updatePlayer() {
         if (playerState == State.NOT_JUMPING){
-            //checkWillFall();
             updateFalling();
         }
         else if (playerState == State.RISING) {
             updateRising();
         }
         else if (playerState == State.FALLING) {
-            System.out.println("FALLING" + count++);
             updateFalling();
         }
-        //move();
-        //if(moving) {
-        //    board.moveEnemies();
-        //}
     }
 
     private void updateRising() {
@@ -66,7 +59,7 @@ public class Player extends RectangleObject implements gameObject{
             upCount = 0;
         } else {
             int newPositionY = getPositionY();
-            newPositionY -= vertStep;
+            newPositionY -= verticalStep;
             setPositionY(newPositionY);
             upCount++;
         }
@@ -77,20 +70,9 @@ public class Player extends RectangleObject implements gameObject{
         upCount = 0;
     }
 
-    private void checkWillFall(){
-
-        int nextPlayerPositionX = getPositionX() + horizontalStep;
-        int nextPlayerPositionXWidth = nextPlayerPositionX + getSize().width;
-
-        if (board.willFallOfBrick(nextPlayerPositionX, nextPlayerPositionXWidth)){
-            playerState = State.FALLING;
-            System.out.println("STATE FALLING");
-        }
-    }
-
     private void updateFalling() {
 
-        int nextPlayerPositionY = getPositionY() + vertStep;
+        int nextPlayerPositionY = getPositionY() + verticalStep;
         int nextPlayerPositionX = getPositionX() + horizontalStep;
 
         if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)) {
