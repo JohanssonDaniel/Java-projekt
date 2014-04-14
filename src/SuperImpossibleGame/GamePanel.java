@@ -3,7 +3,6 @@ package SuperImpossibleGame;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -31,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedImage menuImage;
     private BufferedImage gameOverImage;
 
-    private Font resetFont;
+    private final Font resetFont;
     private volatile int resetCounter;
 
     public GamePanel() throws HeadlessException {
@@ -43,8 +42,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         showMenu = true;
         try {
-            menuImage = ImageIO.read(new File("/home/pierre/Java/Java-projekt/src/Images/altmenu.png"));
-            gameOverImage = ImageIO.read(new File("/home/pierre/Java/Java-projekt/src/Images/altover.png"));
+            menuImage = ImageIO.read(new File("src/Images/altmenu.png"));
+            gameOverImage = ImageIO.read(new File("src/Images/altover.png"));
 
         }   catch (IOException ex){
             System.out.println("Error: " + ex);

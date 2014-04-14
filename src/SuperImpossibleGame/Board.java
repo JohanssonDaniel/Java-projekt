@@ -7,19 +7,19 @@ import java.util.Iterator;
 public class Board {
     private final int PIXEL_WIDTH;
     private final int PIXEL_HEIGHT;
-    private ArrayList<Brick> brickArrayList;
-    private ArrayList<Brick> brickEnemies;
+    private final ArrayList<Brick> brickArrayList;
+    private final ArrayList<Brick> brickEnemies;
+
     private final int BRICK_SIZE = Brick.SIZE;
     private final int SPEED = 3;
 
-    private int heightOffset;
+    private final int heightOffset;
 
     public Board(int pixelWidth, int pixelHeight) {
         this.PIXEL_WIDTH = pixelWidth;
         this.PIXEL_HEIGHT = pixelHeight;
         brickArrayList = new ArrayList<Brick>();
         brickEnemies = new ArrayList<Brick>();
-
         heightOffset = PIXEL_HEIGHT - BRICK_SIZE; // Moves the coords for the bricks one brick height up
 
         brickArrayList.add(new Brick(500, heightOffset - BRICK_SIZE));
@@ -73,13 +73,13 @@ public class Board {
         seperateEnemies();
     }
 
-    public void createFloor(){
+    private void createFloor(){
         for (int i = 0; i <= PIXEL_WIDTH; i+= BRICK_SIZE){
             brickArrayList.add(new Brick(i, heightOffset));
         }
     }
 
-    public void seperateEnemies() {
+    private void seperateEnemies() {
         for (Brick brick : brickArrayList){
             if (brick.getPositionY() < heightOffset){
                 brickEnemies.add(brick);
@@ -124,7 +124,6 @@ public class Board {
             if (bricks.intersects(playerBrick)){
                 return true;
             }
-
         }
         return false;
     }

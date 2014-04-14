@@ -3,7 +3,7 @@ package SuperImpossibleGame;
 import java.awt.*;
 
 /**
- * Created by DannePanne on 2014-04-06.
+ * Created by Daniel Johansson on 2014-04-06.
  */
 public class Brick extends RectangleObject implements gameObject {
 
@@ -26,8 +26,9 @@ public class Brick extends RectangleObject implements gameObject {
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
         brickWidth += brickPositionX;
+        brickHeight += brickPositionY;
 
-        return ((playerWidth >= brickPositionX && !(playerPositionX > brickWidth)) && (playerHeight > brickPositionY));
+        return ((playerWidth >= brickPositionX && !(playerPositionX > brickWidth)) && (playerHeight > brickPositionY && !(playerPositionY > brickHeight)));
     }
 
     @Override

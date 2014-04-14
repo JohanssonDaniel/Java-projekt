@@ -6,7 +6,7 @@ public class Player extends RectangleObject implements gameObject{
     private enum State{NOT_JUMPING, RISING, FALLING}
     private State playerState;
 
-    private Board board;
+    private final Board board;
     private boolean moving;
 
     private static final int MAX_UP_COUNT = 8;
