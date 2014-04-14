@@ -29,15 +29,39 @@ public class Board {
         brickArrayList.add(new Brick(830, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(860, heightOffset - BRICK_SIZE));
         brickArrayList.add(new Brick(890, heightOffset - 2*BRICK_SIZE));
-        //brickArrayList.add(new Brick(920, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(920, heightOffset - 2*BRICK_SIZE));
         brickArrayList.add(new Brick(950, heightOffset - 2*BRICK_SIZE));
 
         brickArrayList.add(new Brick(1010, heightOffset - 3*BRICK_SIZE));
         //brickArrayList.add(new Brick(1040, heightOffset - 3*BRICK_SIZE));
-        brickArrayList.add(new Brick(1070, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1080, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1150, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1220, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1290, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1360, heightOffset - 3*BRICK_SIZE));
+
+        brickArrayList.add(new Brick(1430, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1500, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1570, heightOffset - 3*BRICK_SIZE));
+
+        brickArrayList.add(new Brick(1640, heightOffset - 4*BRICK_SIZE));
+        brickArrayList.add(new Brick(1710, heightOffset - 4*BRICK_SIZE));
+        brickArrayList.add(new Brick(1780, heightOffset - 4*BRICK_SIZE));
+
+        brickArrayList.add(new Brick(1840, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(1900, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(1960, heightOffset - BRICK_SIZE));
 
 
         brickArrayList.add(new Brick(2000, heightOffset - BRICK_SIZE));
+        brickArrayList.add(new Brick(2030, heightOffset - 2*BRICK_SIZE));
+        brickArrayList.add(new Brick(2060, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Brick(2090, heightOffset - 4*BRICK_SIZE));
+        brickArrayList.add(new Brick(2120, heightOffset - 5*BRICK_SIZE));
+        brickArrayList.add(new Brick(2150, heightOffset - 6*BRICK_SIZE));
+        brickArrayList.add(new Brick(2180, heightOffset - 7*BRICK_SIZE));
+        brickArrayList.add(new Brick(2210, heightOffset - 8*BRICK_SIZE));
+        brickArrayList.add(new Brick(2240, heightOffset - 9*BRICK_SIZE));
 
 
         createFloor();
