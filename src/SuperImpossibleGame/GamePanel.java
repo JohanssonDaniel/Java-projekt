@@ -188,7 +188,7 @@ public class GamePanel extends JPanel implements Runnable {
                 gameOver = true;
             }
             player.updatePlayer();
-            board.updateEnemies();
+            board.moveEnemiesCloser();
         }
     }
 
