@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
     </list>
     <ignored path="Java-projekt.iws" />
@@ -648,7 +647,11 @@
       <created>1397472764895</created>
       <updated>1397472764895</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="GameOver meny">
+      <created>1397473039857</created>
+      <updated>1397473039857</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
