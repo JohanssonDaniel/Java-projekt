@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     private boolean showMenu;
 
     private BufferedImage menuImage;
+    private BufferedImage gameOverImage;
 
     private long period;
 
@@ -52,6 +53,8 @@ public class GamePanel extends JPanel implements Runnable {
         showMenu = true;
         try {
             menuImage = ImageIO.read(new File("src/images/gameMenu.png"));
+            gameOverImage = ImageIO.read(new File("src/images/gameOver.png"));
+
         }   catch (IOException ex){
             System.out.println("Error: " + ex);
         }
@@ -85,10 +88,21 @@ public class GamePanel extends JPanel implements Runnable {
         else if (keyCode == KeyEvent.VK_ESCAPE) {
             stopGame();
         }
+        else if (keyCode == KeyEvent.VK_R){
+            resetGame();
+        }
         if (!isPaused && !gameOver){
             if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
                 player.jump();
             }
+        }
+    }
+
+    private void resetGame() {
+        board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
+        player = new Player(board);
+        if (gameOver){
+            gameOver = false;
         }
     }
 
@@ -212,10 +226,17 @@ public class GamePanel extends JPanel implements Runnable {
         if (showMenu){
             showMenu(doubleBufferedGraphic);
         }
+        if (gameOver){
+            showGameOver(doubleBufferedGraphic);
+        }
     }
 
     private void showMenu(Graphics graphics){
         graphics.drawImage(menuImage, 0, 0, null);
+    }
+
+    private void showGameOver(Graphics graphics){
+        graphics.drawImage(gameOverImage, 200, 100, null);
     }
 
     private void paintScreen()

@@ -28,14 +28,6 @@ public class Player extends RectangleObject implements gameObject{
         moving = true;
     }
 
-    /*public void move() {
-        if (moving){
-            int newPositionX = getPositionX();
-            newPositionX += horizontalStep;
-            setPositionX(newPositionX);
-        }
-    }*/
-
     public void stop(){
         if (moving) {
             moving = false;
@@ -101,21 +93,12 @@ public class Player extends RectangleObject implements gameObject{
         int nextPlayerPositionY = getPositionY() + vertStep;
         int nextPlayerPositionX = getPositionX() + horizontalStep;
 
-        if (board.willHitFloor(nextPlayerPositionY)){
+        if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)) {
             setPositionY(getPositionY());
             finishJumping();
-        }
-        else if (board.willFallOfBrick(nextPlayerPositionX, nextPlayerPositionY)){
-            setPositionY(nextPlayerPositionY);
-        }
-        else if (board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)) {
-            setPositionY(getPositionY());
-            finishJumping();
-            System.out.println("FINISHED JUMPING");
         }
         else{
             setPositionY(nextPlayerPositionY);
-            System.out.println("GOLVET");
         }
 
     }

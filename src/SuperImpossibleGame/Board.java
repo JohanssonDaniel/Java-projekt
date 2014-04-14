@@ -10,7 +10,7 @@ public class Board {
     private ArrayList<Brick> brickArrayList;
     private ArrayList<Brick> brickEnemies;
     private final int BRICK_SIZE = Brick.SIZE;
-    private final int SPEED = 6;
+    private final int SPEED = 3;
 
     private int heightOffset;
 
@@ -101,7 +101,7 @@ public class Board {
     }
 
     public boolean willHitFloor(int nextPlayerPositionY) {
-        if (nextPlayerPositionY >=  heightOffset){
+        if (nextPlayerPositionY >= heightOffset){
             return true;
         }
         return false;
