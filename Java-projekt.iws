@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" afterPath="$PROJECT_DIR$/src/SuperImpossibleGame/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.ipr" afterPath="$PROJECT_DIR$/Java-projekt.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -128,7 +125,7 @@
       <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SuperImpossibleGame/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="40" selection-start="3197" selection-end="3197" vertical-scroll-proportion="0.92" vertical-offset="684" max-vertical-offset="2448">
+            <state line="68" column="58" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.92" vertical-offset="774" max-vertical-offset="2538">
               <folding />
             </state>
           </provider>
@@ -1107,7 +1104,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperImpossibleGame/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="40" selection-start="3197" selection-end="3197" vertical-scroll-proportion="0.92" vertical-offset="684" max-vertical-offset="2448">
+        <state line="68" column="58" selection-start="3439" selection-end="3439" vertical-scroll-proportion="0.92" vertical-offset="774" max-vertical-offset="2538">
           <folding />
         </state>
       </provider>

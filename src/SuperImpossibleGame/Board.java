@@ -63,6 +63,11 @@ public class Board {
         brickArrayList.add(new Brick(2210, heightOffset - 8*BRICK_SIZE));
         brickArrayList.add(new Brick(2240, heightOffset - 9*BRICK_SIZE));
 
+        brickArrayList.add(new Brick(2300, heightOffset - 6*BRICK_SIZE));
+        brickArrayList.add(new Brick(2360, heightOffset - 3*BRICK_SIZE));
+
+        brickArrayList.add(new Brick(2400, heightOffset - BRICK_SIZE));
+
 
         createFloor();
         seperateEnemies();
