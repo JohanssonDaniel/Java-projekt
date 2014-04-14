@@ -99,19 +99,6 @@ public class Board {
         }
         return false;
     }
-    public boolean willFallOfBrick(int nextPlayerPositionLeft, int nextPlayerPositionRight) {
-        for (Brick bricks : brickEnemies){
-            int brickLeftSide = bricks.getPositionX();
-            int brickRightSide = brickLeftSide + BRICK_SIZE;
-            if ((brickLeftSide < nextPlayerPositionLeft && nextPlayerPositionLeft < brickRightSide )  ||
-                  ((brickLeftSide < nextPlayerPositionRight) && (nextPlayerPositionRight < brickRightSide))){
-                return true;
-
-
-            }
-        }
-        return false;
-    }
 
     public void displayBoard(Graphics g) {
         for(Brick b : brickArrayList) {
