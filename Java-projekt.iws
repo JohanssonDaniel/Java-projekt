@@ -651,7 +651,11 @@
       <created>1397473039857</created>
       <updated>1397473039857</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="GameOver meny">
+      <created>1397473127833</created>
+      <updated>1397473127833</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
