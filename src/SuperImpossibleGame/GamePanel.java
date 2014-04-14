@@ -223,20 +223,21 @@ public class GamePanel extends JPanel implements Runnable {
         board.displayBoard(doubleBufferedGraphic);
         player.draw(doubleBufferedGraphic);
 
-        if (showMenu){
-            showMenu(doubleBufferedGraphic);
-        }
+
         if (gameOver){
             showGameOver(doubleBufferedGraphic);
         }
-    }
-
-    private void showMenu(Graphics graphics){
-        graphics.drawImage(menuImage, 0, 0, null);
+        if (showMenu){
+            showMenu(doubleBufferedGraphic);
+        }
     }
 
     private void showGameOver(Graphics graphics){
         graphics.drawImage(gameOverImage, 200, 100, null);
+    }
+
+    private void showMenu(Graphics graphics){
+        graphics.drawImage(menuImage, 0, 0, null);
     }
 
     private void paintScreen()
