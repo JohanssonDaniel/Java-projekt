@@ -1,4 +1,4 @@
-package SuperImpossibleGame;
+package superimposiblegame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
     private GamePanel gamePanel;       // This is where the game is drawn
 
     public SuperImpossibleGame() {
-        super("SuperImpossibleGame"); //Title
+        super("superimposiblegame"); //Title
         createGui();
         addWindowListener(this);
         pack();
@@ -18,9 +18,9 @@ public class SuperImpossibleGame extends JFrame implements WindowListener{
     }
 
     private void createGui(){
-        Container c = getContentPane(); //Creates the pane that stores the content
+        Container container = getContentPane(); //Creates the pane that stores the content
         gamePanel = new GamePanel();
-        c.add(gamePanel, "Center");    //Adds the component board and sets its placement
+        container.add(gamePanel, "Center");    //Adds the component board and sets its placement
     }
 
     @Override

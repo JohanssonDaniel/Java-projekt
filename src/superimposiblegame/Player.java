@@ -1,8 +1,12 @@
-package SuperImpossibleGame;
+package superimposiblegame;
 
 import java.awt.*;
 
-public class Player extends RectangleObject implements gameObject{
+public class Player {
+
+    private int playerPositionY;
+    private int playerPositionX;
+
     private enum State{NOT_JUMPING, RISING, FALLING}
     private State playerState;
 
@@ -15,14 +19,20 @@ public class Player extends RectangleObject implements gameObject{
     private final int horizontalStep;
     private final int verticalStep;
 
-    private final static int PLAYER_START_POSITION = 300;
+    private final static int PLAYER_START_POSITION_X = 300;
+    private final static int PLAYER_START_POSITION_Y = 540;
+
+    private final static int PLAYER_HEIGHT = 30;
+    private final static int PLAYER_WIDTH = 30;
 
     public Player(Board board) {
-        super(PLAYER_START_POSITION, board.findFloor());
         this.board = board;
 
-        verticalStep = getSize().height; //A players jump of its height each update
-        horizontalStep = getSize().width / 10;
+        playerPositionX = PLAYER_START_POSITION_X;
+        playerPositionY = PLAYER_START_POSITION_Y;
+
+        verticalStep = PLAYER_HEIGHT; //A players jump of its height each update
+        horizontalStep = PLAYER_WIDTH / 10;
 
         playerState = State.NOT_JUMPING;
         upCount = 0;
@@ -59,12 +69,9 @@ public class Player extends RectangleObject implements gameObject{
         if (upCount == MAX_UP_COUNT) {
             playerState = State.FALLING;
             upCount = 0;
-        } else {
-
-            int newPositionY = getPositionY();
-            newPositionY -= verticalStep;
-            setPositionY(newPositionY);
-
+            }
+        else {
+            playerPositionY -= verticalStep;
             upCount++;
         }
     }
@@ -76,29 +83,28 @@ public class Player extends RectangleObject implements gameObject{
 
     private void updateFalling() {
 
-        int nextPlayerPositionY = getPositionY() + verticalStep;
-        int nextPlayerPositionX = getPositionX() + horizontalStep;
+        int nextPlayerPositionY = playerPositionY + verticalStep;
+        int nextPlayerPositionX = playerPositionX + horizontalStep;
 
         if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)) {
-            setPositionY(getPositionY());
             finishJumping();
         }
         else{
-            setPositionY(nextPlayerPositionY);
+            playerPositionY = nextPlayerPositionY;
         }
 
     }
 
     public boolean willCollide(){
 
-        int nextPlayerPositionX = getPositionX() + horizontalStep;
-        if (board.collideWhileJumping(nextPlayerPositionX, getPositionY())){
+        int nextPlayerPositionX = playerPositionX + horizontalStep;
+        if (board.collideWhileJumping(nextPlayerPositionX, playerPositionY)){
             return true;
         }
         return false;
     }
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
-        g.fillRect(getPositionX(), getPositionY(), getSize().width, getSize().height);
+        g.fillRect(playerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 }

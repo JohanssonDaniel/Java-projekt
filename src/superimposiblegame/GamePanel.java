@@ -1,4 +1,4 @@
-package SuperImpossibleGame;
+package superimposiblegame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -21,8 +21,8 @@ public class GamePanel extends JPanel implements Runnable {
     private Graphics doubleBufferedGraphic;
     private Image doubleBufferedImage = null;
 
-    private volatile static boolean isPaused = false;
-    private volatile static boolean running = false;
+    private volatile boolean isPaused = false;
+    private volatile boolean running = false;
     private volatile boolean gameOver = false;
 
     private boolean showMenu;
@@ -31,7 +31,8 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedImage gameOverImage;
 
     private final Font resetFont;
-    private volatile int resetCounter;
+    private final static int FONT_SIZE = 28;
+    private int resetCounter;
 
     public GamePanel() throws HeadlessException {
 
@@ -49,11 +50,14 @@ public class GamePanel extends JPanel implements Runnable {
             System.out.println("Error: " + ex);
         }
 
+	animator = null;
+
+	doubleBufferedImage = null;
 
         board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
         player = new Player(board); //Creates a player who knows how big the game is and what obstacles there are;
 
-        resetFont = new Font("FreesiaUFC", Font.BOLD, 28);
+        resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
         resetCounter = 0;
 
         setFocusable(true);
@@ -215,12 +219,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void paintScreen()
     {//Takes the image created by gameRender and paints it onto the screen
-        Graphics g;
-        try { //Apparently the g.dispose() gives out a warning if you do not use a try-catch block
-            g = this.getGraphics();
-            if ((g != null) && (doubleBufferedImage != null))
-                g.drawImage(doubleBufferedImage, 0, 0, null);
-            g.dispose();
+        Graphics graphics;
+         //Apparently the g.dispose() gives out a warning if you do not use a try-catch block
+            graphics = this.getGraphics();
+            if ((graphics != null) && (doubleBufferedImage != null))
+                graphics.drawImage(doubleBufferedImage, 0, 0, null);
+	try{
+            graphics.dispose();
         }
         catch (NullPointerException e)
         { System.out.println("Graphics context error: " + e);  }

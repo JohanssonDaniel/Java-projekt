@@ -1,16 +1,16 @@
-package SuperImpossibleGame;
+package superimposiblegame;
 
 import java.awt.*;
 
 /**
  * Created by pierre on 4/8/14.
  */
-public abstract class RectangleObject implements gameObject{
+public abstract class Obstacle implements GameObstacle {
     private final Dimension rectangle;
     private int positionX, positionY;
     public static final int SIZE = 30;
 
-    public RectangleObject(int positionX, int positionY) {
+    protected Obstacle(int positionX, int positionY) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.rectangle = new Dimension(SIZE,SIZE);
