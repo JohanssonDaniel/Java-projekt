@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="la till triangleObstacle, utökade gränssnittet gameObstacle med intersect">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/superimposiblegame/Board.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameObstacle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/superimposiblegame/MVCGame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/superimposiblegame/TriangleObstacle.java" />
-      <change type="DELETED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\Board.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\MVCGame.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\gameObstacle.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\triangleObstacle.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\Brick.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/SquareObstacle.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\GamePanel.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GamePanel.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\Player.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/Player.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\RectangleObject.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/Obstacle.java" />
-      <change type="MOVED" beforePath="C:\Users\DannePanne\IdeaProjects\Java-projekt\src\SuperImpossibleGame\SuperImpossibleGame.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/SuperImpossibleGame.java" />
+    <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
     </list>
     <ignored path="Java-projekt.iws" />
@@ -745,7 +732,11 @@
       <created>1397502552412</created>
       <updated>1397502552412</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Rensade upp koden med analyze funktionen">
+      <created>1397579719493</created>
+      <updated>1397579719493</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -825,7 +816,8 @@
     <MESSAGE value="Tog bort onödig kod" />
     <MESSAGE value="La till en resetCounter som ritas upp på skärmen" />
     <MESSAGE value="la till triangleObstacle, utökade gränssnittet gameObstacle med intersect" />
-    <option name="LAST_COMMIT_MESSAGE" value="la till triangleObstacle, utökade gränssnittet gameObstacle med intersect" />
+    <MESSAGE value="Rensade upp koden med analyze funktionen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rensade upp koden med analyze funktionen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
