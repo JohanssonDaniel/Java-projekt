@@ -1,12 +1,11 @@
 package superimposiblegame;
 
+import java.awt.*;
+
 /**
  * Created by pierre on 2014-04-16.
  */
-
-import java.awt.*;
-
-public class Player {
+public class PlayerModel {
 
     private int playerPositionY;
     private int playerPositionX;
@@ -14,7 +13,7 @@ public class Player {
     private enum State{NOT_JUMPING, RISING, FALLING}
     private State playerState;
 
-    private final BoardController board;
+    private final PlayerController controller;
     private boolean moving;
 
     private static final int MAX_UP_COUNT = 8;
@@ -29,8 +28,8 @@ public class Player {
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
 
-    public Player(BoardController board, int START_Y_POSITION) {
-        this.board = board;
+    public PlayerModel(PlayerController controller) { //int START_Y_POSITION
+        this.controller = controller;
 
         playerPositionX = PLAYER_START_POSITION_X;
         playerPositionY = PLAYER_START_POSITION_Y;
@@ -90,7 +89,7 @@ public class Player {
         int nextPlayerPositionY = playerPositionY + verticalStep;
         int nextPlayerPositionX = playerPositionX + horizontalStep;
 
-        if (board.collide(nextPlayerPositionY, nextPlayerPositionX)) {
+        if (controller.getCollide(nextPlayerPositionY, nextPlayerPositionX)) {
             finishJumping();
         }
         else{
@@ -102,14 +101,25 @@ public class Player {
     public boolean willCollide(){
 
         int nextPlayerPositionX = playerPositionX + horizontalStep;
-        if (board.willColide(nextPlayerPositionX, playerPositionY)){
+        if (controller.getWillCollide(nextPlayerPositionX, playerPositionY)){
             return true;
         }
         return false;
     }
-    public void draw(Graphics g) {
-        g.setColor(Color.BLUE);
-        g.fillRect(playerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT);
+
+    public int getPlayerPositionY() {
+        return playerPositionY;
+    }
+
+    public int getPlayerPositionX() {
+        return playerPositionX;
+    }
+
+    public static int getPlayerHeight() {
+        return PLAYER_HEIGHT;
+    }
+
+    public static int getPlayerWidth() {
+        return PLAYER_WIDTH;
     }
 }
-

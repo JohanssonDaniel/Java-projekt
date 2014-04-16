@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread animator;
 
-    private Player player;
+    private PlayerController player;
     private BoardController board;
 
     private Graphics doubleBufferedGraphic;
@@ -59,7 +59,8 @@ public class GamePanel extends JPanel implements Runnable {
         board = new BoardController(boardView, boardModel);
         int START_Y_POSITION = board.getFloor();
 
-        player = new Player(board, START_Y_POSITION); //Creates a player who knows how big the game is and what obstacles there are;
+
+        player = new PlayerController(board); //Creates a player who knows how big the game is and what obstacles there are;
 
         resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
         resetCounter = 0;
@@ -112,7 +113,7 @@ public class GamePanel extends JPanel implements Runnable {
         BoardModel boardModel = new BoardModel(PIXEL_WIDTH, PIXEL_HEIGHT);
         board = new BoardController(boardView, boardModel);
         int START_Y_POSITION = board.getFloor();
-        player = new Player(board, START_Y_POSITION);
+        player = new PlayerController(board);
         if (gameOver){
             gameOver = false;
         }
