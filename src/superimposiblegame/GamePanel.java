@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements Runnable {
     private Thread animator;
 
     private Player player;
-    private Board board;
+    private BoardController board;
 
     private Graphics doubleBufferedGraphic;
     private Image doubleBufferedImage = null;
@@ -50,12 +50,16 @@ public class GamePanel extends JPanel implements Runnable {
             System.out.println("Error: " + ex);
         }
 
-	animator = null;
+        animator = null;
 
-	doubleBufferedImage = null;
+        doubleBufferedImage = null;
 
-        board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
-        player = new Player(board); //Creates a player who knows how big the game is and what obstacles there are;
+        BoardView boardView = new BoardView();
+        BoardModel boardModel = new BoardModel(PIXEL_WIDTH, PIXEL_HEIGHT);
+        board = new BoardController(boardView, boardModel);
+        int START_Y_POSITION = board.getFloor();
+
+        player = new Player(board, START_Y_POSITION); //Creates a player who knows how big the game is and what obstacles there are;
 
         resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
         resetCounter = 0;
@@ -104,13 +108,17 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void resetGame() {
-        board = new Board(PIXEL_WIDTH, PIXEL_HEIGHT);
-        player = new Player(board);
+        BoardView boardView = new BoardView();
+        BoardModel boardModel = new BoardModel(PIXEL_WIDTH, PIXEL_HEIGHT);
+        board = new BoardController(boardView, boardModel);
+        int START_Y_POSITION = board.getFloor();
+        player = new Player(board, START_Y_POSITION);
         if (gameOver){
             gameOver = false;
         }
         resetCounter++;
     }
+
 
     public void addNotify()
     { //Start the JComponent thread
@@ -131,7 +139,7 @@ public class GamePanel extends JPanel implements Runnable {
     // called when the JFrame is activated / deiconified
     { if (!showMenu) {
         isPaused = false;
-        }
+    }
     }
 
 
@@ -159,7 +167,7 @@ public class GamePanel extends JPanel implements Runnable {
                 e.printStackTrace();
             }
         }
-            System.exit(0);
+        System.exit(0);
     }
 
     private void gameUpdate(){
@@ -169,7 +177,7 @@ public class GamePanel extends JPanel implements Runnable {
                 gameOver = true;
             }
             player.updatePlayer();
-            board.moveEnemiesCloser();
+            board.moveEnemies();
         }
     }
 
@@ -187,7 +195,7 @@ public class GamePanel extends JPanel implements Runnable {
         doubleBufferedGraphic.setColor(Color.white);
         doubleBufferedGraphic.fillRect(0, 0, PIXEL_WIDTH, PIXEL_HEIGHT);
 
-        board.displayBoard(doubleBufferedGraphic);
+        board.display(doubleBufferedGraphic);
         player.draw(doubleBufferedGraphic);
         showResets(doubleBufferedGraphic);
 
@@ -220,11 +228,11 @@ public class GamePanel extends JPanel implements Runnable {
     private void paintScreen()
     {//Takes the image created by gameRender and paints it onto the screen
         Graphics graphics;
-         //Apparently the g.dispose() gives out a warning if you do not use a try-catch block
-            graphics = this.getGraphics();
-            if ((graphics != null) && (doubleBufferedImage != null))
-                graphics.drawImage(doubleBufferedImage, 0, 0, null);
-	try{
+        //Apparently the g.dispose() gives out a warning if you do not use a try-catch block
+        graphics = this.getGraphics();
+        if ((graphics != null) && (doubleBufferedImage != null))
+            graphics.drawImage(doubleBufferedImage, 0, 0, null);
+        try{
             graphics.dispose();
         }
         catch (NullPointerException e)

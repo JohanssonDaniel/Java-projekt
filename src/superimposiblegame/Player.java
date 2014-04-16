@@ -10,7 +10,7 @@ public class Player {
     private enum State{NOT_JUMPING, RISING, FALLING}
     private State playerState;
 
-    private final Board board;
+    private final BoardController board;
     private boolean moving;
 
     private static final int MAX_UP_COUNT = 8;
@@ -25,7 +25,7 @@ public class Player {
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
 
-    public Player(Board board) {
+    public Player(BoardController board, int START_Y_POSITION) {
         this.board = board;
 
         playerPositionX = PLAYER_START_POSITION_X;
@@ -86,7 +86,7 @@ public class Player {
         int nextPlayerPositionY = playerPositionY + verticalStep;
         int nextPlayerPositionX = playerPositionX + horizontalStep;
 
-        if (board.willHitFloor(nextPlayerPositionY) || board.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY)) {
+        if (board.collide(nextPlayerPositionY, nextPlayerPositionX)) {
             finishJumping();
         }
         else{
@@ -98,7 +98,7 @@ public class Player {
     public boolean willCollide(){
 
         int nextPlayerPositionX = playerPositionX + horizontalStep;
-        if (board.collideWhileJumping(nextPlayerPositionX, playerPositionY)){
+        if (board.willColide(nextPlayerPositionX, playerPositionY)){
             return true;
         }
         return false;
