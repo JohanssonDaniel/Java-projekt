@@ -3,87 +3,97 @@ package superimposiblegame;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GameController implements WindowListener, Runnable {
+public class GameController implements WindowListener {
+    private GameModel theModel = new GameModel(this);
+    private GameView theView = new GameView(this);
 
-    private GameView theView;
     private PlayerController playerController;
     private BoardController boardController;
 
-    private Thread animator;
-
-    private volatile boolean running = false;
-    private volatile boolean gameOver = false;
-    private volatile boolean isPaused = false;
-    private boolean showMenu;
-
-    private static final int PIXEL_WIDTH = GameView.PIXEL_WIDTH;
-    private static final int PIXEL_HEIGHT = GameView.PIXEL_HEIGHT;
-
-    private int resetCounter;
-
     public GameController() {
         BoardView boardView = new BoardView();
-        BoardModel boardModel = new BoardModel(PIXEL_WIDTH, PIXEL_HEIGHT);
-        //int START_Y_POSITION = boardController.getFloor();
+        BoardModel boardModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
+
         this.boardController = new BoardController(boardView, boardModel);
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
-        this.theView = new GameView(this);
 
-        animator = null;
-        isPaused = true;
-        showMenu = true;
-
-        resetCounter = 0;
         theView.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 testKey(e.getKeyCode());
             }
         });
-        theView.addWindowListener(this);
 
-        startGame();
+        theView.addWindowListener(this);
+        theModel.startGame();
     }
 
     private void testKey(int keyCode) {
         if (keyCode == KeyEvent.VK_M){
-            if (showMenu){
-                isPaused = false;
-                showMenu = false;
+            if (theModel.isShowMenu()){
+                //isPaused = false;
+                //showMenu = false;
+                theModel.setPaused(false);
+                theModel.setShowMenu(false);
             }
             else{
-                isPaused = true;
-                showMenu = true;
+                //isPaused = true;
+                //showMenu = true;
+                theModel.setPaused(true);
+                theModel.setShowMenu(true);
             }
         }
         else if (keyCode == KeyEvent.VK_ESCAPE) {
-            stopGame();
+            theModel.stopGame();
         }
         else if (keyCode == KeyEvent.VK_P){
-            if (isPaused){
-                isPaused = false;
+            if (theModel.isPaused()){
+                //isPaused = false;
+                theModel.setPaused(false);
             }
             else {
-                pauseGame();
+                theModel.pauseGame();
             }
         }
         else if (keyCode == KeyEvent.VK_R){
             resetGame();
         }
-        if (!isPaused && !gameOver){
+        if (!theModel.isPaused() && !theModel.isGameOver()){
             if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
                 playerController.jump();
             }
         }
     }
 
-    public boolean isShowMenu() {
-        return showMenu;
+    private void resetGame() {
+        BoardView boardView = new BoardView();
+        BoardModel boardModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
+        boardController = new BoardController(boardView, boardModel);
+        int START_Y_POSITION = boardController.getFloor();
+        playerController = new PlayerController(boardController);
+        if (theModel.isGameOver()){
+            //gameOver = false;
+            theModel.setGameOver(false);
+        }
+        //resetCounter++;
+        theModel.addResetCounter();
     }
 
-    public boolean isGameOver() {
-        return gameOver;
+    // GAMEVIEW USE THESE
+
+    public boolean isGameOver(){
+        return theModel.isGameOver();
     }
+
+    public boolean isShowMenu(){
+        return theModel.isShowMenu();
+    }
+
+    public int getResetCounter(){
+        return theModel.getResetCounter();
+    }
+
+    // GAMEMODEL USE THESE
 
     public void playerDraw(Graphics g) {
         playerController.draw(g);
@@ -93,78 +103,29 @@ public class GameController implements WindowListener, Runnable {
         boardController.display(g);
     }
 
-    public int getResetCounter() {
-        return resetCounter;
+    public void gameRender() {
+        theView.gameRender();
     }
 
-    private void resetGame() {
-        BoardView boardView = new BoardView();
-        BoardModel boardModel = new BoardModel(PIXEL_WIDTH, PIXEL_HEIGHT);
-        boardController = new BoardController(boardView, boardModel);
-        int START_Y_POSITION = boardController.getFloor();
-        playerController = new PlayerController(boardController);
-        if (gameOver){
-            gameOver = false;
-        }
-        resetCounter++;
+    public void paintScreen() {
+        theView.paintScreen();
     }
 
-
-    public void startGame()
-    {//Creates an new animator thread and then starts it
-        if (animator == null || !running) {
-            animator = new Thread(this);
-            animator.start();
-        }
+    public boolean getPlayerWillCollider() {
+        return playerController.willCollide();
     }
 
-    public void resumeGame()
-    // called when the JFrame is activated / deiconified
-    { if (!showMenu) {
-        isPaused = false;
-    }
+    public void playerStop() {
+        playerController.stop();
     }
 
-
-    public void pauseGame()
-    // called when the JFrame is deactivated / iconified
-    { isPaused = true; }
-
-
-    public void stopGame()
-    // called when the JFrame is closing
-    { running = false; }
-
-
-    public void run() {
-
-        running = true;
-
-        while (running) {
-            gameUpdate();
-            theView.gameRender();
-            theView.paintScreen();
-
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.exit(0);
+    public void playerUpdate() {
+        playerController.updatePlayer();
     }
 
-    private void gameUpdate(){
-        if(!gameOver && !isPaused) {
-            if (playerController.willCollide()) {
-                playerController.stop();
-                gameOver = true;
-            }
-            playerController.updatePlayer();
-            boardController.moveEnemies();
-        }
+    public void boardMoveEnemies() {
+        boardController.moveEnemies();
     }
-
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -173,7 +134,7 @@ public class GameController implements WindowListener, Runnable {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        stopGame();
+        theModel.stopGame();
     }
 
     @Override
@@ -183,17 +144,17 @@ public class GameController implements WindowListener, Runnable {
 
     @Override
     public void windowIconified(WindowEvent e) {
-        pauseGame();
+        theModel.pauseGame();
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        resumeGame();
+        theModel.resumeGame();
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        resumeGame();
+        theModel.resumeGame();
     }
 
     @Override
