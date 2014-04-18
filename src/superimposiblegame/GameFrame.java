@@ -3,13 +3,15 @@ package superimposiblegame;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class GamePanel extends JPanel implements Runnable {
+public class GameFrame extends JFrame implements WindowListener, Runnable {
+
+    private JPanel gamePanel;       // This is where the game is drawn
+
     private static final int PIXEL_WIDTH = 800;
     private static final int PIXEL_HEIGHT = 600;
 
@@ -30,14 +32,26 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedImage menuImage;
     private BufferedImage gameOverImage;
 
-    private final Font resetFont;
+    private Font resetFont;
     private final static int FONT_SIZE = 28;
     private int resetCounter;
 
-    public GamePanel() throws HeadlessException {
+    public GameFrame() throws HeadlessException {
+        super("superimposiblegame"); //Title
+        createGui();
+        addWindowListener(this);
+        pack();
+        setResizable(false);
+        setVisible(true);
+        setLocationRelativeTo(null);
+    }
 
-        setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
+    private void createGui(){
+        Container container = getContentPane(); //Creates the pane that stores the content
+        gamePanel = new JPanel();
+
+        gamePanel.setBackground(Color.WHITE);
+        gamePanel.setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
 
         isPaused = true;
 
@@ -74,6 +88,8 @@ public class GamePanel extends JPanel implements Runnable {
                 testKey(e.getKeyCode());
             }
         });
+
+        container.add(gamePanel, "Center");    //Adds the component board and sets its placement
     }
 
     private void testKey(int keyCode) {
@@ -120,7 +136,6 @@ public class GamePanel extends JPanel implements Runnable {
         resetCounter++;
     }
 
-
     public void addNotify()
     { //Start the JComponent thread
         super.addNotify();
@@ -152,6 +167,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void stopGame()
     // called when the JFrame is closing
     {  running = false;   }
+
 
     public void run() {
 
@@ -238,5 +254,40 @@ public class GamePanel extends JPanel implements Runnable {
         }
         catch (NullPointerException e)
         { System.out.println("Graphics context error: " + e);  }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        stopGame();
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        pauseGame();
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        resumeGame();
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        resumeGame();
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }
