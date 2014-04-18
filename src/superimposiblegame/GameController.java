@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class GameController implements WindowListener, Runnable {
 
-    private GameView theView;       // This is where the game is drawn
+    private GameView theView;
     private PlayerController playerController;
     private BoardController boardController;
 
@@ -21,17 +21,17 @@ public class GameController implements WindowListener, Runnable {
 
     private int resetCounter;
 
-    public GameController() throws HeadlessException {
-        animator = null;
-        isPaused = true;
-        showMenu = true;
-
+    public GameController() {
         BoardView boardView = new BoardView();
         BoardModel boardModel = new BoardModel(PIXEL_WIDTH, PIXEL_HEIGHT);
         //int START_Y_POSITION = boardController.getFloor();
         this.boardController = new BoardController(boardView, boardModel);
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
         this.theView = new GameView(this);
+
+        animator = null;
+        isPaused = true;
+        showMenu = true;
 
         resetCounter = 0;
         theView.addKeyListener(new KeyAdapter() {
@@ -41,6 +41,8 @@ public class GameController implements WindowListener, Runnable {
             }
         });
         theView.addWindowListener(this);
+
+        startGame();
     }
 
     private void testKey(int keyCode) {

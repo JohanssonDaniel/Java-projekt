@@ -39,11 +39,30 @@ public class GameView extends JFrame {
         gamePanel.setBackground(Color.WHITE);
         gamePanel.setPreferredSize(new Dimension(PIXEL_WIDTH, PIXEL_HEIGHT));
 
-        setFocusable(true);
-        requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
+        gamePanel.setFocusable(true);
+        gamePanel.requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
+        loadImages();
+        doubleBufferedImage = null;
 
-        //isPaused = true; flyttade dess till GameController
-        //showMenu = true;
+        resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
+        container.add(gamePanel, "Center");
+        //resetCounter = 0;
+        setResizable(false);
+        setVisible(true);
+        pack();
+    }
+
+
+    /*public void addNotify()  { //TROR DEN SKALL VARA HÄR?
+        super.addNotify();
+        gameController.startGame();
+    }*/
+
+    public void addKeyListener(KeyListener keyListener){
+        gamePanel.addKeyListener(keyListener);
+    }
+
+    private void loadImages() {
         try {
             menuImage = ImageIO.read(new File("src/Images/altmenu.png"));
             gameOverImage = ImageIO.read(new File("src/Images/altover.png"));
@@ -51,28 +70,6 @@ public class GameView extends JFrame {
         }   catch (IOException ex){
             System.out.println("Error: " + ex);
         }
-
-        doubleBufferedImage = null;
-
-        resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
-        //resetCounter = 0;
-        pack();
-        setResizable(false);
-        setVisible(true);
-        setLocationRelativeTo(null);
-
-        container.add(gamePanel, "Center");    //Adds the component board and sets its placement
-    }
-
-
-    public void addNotify() //TROR DEN SKALL VARA HÄR?
-    {
-        super.addNotify();
-        gameController.startGame();
-    }
-
-    public void addKeyListener(KeyListener keyListener){
-        gamePanel.addKeyListener(keyListener);
     }
 
     public void gameRender()
