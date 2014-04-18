@@ -7,13 +7,11 @@ import java.awt.*;
  */
 public class PlayerController {
 
-    private PlayerView theView;
-    private PlayerModel theModel;
+    private PlayerView theView = new PlayerView();
+    private PlayerModel theModel = new PlayerModel(this);
     private BoardController boardController;
 
     public PlayerController(BoardController boardController) {
-        this.theView = new PlayerView();
-        this.theModel = new PlayerModel(this);
         this.boardController = boardController;
     }
 

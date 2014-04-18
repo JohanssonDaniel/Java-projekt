@@ -11,10 +11,7 @@ public class GameController implements WindowListener {
     private BoardController boardController;
 
     public GameController() {
-        BoardView boardView = new BoardView();
-        BoardModel boardModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
-
-        this.boardController = new BoardController(boardView, boardModel);
+        this.boardController = new BoardController();
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
         theView.addKeyListener(new KeyAdapter() {
@@ -66,10 +63,8 @@ public class GameController implements WindowListener {
     }
 
     private void resetGame() {
-        BoardView boardView = new BoardView();
-        BoardModel boardModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
-        boardController = new BoardController(boardView, boardModel);
-        int START_Y_POSITION = boardController.getFloor();
+        boardController = new BoardController();
+        //int START_Y_POSITION = boardController.getFloor();
         playerController = new PlayerController(boardController);
         if (theModel.isGameOver()){
             //gameOver = false;

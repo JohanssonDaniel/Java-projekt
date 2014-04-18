@@ -7,14 +7,10 @@ import java.awt.*;
  */
 public class BoardController {
 
-    private BoardView theView;
-    private BoardModel theModel;
+    private BoardView theView = new BoardView();
+    private BoardModel theModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
 
-    public BoardController(BoardView theView, BoardModel theModel) {
-        this.theView = theView;
-        this.theModel = theModel;
-
-
+    public BoardController() {
         this.theModel.createEnemies();
         this.theModel.createFloor();
         this.theModel.seperateEnemies();

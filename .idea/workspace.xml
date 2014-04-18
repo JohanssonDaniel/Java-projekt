@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b0f3c34-7792-48c8-907b-952a4653f9bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/PlayerController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/PlayerController.java" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,7 +67,7 @@
     <favorites_list name="Java-projekt" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4945055">
+    <splitter split-orientation="horizontal" split-proportion="0.4841629">
       <split-first>
         <leaf>
           <file leaf-file-name="PlayerModel.java" pinned="false" current="false" current-in-tab="false">
@@ -82,7 +82,7 @@
           <file leaf-file-name="PlayerController.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="954">
+                <state line="11" column="44" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
                   <folding />
                 </state>
               </provider>
@@ -97,13 +97,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GameController.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="BoardController.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/superimposiblegame/BoardController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="0" selection-start="269" selection-end="269" vertical-scroll-proportion="0.26435247" vertical-offset="0" max-vertical-offset="792">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="0" selection-start="735" selection-end="735" vertical-scroll-proportion="0.42090786" vertical-offset="0" max-vertical-offset="3042">
+                <state line="14" column="34" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2952">
                   <folding>
-                    <element signature="e#767#921#0" expanded="true" />
-                    <element signature="e#910#911#0" expanded="true" />
+                    <element signature="e#605#759#0" expanded="true" />
+                    <element signature="e#748#749#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -127,7 +136,7 @@
           <file leaf-file-name="GameModel.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="40" column="5" selection-start="965" selection-end="965" vertical-scroll-proportion="-0.9490196" vertical-offset="1446" max-vertical-offset="2232">
+                <state line="16" column="28" selection-start="397" selection-end="409" vertical-scroll-proportion="-0.6073698" vertical-offset="766" max-vertical-offset="2232">
                   <folding>
                     <element signature="e#663#664#0" expanded="true" />
                     <element signature="e#703#704#0" expanded="true" />
@@ -176,12 +185,10 @@
         <option value="$PROJECT_DIR$/src/SuperImpossibleGame/PlayerView.java" />
         <option value="$PROJECT_DIR$/src/SuperImpossibleGame/PlayerModel.java" />
         <option value="$PROJECT_DIR$/src/SuperImpossibleGame/RectangleObject.java" />
-        <option value="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/BoardView.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/BoardModel.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/PlayerView.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/Player.java" />
-        <option value="$PROJECT_DIR$/src/superimposiblegame/PlayerController.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/TriangleObstacle.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/FrameController.java" />
@@ -190,6 +197,8 @@
         <option value="$PROJECT_DIR$/src/superimposiblegame/GameFrame.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/GameView.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
+        <option value="$PROJECT_DIR$/src/superimposiblegame/PlayerController.java" />
+        <option value="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/GameController.java" />
       </list>
     </option>
@@ -522,7 +531,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3733469" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2543235" sideWeight="0.5002681" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1688708" sideWeight="0.5002681" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858595" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -532,7 +541,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17050938" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19125128" sideWeight="0.4997319" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1688708" sideWeight="0.4997319" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
@@ -624,8 +633,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="21" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1188">
           <folding>
-            <element signature="e#767#921#0" expanded="true" />
-            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#605#759#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -750,13 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/BoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="30" selection-start="123" selection-end="123" vertical-scroll-proportion="0.17119566" vertical-offset="0" max-vertical-offset="864">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/superimposiblegame/BoardModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="0" selection-start="1660" selection-end="1660" vertical-scroll-proportion="-0.016877636" vertical-offset="732" max-vertical-offset="2484">
@@ -778,30 +780,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerController.java">
+    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/MVCGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="19" selection-start="1399" selection-end="1399" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
+        <state line="6" column="0" selection-start="92" selection-end="227" vertical-scroll-proportion="0.14594595" vertical-offset="0" max-vertical-offset="740">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="5" selection-start="965" selection-end="965" vertical-scroll-proportion="-0.9490196" vertical-offset="1446" max-vertical-offset="2232">
+        <state line="16" column="28" selection-start="397" selection-end="409" vertical-scroll-proportion="-0.6073698" vertical-offset="766" max-vertical-offset="2232">
           <folding>
             <element signature="e#663#664#0" expanded="true" />
             <element signature="e#703#704#0" expanded="true" />
@@ -823,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/MVCGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="92" selection-end="227" vertical-scroll-proportion="0.14594595" vertical-offset="0" max-vertical-offset="740">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="92" column="39" selection-start="2923" selection-end="2923" vertical-scroll-proportion="0.0" vertical-offset="1354" max-vertical-offset="2502">
@@ -841,11 +822,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="735" selection-end="735" vertical-scroll-proportion="0.42090786" vertical-offset="0" max-vertical-offset="3042">
+        <state line="14" column="34" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2952">
           <folding>
-            <element signature="e#767#921#0" expanded="true" />
-            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#605#759#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="19" selection-start="1399" selection-end="1399" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/PlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="44" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/superimposiblegame/BoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="269" selection-end="269" vertical-scroll-proportion="0.26435247" vertical-offset="0" max-vertical-offset="792">
+          <folding />
         </state>
       </provider>
     </entry>
