@@ -32,6 +32,7 @@ public class BoardModel {
     }
 
     public void createEnemies() {
+        brickArrayList.add(new OvalObstacle(400, heightOffset - BRICK_SIZE));
         brickArrayList.add(new TriangleObstacle(500, heightOffset - BRICK_SIZE));
         brickArrayList.add(new SquareObstacle(700, heightOffset - BRICK_SIZE));
         brickArrayList.add(new SquareObstacle(730, heightOffset - BRICK_SIZE));

@@ -33,6 +33,4 @@ public abstract class Obstacle implements GameObstacle {
         positionY = newPosition;
     }
 
-
-
 }
