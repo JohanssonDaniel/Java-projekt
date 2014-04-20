@@ -90,8 +90,8 @@ public class GameModel implements Runnable {
 
         while (running) {
             gameUpdate();
-            theController.gameRender();
-            theController.paintScreen();
+            //theController.gameRender();
+            //theController.paintScreen();
 
             try {
                 Thread.sleep(20);

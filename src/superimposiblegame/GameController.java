@@ -6,7 +6,7 @@ import java.awt.event.*;
 /**
  * The GameController is the controller that communicates the inforamtion from the Board and Player to the GameView and GameModel
  */
-public class GameController implements WindowListener {
+public class GameController implements WindowListener, BoardListener {
     private GameModel theModel = new GameModel(this);
     private GameView theView = new GameView(this);
 
@@ -16,6 +16,8 @@ public class GameController implements WindowListener {
     public GameController() {
         this.boardController = new BoardController();
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
+
+        boardController.addBoardListener(this);
 
         theView.addKeyListener(new KeyAdapter() {
             @Override
@@ -45,6 +47,7 @@ public class GameController implements WindowListener {
                 //showMenu = true;
                 theModel.setPaused(true);
                 theModel.setShowMenu(true);
+                boardController.notifyListeners(); //So we see the menu
             }
         }
         else if (keyCode == KeyEvent.VK_ESCAPE) {
@@ -57,6 +60,7 @@ public class GameController implements WindowListener {
             }
             else {
                 theModel.pauseGame();
+                boardController.notifyListeners();
             }
         }
         else if (keyCode == KeyEvent.VK_R){
@@ -74,6 +78,8 @@ public class GameController implements WindowListener {
      */
     private void resetGame() {
         boardController = new BoardController();
+        boardController.addBoardListener(this);
+
         //int START_Y_POSITION = boardController.getFloor();
         playerController = new PlayerController(boardController);
         if (theModel.isGameOver()){
@@ -140,6 +146,13 @@ public class GameController implements WindowListener {
         boardController.moveEnemies();
     }
 
+    @Override
+    public void boardChanged() {
+        gameRender();
+        paintScreen();
+        System.out.print("HEY");
+    }
+
     /**
      * Standard methods for window controlls
      * @param e
@@ -178,4 +191,5 @@ public class GameController implements WindowListener {
     public void windowDeactivated(WindowEvent e) {
 
     }
+
 }

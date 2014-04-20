@@ -6,7 +6,7 @@ import java.awt.*;
  * Created by pierre on 2014-04-16.
  * Delegates method calls from the GameController to the PlayerModel
  */
-public class PlayerController {
+public class PlayerController  {
 
     private PlayerView theView = new PlayerView();
     private PlayerModel theModel = new PlayerModel(this);
@@ -30,6 +30,10 @@ public class PlayerController {
 
     public void jump() {
         theModel.jump();
+    }
+
+    public void notifyBoardListener() {
+        boardController.notifyListeners();
     }
 
 

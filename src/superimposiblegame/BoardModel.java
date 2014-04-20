@@ -2,6 +2,7 @@ package superimposiblegame;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by pierre on 2014-04-16.
@@ -28,6 +29,7 @@ public class BoardModel {
         heightOffset = this.pixelHeight - brickSize; // Moves the coords for the bricks one brick height up
     }
 
+
     public ArrayList<Obstacle> getBrickArrayList() {
         return brickArrayList;
     }
@@ -38,7 +40,7 @@ public class BoardModel {
     public void createEnemies() {
 
         brickArrayList.add(new Obstacle(400, heightOffset - brickSize, new OvalObstacle()));
-        //brickArrayList.add(new TriangleObstacle(500, heightOffset - brickSize, new TriangleObstacle()));
+        brickArrayList.add(new Obstacle(500, heightOffset - brickSize, new TriangleObstacle()));
         brickArrayList.add(new Obstacle(700, heightOffset - brickSize, new SquareObstacle()));
         brickArrayList.add(new Obstacle(730, heightOffset - brickSize, new SquareObstacle()));
         brickArrayList.add(new Obstacle(800, heightOffset - brickSize, new SquareObstacle()));

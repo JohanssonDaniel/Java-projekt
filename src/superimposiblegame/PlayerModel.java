@@ -13,7 +13,7 @@ public class PlayerModel {
     private enum State{NOT_JUMPING, RISING, FALLING}
     private State playerState;
 
-    private final PlayerController controller;
+    private final PlayerController theController;
 
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
@@ -28,7 +28,7 @@ public class PlayerModel {
     private final static int PLAYER_WIDTH = 30;
 
     public PlayerModel(PlayerController controller) { //int START_Y_POSITION
-        this.controller = controller;
+        this.theController = controller;
 
         playerPositionX = PLAYER_START_POSITION_X;
         playerPositionY = PLAYER_START_POSITION_Y;
@@ -79,6 +79,7 @@ public class PlayerModel {
             playerPositionY -= verticalStep;
             upCount++;
         }
+        theController.notifyBoardListener();
     }
 
     private void finishJumping() {
@@ -94,12 +95,13 @@ public class PlayerModel {
         int nextPlayerPositionY = playerPositionY + verticalStep;
         int nextPlayerPositionX = playerPositionX + horizontalStep;
 
-        if (controller.getCollide(nextPlayerPositionY, nextPlayerPositionX)) {
+        if (theController.getCollide(nextPlayerPositionY, nextPlayerPositionX)) {
             finishJumping();
         }
         else{
             playerPositionY = nextPlayerPositionY;
         }
+        theController.notifyBoardListener();
 
     }
 
@@ -110,7 +112,7 @@ public class PlayerModel {
     public boolean willCollide(){
 
         int nextPlayerPositionX = playerPositionX + horizontalStep;
-        if (controller.getWillCollide(nextPlayerPositionX, playerPositionY)){
+        if (theController.getWillCollide(nextPlayerPositionX, playerPositionY)){
             return true;
         }
         return false;
