@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e3bc51c-42f6-4165-9c1d-8ec253b25acd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/BoardModel.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/BoardModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/BoardView.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/BoardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameObstacle.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameObstacle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameView.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.ipr" afterPath="$PROJECT_DIR$/Java-projekt.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java-projekt.iws" afterPath="$PROJECT_DIR$/Java-projekt.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/MVCGame.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/MVCGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/Obstacle.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/Obstacle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/OvalObstacle.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/OvalObstacle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/PlayerController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/PlayerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/PlayerView.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/PlayerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/SquareObstacle.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/SquareObstacle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/TriangleObstacle.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/TriangleObstacle.java" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -759,7 +743,11 @@
       <created>1397579719493</created>
       <updated>1397579719493</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Rensade upp koden med analyze funktionen">
+      <created>1398003959112</created>
+      <updated>1398003959112</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
