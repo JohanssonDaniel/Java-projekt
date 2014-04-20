@@ -26,6 +26,16 @@ public class TriangleObstacle extends Obstacle {
         polygonX[2] = getPositionX() + getSize().width;     polygonY[2] = getPositionY() + getSize().height;
     }
 
+    /**
+     * triangleWidth is the righ side of the triangle
+     * trinagleHeight is the bottom of the triangle
+     *
+     * the same goes for playerHeight and playerWidth )
+     * @param playerPositionX
+     * @param playerPositionY
+     * @return
+     */
+
     @Override
     public boolean intersects(int playerPositionX, int playerPositionY) {
         int triangleWidth = getSize().width;

@@ -2,6 +2,8 @@ package superimposiblegame;
 
 /**
  * Created by pierre on 2014-04-16.
+ * Contians the information of how the player is represented in the game, it size how many updates before it's stops to jump
+ * It also checks wether it's next position will collide with an object in the GameBoard
  */
 public class PlayerModel {
 
@@ -12,7 +14,6 @@ public class PlayerModel {
     private State playerState;
 
     private final PlayerController controller;
-    private boolean moving;
 
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
@@ -37,15 +38,11 @@ public class PlayerModel {
 
         playerState = State.NOT_JUMPING;
         upCount = 0;
-
-        moving = true;
     }
 
-    public void stop(){
-        if (moving) {
-            moving = false;
-        }
-    }
+    /**
+     * Jump changes the state of the player to jumping which will make the player rise in the nextcoming updates
+     */
 
     public void jump() {
         if (playerState == State.NOT_JUMPING) {
@@ -54,6 +51,9 @@ public class PlayerModel {
         }
     }
 
+    /**
+     * Updates the player based on its state
+     */
     public void updatePlayer() {
         if (playerState == State.NOT_JUMPING){
             updateFalling();
@@ -66,7 +66,11 @@ public class PlayerModel {
         }
     }
 
+    /**
+     * Checks wether the player has jump high enough or updates its Y position
+     */
     private void updateRising() {
+
         if (upCount == MAX_UP_COUNT) {
             playerState = State.FALLING;
             upCount = 0;
@@ -82,6 +86,9 @@ public class PlayerModel {
         upCount = 0;
     }
 
+    /**
+     * Checks wether the player will fall on a object on the board
+     */
     private void updateFalling() {
 
         int nextPlayerPositionY = playerPositionY + verticalStep;
@@ -96,6 +103,10 @@ public class PlayerModel {
 
     }
 
+    /**
+     * Checks wether the player wil collide with something that would end the game
+     * @return
+     */
     public boolean willCollide(){
 
         int nextPlayerPositionX = playerPositionX + horizontalStep;

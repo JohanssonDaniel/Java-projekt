@@ -10,6 +10,7 @@ import java.io.IOException;
 
 /**
  * Created by pierre on 2014-04-18.
+ * The Fram which the game is rendered on
  */
 public class GameView extends JFrame {
 
@@ -22,8 +23,8 @@ public class GameView extends JFrame {
     private Graphics doubleBufferedGraphic;
     private Image doubleBufferedImage = null;
 
-    private BufferedImage menuImage;
-    private BufferedImage gameOverImage;
+    private BufferedImage menuImage = null;
+    private BufferedImage gameOverImage = null;
 
     private Font resetFont;
     private final static int FONT_SIZE = 28;
@@ -62,6 +63,9 @@ public class GameView extends JFrame {
         gamePanel.addKeyListener(keyListener);
     }
 
+    /**
+     * Loads the custom gameover screen and menu from the project
+     */
     private void loadImages() {
         try {
             menuImage = ImageIO.read(new File("src/Images/altmenu.png"));
@@ -72,6 +76,9 @@ public class GameView extends JFrame {
         }
     }
 
+    /**
+     * gets the rendered images from the contoller and combindes them to one rendered image
+     */
     public void gameRender()
     {//Creates the image that is later printed out
         if (doubleBufferedImage == null){
@@ -98,6 +105,10 @@ public class GameView extends JFrame {
         }
     }
 
+    /**
+     * Show how many times the player has reseted, is incremented when the player pressed the R key
+     * @param graphics
+     */
     private void showResets(Graphics graphics){
         if (!gameController.isShowMenu()) {
             graphics.setColor(Color.black);
@@ -106,16 +117,27 @@ public class GameView extends JFrame {
         }
     }
 
+    /**
+     * Show the gameover screen
+     * @param graphics
+     */
     private void showGameOver(Graphics graphics){
         if (!gameController.isShowMenu()) {
             graphics.drawImage(gameOverImage, 200, 100, null);
         }
     }
 
+    /**
+     * Show the game menu
+     * @param graphics
+     */
     private void showMenu(Graphics graphics){
         graphics.drawImage(menuImage, 0, 0, null);
     }
 
+    /**
+     * Paints the rendered image from gameRender() on the screen
+     */
     public void paintScreen()
     {//Takes the image created by gameRender and paints it onto the screen
         Graphics graphics;

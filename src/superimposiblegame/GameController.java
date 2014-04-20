@@ -3,6 +3,9 @@ package superimposiblegame;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * The GameController is the controller that communicates the inforamtion from the Board and Player to the GameView and GameModel
+ */
 public class GameController implements WindowListener {
     private GameModel theModel = new GameModel(this);
     private GameView theView = new GameView(this);
@@ -25,6 +28,10 @@ public class GameController implements WindowListener {
         theModel.startGame();
     }
 
+    /**
+     * Keyboard inputs that change the position of the player (jumping) or interupts the gameProcess by pausing
+     * @param keyCode
+     */
     private void testKey(int keyCode) {
         if (keyCode == KeyEvent.VK_M){
             if (theModel.isShowMenu()){
@@ -62,6 +69,9 @@ public class GameController implements WindowListener {
         }
     }
 
+    /**
+     * resets the board and the players position and increments the resetCounter, which is later displayed in the GameView, by one
+     */
     private void resetGame() {
         boardController = new BoardController();
         //int START_Y_POSITION = boardController.getFloor();
@@ -90,6 +100,10 @@ public class GameController implements WindowListener {
 
     // GAMEMODEL USE THESE
 
+    /**
+     * Gets the rendered images from the other controllers and the GameModel so that the GameView can render them together
+     * @param g
+     */
     public void playerDraw(Graphics g) {
         playerController.draw(g);
     }
@@ -106,14 +120,18 @@ public class GameController implements WindowListener {
         theView.paintScreen();
     }
 
+    /**
+     * tells the PlayerController to check wether the player will Collide and die in the next update
+     * @return
+     */
+
     public boolean getPlayerWillCollider() {
         return playerController.willCollide();
     }
 
-    public void playerStop() {
-        playerController.stop();
-    }
-
+    /**
+     * Tells the other controller to update their respective models
+     */
     public void playerUpdate() {
         playerController.updatePlayer();
     }
@@ -122,6 +140,10 @@ public class GameController implements WindowListener {
         boardController.moveEnemies();
     }
 
+    /**
+     * Standard methods for window controlls
+     * @param e
+     */
     @Override
     public void windowOpened(WindowEvent e) {
 

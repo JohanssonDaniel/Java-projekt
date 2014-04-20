@@ -1,9 +1,9 @@
 package superimposiblegame;
 
-import java.awt.*;
-
 /**
  * Created by pierre on 2014-04-18.
+ *
+ * GameModel models the game via the run function which when they will update and render
  */
 public class GameModel implements Runnable {
 
@@ -36,10 +36,6 @@ public class GameModel implements Runnable {
         this.gameOver = gameOver;
     }
 
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-
     public boolean isPaused() {
         return isPaused;
     }
@@ -60,6 +56,9 @@ public class GameModel implements Runnable {
         resetCounter++;
     }
 
+    /**
+     * Statrs the run thread (method)
+     */
     public void startGame()
     {//Creates an new animator thread and then starts it
         if (animator == null || !running) {
@@ -103,10 +102,13 @@ public class GameModel implements Runnable {
         System.exit(0);
     }
 
+    /**
+     * Asks the GameController ro ask the other contollers to update themselves
+     * If the player will crash in this update which would mean that it is gameover
+     */
     private void gameUpdate(){
         if(!gameOver && !isPaused) {
             if (theController.getPlayerWillCollider()) {
-                theController.playerStop();
                 gameOver = true;
             }
             //playerController.updatePlayer();

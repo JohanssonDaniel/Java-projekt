@@ -4,6 +4,7 @@ import java.awt.*;
 
 /**
  * Created by pierre on 2014-04-16.
+ * Contains the methods that is called by the gamecontroller
  */
 public class BoardController {
 
@@ -11,13 +12,9 @@ public class BoardController {
     private BoardModel theModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
 
     public BoardController() {
-        this.theModel.createEnemies();
-        this.theModel.createFloor();
-        this.theModel.seperateEnemies();
-    }
-
-    public int getFloor(){
-        return theModel.findFloor();
+	this.theModel.createEnemies();
+	this.theModel.createFloor();
+	this.theModel.seperateEnemies();
     }
 
     public void moveEnemies(){

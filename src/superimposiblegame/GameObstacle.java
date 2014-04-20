@@ -2,6 +2,9 @@ package superimposiblegame;
 
 import java.awt.*;
 
+/**
+ * Interface for the different obstacles
+ */
 public interface GameObstacle
 {
     public void draw(Graphics g);

@@ -4,6 +4,7 @@ import java.awt.*;
 
 /**
  * Created by pierre on 2014-04-16.
+ * Delegates method calls from the GameController to the PlayerModel
  */
 public class PlayerController {
 
@@ -31,9 +32,6 @@ public class PlayerController {
         theModel.jump();
     }
 
-    public void stop() {
-        theModel.stop();
-    }
 
     public void updatePlayer() {
         theModel.updatePlayer();

@@ -4,36 +4,48 @@ import java.awt.*;
 
 /**
  * Created by pierre on 2014-04-18.
+ * This obstacle is ment to make the player bounce if it lands on it
+ * Since it extends Obsacle it implements the intersects and draw function
  */
+
 public class OvalObstacle extends Obstacle {
 
     public OvalObstacle(int positionX, int positionY) {
         super(positionX, positionY);
     }
 
+    /**
+     * ovalWidth is the righ side of the oval
+     * ovalHeight is the bottom of the oval
+     *
+     * the same goes for playerHeight and playerWidth )
+     * @param playerPositionX
+     * @param playerPositionY
+     * @return
+     */
     @Override
     public boolean intersects(int playerPositionX, int playerPositionY) {
-        int brickWidth = getSize().width;
-        int brickHeight = getSize().height;
-        int playerWidth = brickWidth;
-        int playerHeight = brickHeight;
-        if (playerWidth <= 0 || playerHeight <= 0 || brickWidth <= 0 || brickHeight <= 0) {
+        int ovalWidth = getSize().width;
+        int ovalHeight = getSize().height;
+        int playerWidth = ovalWidth;
+        int playerHeight = ovalHeight;
+        if (playerWidth <= 0 || playerHeight <= 0 || ovalWidth <= 0 || ovalHeight <= 0) {
             return false;
         }
-        int brickPositionX = getPositionX();
-        int brickPositionY = getPositionY();
+        int ovalPositionX = getPositionX();
+        int obalPositionY = getPositionY();
         //int playerPositionX = brick.getPositionX();
         //int playerPositionY = brick.getPositionY();
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
-        brickWidth += brickPositionX;
-        brickHeight += brickPositionY;
-        if ((playerWidth >= brickPositionX && !(playerPositionX > brickWidth)) && (playerHeight > brickPositionY && !(playerPositionY > brickHeight))){
+        ovalWidth += ovalPositionX;
+        ovalHeight += obalPositionY;
+        if ((playerWidth >= ovalPositionX && !(playerPositionX > ovalWidth)) &&
+	    (playerHeight > obalPositionY && !(playerPositionY > ovalHeight))){
             return true;
         }
         return false;
     }
-
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.black);
