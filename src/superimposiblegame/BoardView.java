@@ -11,7 +11,7 @@ public class BoardView {
 
     public void displayBoard(Graphics g, ArrayList<Obstacle> brickArrayList) {
         for(Obstacle obstacle : brickArrayList) {
-            obstacle.draw(g);
+            obstacle.runDraw(g, obstacle.getPositionX(), obstacle.getPositionY(), obstacle.getSize().width, obstacle.getSize().height);
         }
     }
 }

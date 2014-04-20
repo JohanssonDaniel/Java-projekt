@@ -36,52 +36,54 @@ public class BoardModel {
      * Hardcoded level, every row is an obstacle that is added to the board
      */
     public void createEnemies() {
-        brickArrayList.add(new OvalObstacle(400, heightOffset - brickSize));
-        brickArrayList.add(new TriangleObstacle(500, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(700, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(730, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(800, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(830, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(860, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(890, heightOffset - 2* brickSize));
-        brickArrayList.add(new SquareObstacle(920, heightOffset - 2* brickSize));
-        brickArrayList.add(new SquareObstacle(950, heightOffset - 2* brickSize));
 
-        brickArrayList.add(new SquareObstacle(1010, heightOffset - 3* brickSize));
+        brickArrayList.add(new Obstacle(400, heightOffset - brickSize, new OvalObstacle()));
+        //brickArrayList.add(new TriangleObstacle(500, heightOffset - brickSize, new TriangleObstacle()));
+        brickArrayList.add(new Obstacle(700, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(730, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(800, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(830, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(860, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(890, heightOffset - 2* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(920, heightOffset - 2* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(950, heightOffset - 2* brickSize, new SquareObstacle()));
+
+        brickArrayList.add(new Obstacle(1010, heightOffset - 3* brickSize, new SquareObstacle()));
         //brickArrayList.add(new Brick(1040, heightOffset - 3*brickSize));
-        brickArrayList.add(new SquareObstacle(1080, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1150, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1220, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1290, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1360, heightOffset - 3* brickSize));
+        brickArrayList.add(new Obstacle(1080, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1150, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1220, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1290, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1360, heightOffset - 3* brickSize, new SquareObstacle()));
 
-        brickArrayList.add(new SquareObstacle(1430, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1500, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1570, heightOffset - 3* brickSize));
+        brickArrayList.add(new Obstacle(1430, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1500, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1570, heightOffset - 3* brickSize, new SquareObstacle()));
 
-        brickArrayList.add(new SquareObstacle(1640, heightOffset - 4* brickSize));
-        brickArrayList.add(new SquareObstacle(1710, heightOffset - 4* brickSize));
-        brickArrayList.add(new SquareObstacle(1780, heightOffset - 4* brickSize));
+        brickArrayList.add(new Obstacle(1640, heightOffset - 4* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1710, heightOffset - 4* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1780, heightOffset - 4* brickSize, new SquareObstacle()));
 
-        brickArrayList.add(new SquareObstacle(1840, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(1900, heightOffset - 2* brickSize));
-        brickArrayList.add(new SquareObstacle(1960, heightOffset - brickSize));
+        brickArrayList.add(new Obstacle(1840, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1900, heightOffset - 2* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1960, heightOffset - brickSize, new SquareObstacle()));
 
 
-        brickArrayList.add(new SquareObstacle(2000, heightOffset - brickSize));
-        brickArrayList.add(new SquareObstacle(2030, heightOffset - 2* brickSize));
-        brickArrayList.add(new SquareObstacle(2060, heightOffset - 3* brickSize));
-        brickArrayList.add(new SquareObstacle(2090, heightOffset - 4* brickSize));
-        brickArrayList.add(new SquareObstacle(2120, heightOffset - 5* brickSize));
-        brickArrayList.add(new SquareObstacle(2150, heightOffset - 6* brickSize));
-        brickArrayList.add(new SquareObstacle(2180, heightOffset - 7* brickSize));
-        brickArrayList.add(new SquareObstacle(2210, heightOffset - 8* brickSize));
-        brickArrayList.add(new SquareObstacle(2240, heightOffset - 9* brickSize));
+        brickArrayList.add(new Obstacle(2000, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2030, heightOffset - 2* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2060, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2090, heightOffset - 4* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2120, heightOffset - 5* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2150, heightOffset - 6* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2180, heightOffset - 7* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2210, heightOffset - 8* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2240, heightOffset - 9* brickSize, new SquareObstacle()));
 
-        brickArrayList.add(new SquareObstacle(2300, heightOffset - 6* brickSize));
-        brickArrayList.add(new SquareObstacle(2360, heightOffset - 3* brickSize));
+        brickArrayList.add(new Obstacle(2300, heightOffset - 6* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2360, heightOffset - 3* brickSize, new SquareObstacle()));
 
-        brickArrayList.add(new SquareObstacle(2400, heightOffset - brickSize));
+        brickArrayList.add(new Obstacle(2400, heightOffset - brickSize, new SquareObstacle()));
+
     }
 
     /**
@@ -89,7 +91,7 @@ public class BoardModel {
      */
     public void createFloor(){
         for (int i = 0; i <= pixelWidth; i+= brickSize){
-            brickArrayList.add(new SquareObstacle(i, heightOffset));
+            brickArrayList.add(new Obstacle(i, heightOffset, new SquareObstacle()));
         }
     }
 
@@ -145,9 +147,9 @@ public class BoardModel {
         for (Obstacle obstacle : brickEnemies){
 	    int nextObstacleXWidth = obstacle.getPositionX() + brickSize;
 	    if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position
-		if (obstacle.intersects(nextPlayerX, nextPlayerY)) {
+		//if (obstacle.intersects(nextPlayerX, nextPlayerY)) {
+        if (obstacle.runIntersect(nextPlayerX, nextPlayerY, obstacle.getPositionX(), obstacle.getPositionY(), obstacle.getSize().width, obstacle.getSize().height) )
 		    return true;
-		}
 	    }
         }
         return false;

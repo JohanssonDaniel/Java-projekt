@@ -7,13 +7,7 @@ import java.awt.*;
  * the player can safely land on it but will crash if it hits its side
  * Since it extends Obsacle it implements the intersects and draw function
  */
-public class SquareObstacle extends Obstacle {
-
-    public SquareObstacle(int positionX, int positionY) {
-        super(positionX, positionY);
-    }
-
-
+public class SquareObstacle implements GameObstacle {
 
     /**
      * brickWidth is the righ side of the brick
@@ -26,16 +20,16 @@ public class SquareObstacle extends Obstacle {
      */
 
     @Override
-    public boolean intersects(int playerPositionX, int playerPositionY) {
-        int brickWidth = getSize().width;
-        int brickHeight = getSize().height;
+    public boolean intersects(int playerPositionX, int playerPositionY, int objectX, int objectY, int objectWidth, int objectHeight) {
+        int brickWidth = objectWidth;
+        int brickHeight = objectHeight;
         int playerWidth = brickWidth;
         int playerHeight = brickHeight;
         if (playerWidth <= 0 || playerHeight <= 0 || brickWidth <= 0 || brickHeight <= 0) {
             return false;
         }
-        int brickPositionX = getPositionX();
-        int brickPositionY = getPositionY();
+        int brickPositionX = objectX;
+        int brickPositionY = objectY;
         //int playerPositionX = brick.getPositionX();
         //int playerPositionY = brick.getPositionY();
         playerWidth += playerPositionX;
@@ -49,8 +43,8 @@ public class SquareObstacle extends Obstacle {
     }
 
     @Override
-    public void draw(Graphics g) {
+    public void draw(Graphics g, int x, int y, int width, int height) {
         g.setColor(Color.black);
-        g.fillRect(getPositionX(),getPositionY(), getSize().width, getSize().height);
+        g.fillRect(x,y, width, height);
     }
 }

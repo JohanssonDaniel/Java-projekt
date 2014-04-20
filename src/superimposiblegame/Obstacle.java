@@ -8,15 +8,25 @@ import java.awt.*;
  * the size is represented as a rectangle even though the Obstacle models might be of a different,
  * but that just makes it easier to get their height and width when we want to draw them
  */
-public abstract class Obstacle implements GameObstacle {
+public class Obstacle {
     private final Dimension rectangle;
     private int positionX, positionY;
+    private GameObstacle obstacle;
     public static final int SIZE = 30;
 
-    protected Obstacle(int positionX, int positionY) {
+    protected Obstacle(int positionX, int positionY, GameObstacle obstacle) {
+        this.obstacle = obstacle;
         this.positionX = positionX;
         this.positionY = positionY;
         this.rectangle = new Dimension(SIZE,SIZE);
+    }
+
+    public boolean runIntersect(int x, int y, int objectX, int objectY, int objectWidth, int objectHeight){
+        return this.obstacle.intersects(x,y, objectX, objectY, objectWidth, objectHeight);
+    }
+
+    public void runDraw(Graphics g, int x, int y, int width, int height) {
+        this.obstacle.draw(g, x, y, width, height);
     }
 
     public int getPositionX() {
