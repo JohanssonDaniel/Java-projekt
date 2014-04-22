@@ -55,14 +55,11 @@ public class PlayerModel {
      * Updates the player based on its state
      */
     public void updatePlayer() {
-        if (playerState == State.NOT_JUMPING){
+        if (playerState == State.NOT_JUMPING || playerState == State.FALLING ){
             updateFalling();
         }
         else if (playerState == State.RISING) {
             updateRising();
-        }
-        else if (playerState == State.FALLING) {
-            updateFalling();
         }
     }
 
@@ -106,7 +103,7 @@ public class PlayerModel {
     }
 
     /**
-     * Checks wether the player wil collide with something that would end the game
+     * Checks wether the player will collide with something that would end the game
      * @return
      */
     public boolean willCollide(){

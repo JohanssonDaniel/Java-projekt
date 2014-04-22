@@ -18,6 +18,7 @@ public class GameController implements WindowListener, BoardListener {
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
         boardController.addBoardListener(this);
+        boardController.notifyListeners();
 
         theView.addKeyListener(new KeyAdapter() {
             @Override
@@ -150,7 +151,6 @@ public class GameController implements WindowListener, BoardListener {
     public void boardChanged() {
         gameRender();
         paintScreen();
-        System.out.print("HEY");
     }
 
     /**

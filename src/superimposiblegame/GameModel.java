@@ -88,6 +88,9 @@ public class GameModel implements Runnable {
 
         running = true;
 
+        //Called to show menu in the beginning, otherwise will show a white screen.
+        startMenu();
+
         while (running) {
             gameUpdate();
             //theController.gameRender();
@@ -100,6 +103,15 @@ public class GameModel implements Runnable {
             }
         }
         System.exit(0);
+    }
+
+    public void startMenu(){
+        try {
+            Thread.sleep(200);
+            theController.boardChanged();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

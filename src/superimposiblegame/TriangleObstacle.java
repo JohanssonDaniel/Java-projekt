@@ -34,12 +34,12 @@ public class TriangleObstacle implements GameObstacle {
         playerHeight += playerPositionY;
         triangleWidth += trianglePositionX;
         triangleHeight += trianglePositionY;
-        if (((playerWidth >= trianglePositionX && !(playerPositionX > triangleWidth)) && (playerHeight >= triangleHeight))){
-            return true;
+        if (trianglePositionX <= playerPositionX && playerPositionX <= triangleWidth || trianglePositionX <= playerWidth && playerWidth <= triangleWidth){
+            if (playerHeight > objectY) {
+                return true;
+            }
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     @Override
