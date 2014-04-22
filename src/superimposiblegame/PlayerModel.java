@@ -65,16 +65,26 @@ public class PlayerModel {
 
     /**
      * Checks wether the player has jump high enough or updates its Y position
+     * If the player jumps into a an obstacle from beneath it it will crash
      */
     private void updateRising() {
+
+	int nextPlayerPositionY = playerPositionY;
+ 	int nextPlayerPositionX = playerPositionX + horizontalStep;
 
         if (upCount == MAX_UP_COUNT) {
             playerState = State.FALLING;
             upCount = 0;
         }
         else {
-            playerPositionY -= verticalStep;
-            upCount++;
+	    if(theController.getCollide(nextPlayerPositionY, nextPlayerPositionX)){
+		playerState = State.FALLING;
+		upCount = 0;
+	    }
+	    else{
+		playerPositionY -= verticalStep;
+		upCount++;
+	    }
         }
         theController.notifyBoardListener();
     }

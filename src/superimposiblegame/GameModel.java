@@ -125,8 +125,6 @@ public class GameModel implements Runnable {
             if (theController.getPlayerWillCollider()) {
                 gameOver = true;
             }
-            //playerController.updatePlayer();
-            //boardController.moveEnemies();
             theController.playerUpdate();
             theController.boardMoveEnemies();
         }
