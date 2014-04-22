@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b0f3c34-7792-48c8-907b-952a4653f9bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameController.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/superimposiblegame/TriangleObstacle.java" afterPath="$PROJECT_DIR$/src/superimposiblegame/TriangleObstacle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,7 +78,7 @@
       <file leaf-file-name="GameModel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="9" selection-start="2600" selection-end="2600" vertical-scroll-proportion="0.6181354" vertical-offset="1298" max-vertical-offset="2232">
+            <state line="88" column="23" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.057471264" vertical-offset="1287" max-vertical-offset="2268">
               <folding />
             </state>
           </provider>
@@ -160,8 +156,8 @@
         <option value="$PROJECT_DIR$/src/superimposiblegame/PlayerModel.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/GameController.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/BoardController.java" />
-        <option value="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
         <option value="$PROJECT_DIR$/src/superimposiblegame/GameView.java" />
+        <option value="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
       </list>
     </option>
   </component>
@@ -869,7 +865,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/superimposiblegame/GameModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="9" selection-start="2600" selection-end="2600" vertical-scroll-proportion="0.6181354" vertical-offset="1298" max-vertical-offset="2232">
+        <state line="88" column="23" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.057471264" vertical-offset="1287" max-vertical-offset="2268">
           <folding />
         </state>
       </provider>

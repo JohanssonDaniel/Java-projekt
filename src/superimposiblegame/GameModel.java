@@ -87,8 +87,6 @@ public class GameModel implements Runnable {
     public void run() {
 
         running = true;
-
-        //Called to show menu in the beginning, otherwise will show a white screen.
         startMenu();
 
         while (running) {
@@ -104,6 +102,10 @@ public class GameModel implements Runnable {
         }
         System.exit(0);
     }
+
+    /**
+     * Makes sure other classes load before showing the menu.
+     */
 
     public void startMenu(){
         try {
