@@ -5,6 +5,7 @@ package superimposiblegame;
  *
  * GameModel models the game via the run function which when they will update and render
  */
+@SuppressWarnings("MagicNumber")
 public class GameModel implements Runnable {
 
     private Thread animator;

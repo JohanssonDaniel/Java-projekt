@@ -7,6 +7,7 @@ import java.util.Iterator;
  * Created by pierre on 2014-04-16.
  * BoardModel contains all the obstacles in the game and the floor. It also includes that recieves the player position and checks whether an obstacle will hit or not
  */
+@SuppressWarnings("MagicNumber")
 public class BoardModel {
 
     private final int pixelWidth;
