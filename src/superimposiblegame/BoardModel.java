@@ -2,7 +2,6 @@ package superimposiblegame;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by pierre on 2014-04-16.
@@ -15,8 +14,8 @@ public class BoardModel {
     private final ArrayList<Obstacle> brickArrayList;
     private final ArrayList<Obstacle> brickEnemies;
 
-    private final static int  brickSize = Obstacle.SIZE;
-    private final static int pixelsPerUpdate = brickSize / 10; // how many pixels the bricks move to the right every update
+    private final static int BRICK_SIZE = Obstacle.SIZE;
+    private final static int pixelsPerUpdate = BRICK_SIZE / 10; // how many pixels the bricks move to the right every update
 
     private final int heightOffset;
 
@@ -26,7 +25,7 @@ public class BoardModel {
 
         brickArrayList = new ArrayList<Obstacle>();
         brickEnemies = new ArrayList<Obstacle>();
-        heightOffset = this.pixelHeight - brickSize; // Moves the coords for the bricks one brick height up
+        heightOffset = this.pixelHeight - BRICK_SIZE; // Moves the coords for the bricks one brick height up
     }
 
 
@@ -39,52 +38,52 @@ public class BoardModel {
      */
     public void createEnemies() {
 
-        brickArrayList.add(new Obstacle(400, heightOffset - brickSize, new OvalObstacle()));
-        brickArrayList.add(new Obstacle(500, heightOffset - brickSize, new TriangleObstacle()));
-        brickArrayList.add(new Obstacle(700, heightOffset - brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(730, heightOffset - brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(800, heightOffset - brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(830, heightOffset - brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(860, heightOffset - brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(890, heightOffset - 2* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(920, heightOffset - 2* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(950, heightOffset - 2* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(400, heightOffset - BRICK_SIZE, new OvalObstacle()));
+        brickArrayList.add(new Obstacle(500, heightOffset - BRICK_SIZE, new TriangleObstacle()));
+        brickArrayList.add(new Obstacle(700, heightOffset - BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(730, heightOffset - BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(800, heightOffset - BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(830, heightOffset - BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(860, heightOffset - BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(890, heightOffset - 2* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(920, heightOffset - 2* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(950, heightOffset - 2* BRICK_SIZE, new SquareObstacle()));
 
-        brickArrayList.add(new Obstacle(1010, heightOffset - 3* brickSize, new SquareObstacle()));
-        //brickArrayList.add(new Brick(1040, heightOffset - 3*brickSize));
-        brickArrayList.add(new Obstacle(1080, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1150, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1220, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1290, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1360, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1010, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        //brickArrayList.add(new Brick(1040, heightOffset - 3*BRICK_SIZE));
+        brickArrayList.add(new Obstacle(1080, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1150, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1220, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1290, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1360, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
 
-        brickArrayList.add(new Obstacle(1430, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1500, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1570, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1430, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1500, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1570, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
 
-        brickArrayList.add(new Obstacle(1640, heightOffset - 4* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1710, heightOffset - 4* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1780, heightOffset - 4* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1640, heightOffset - 4* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1710, heightOffset - 4* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1780, heightOffset - 4* BRICK_SIZE, new SquareObstacle()));
 
-        brickArrayList.add(new Obstacle(1840, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1900, heightOffset - 2* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(1960, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1840, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1900, heightOffset - 2* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(1960, heightOffset - BRICK_SIZE, new SquareObstacle()));
 
 
-        brickArrayList.add(new Obstacle(2000, heightOffset - brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2030, heightOffset - 2* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2060, heightOffset - 3* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2090, heightOffset - 4* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2120, heightOffset - 5* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2150, heightOffset - 6* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2180, heightOffset - 7* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2210, heightOffset - 8* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2240, heightOffset - 9* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2000, heightOffset - BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2030, heightOffset - 2* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2060, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2090, heightOffset - 4* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2120, heightOffset - 5* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2150, heightOffset - 6* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2180, heightOffset - 7* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2210, heightOffset - 8* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2240, heightOffset - 9* BRICK_SIZE, new SquareObstacle()));
 
-        brickArrayList.add(new Obstacle(2300, heightOffset - 6* brickSize, new SquareObstacle()));
-        brickArrayList.add(new Obstacle(2360, heightOffset - 3* brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2300, heightOffset - 6* BRICK_SIZE, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2360, heightOffset - 3* BRICK_SIZE, new SquareObstacle()));
 
-        brickArrayList.add(new Obstacle(2400, heightOffset - brickSize, new SquareObstacle()));
+        brickArrayList.add(new Obstacle(2400, heightOffset - BRICK_SIZE, new SquareObstacle()));
 
     }
 
@@ -92,7 +91,7 @@ public class BoardModel {
      * adds squareObstacles to the board which is later seen as floor by the player
      */
     public void createFloor(){
-        for (int i = 0; i <= pixelWidth; i+= brickSize){
+        for (int i = 0; i <= pixelWidth; i+= BRICK_SIZE){
             brickArrayList.add(new Obstacle(i, heightOffset, new SquareObstacle()));
         }
     }
@@ -117,7 +116,7 @@ public class BoardModel {
         while (brickIterator.hasNext()) {
             Obstacle brick = brickIterator.next();
             int newPositionX = brick.getPositionX() - pixelsPerUpdate;
-            if (newPositionX > -brickSize) {
+            if (newPositionX > -BRICK_SIZE) {
                 brick.setPositionX(newPositionX);
             } else {
                 brickIterator.remove();
@@ -144,10 +143,10 @@ public class BoardModel {
      * @param nextPlayerY
      * @return
      */
-    public boolean collideWhileJumping(int nextPlayerX, int nextPlayerY){
-	int nextPlayerXWidth = nextPlayerX + brickSize;
+    public boolean willCollide(int nextPlayerX, int nextPlayerY){
+	int nextPlayerXWidth = nextPlayerX + BRICK_SIZE;
         for (Obstacle obstacle : brickEnemies){
-	    int nextObstacleXWidth = obstacle.getPositionX() + brickSize;
+	    int nextObstacleXWidth = obstacle.getPositionX() + BRICK_SIZE;
 	    if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position
 		//if (obstacle.intersects(nextPlayerX, nextPlayerY)) {
         if (obstacle.runIntersect(nextPlayerX, nextPlayerY, obstacle.getPositionX(), obstacle.getPositionY(), obstacle.getSize().width, obstacle.getSize().height) )

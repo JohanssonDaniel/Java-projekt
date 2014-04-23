@@ -27,13 +27,9 @@ public class TriangleObstacle implements GameObstacle {
             return false;
         }
         int trianglePositionX = objectX;
-        int trianglePositionY = objectY;
-        //int playerPositionX = brick.getPositionX();
-        //int playerPositionY = brick.getPositionY();
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
         triangleWidth += trianglePositionX;
-        triangleHeight += trianglePositionY;
         if (trianglePositionX <= playerPositionX && playerPositionX <= triangleWidth || trianglePositionX <= playerWidth && playerWidth <= triangleWidth){
             if (playerHeight > objectY) {
                 return true;

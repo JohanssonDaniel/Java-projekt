@@ -20,7 +20,7 @@ public class GameView extends JFrame {
     public static final int PIXEL_WIDTH = 800;
     public static final int PIXEL_HEIGHT = 600;
 
-    private Graphics doubleBufferedGraphic;
+    private Graphics doubleBufferedGraphic = null;
     private Image doubleBufferedImage = null;
 
     private BufferedImage menuImage = null;
@@ -113,7 +113,7 @@ public class GameView extends JFrame {
         if (!gameController.isShowMenu()) {
             graphics.setColor(Color.black);
             graphics.setFont(resetFont);
-            graphics.drawString("Resets: " + gameController.getResetCounter(), 0, 30);
+            graphics.drawString("Resets: " + gameController.getResetCounter(), 10, 50);
         }
     }
 

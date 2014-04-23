@@ -105,6 +105,7 @@ public class GameModel implements Runnable {
 
     /**
      * Makes sure other classes load before showing the menu.
+     * boardChanged is used to show the start menu at the start of the game
      */
 
     public void startMenu(){

@@ -29,15 +29,13 @@ public class OvalObstacle implements GameObstacle {
             return false;
         }
         int ovalPositionX = objectX;
-        int obalPositionY = objectY;
-        //int playerPositionX = brick.getPositionX();
-        //int playerPositionY = brick.getPositionY();
+        int ovalPositionY = objectY;
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
         ovalWidth += ovalPositionX;
-        ovalHeight += obalPositionY;
+        ovalHeight += ovalPositionY;
         if ((playerWidth >= ovalPositionX && !(playerPositionX > ovalWidth)) &&
-	    (playerHeight > obalPositionY && !(playerPositionY > ovalHeight))){
+	    (playerHeight > ovalPositionY && !(playerPositionY > ovalHeight))){
             return true;
         }
         return false;

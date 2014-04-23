@@ -30,8 +30,6 @@ public class SquareObstacle implements GameObstacle {
         }
         int brickPositionX = objectX;
         int brickPositionY = objectY;
-        //int playerPositionX = brick.getPositionX();
-        //int playerPositionY = brick.getPositionY();
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
         brickWidth += brickPositionX;

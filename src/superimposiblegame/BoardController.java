@@ -41,10 +41,10 @@ public class BoardController {
     }
 
     public boolean collide(int nextPlayerPositionY, int nextPlayerPositionX){
-        return (theModel.willHitFloor(nextPlayerPositionY) || theModel.collideWhileJumping(nextPlayerPositionX, nextPlayerPositionY));
+        return (theModel.willHitFloor(nextPlayerPositionY) || theModel.willCollide(nextPlayerPositionX, nextPlayerPositionY));
     }
 
     public boolean willColide(int nextPlayerPositionX, int playerPositionY) {
-        return theModel.collideWhileJumping(nextPlayerPositionX, playerPositionY);
+        return theModel.willCollide(nextPlayerPositionX, playerPositionY);
     }
 }
