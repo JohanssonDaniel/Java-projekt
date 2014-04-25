@@ -1,7 +1,6 @@
 package superimposiblegame;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created by pierre on 2014-04-16.
@@ -9,7 +8,7 @@ import java.util.ArrayList;
  */
 public class BoardView {
 
-    public void displayBoard(Graphics g, ArrayList<Obstacle> brickArrayList) {
+    public void displayBoard(Graphics g, Iterable<Obstacle> brickArrayList) {
         for(Obstacle obstacle : brickArrayList) {
             obstacle.runDraw(g, obstacle.getPositionX(), obstacle.getPositionY(), obstacle.getSize().width, obstacle.getSize().height);
         }

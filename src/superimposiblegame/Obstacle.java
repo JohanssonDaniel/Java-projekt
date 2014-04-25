@@ -12,6 +12,9 @@ public class Obstacle {
     private final Dimension rectangle;
     private int positionX, positionY;
     private GameObstacle obstacle;
+    /**
+      * Size of Obstacle
+      */
     public static final int SIZE = 30;
 
     protected Obstacle(int positionX, int positionY, GameObstacle obstacle) {
@@ -40,10 +43,6 @@ public class Obstacle {
 
     public void setPositionX(int newPosition) {
         positionX = newPosition;
-    }
-
-    public void setPositionY(int newPosition) {
-        positionY = newPosition;
     }
 
 }

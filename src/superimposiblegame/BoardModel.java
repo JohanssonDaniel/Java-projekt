@@ -16,7 +16,7 @@ public class BoardModel {
     private final ArrayList<Obstacle> brickEnemies;
 
     private final static int BRICK_SIZE = Obstacle.SIZE;
-    private final static int pixelsPerUpdate = BRICK_SIZE / 10; // how many pixels the bricks move to the right every update
+    private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 10; // how many pixels the bricks move to the right every update
 
     private final int heightOffset;
 
@@ -30,7 +30,7 @@ public class BoardModel {
     }
 
 
-    public ArrayList<Obstacle> getBrickArrayList() {
+    public Iterable<Obstacle> getBrickArrayList() {
         return brickArrayList;
     }
 
@@ -116,7 +116,7 @@ public class BoardModel {
 
         while (brickIterator.hasNext()) {
             Obstacle brick = brickIterator.next();
-            int newPositionX = brick.getPositionX() - pixelsPerUpdate;
+            int newPositionX = brick.getPositionX() - PIXELS_PER_UPDATE;
             if (newPositionX > -BRICK_SIZE) {
                 brick.setPositionX(newPositionX);
             } else {
@@ -140,9 +140,9 @@ public class BoardModel {
 
     /**
      * Checks whether the players next X and y positions is colliding with an obstacle
-     * @param nextPlayerX
-     * @param nextPlayerY
-     * @return
+     * @param nextPlayerX Next player position in X-axis
+     * @param nextPlayerY Next player position in Y-axis
+     * @return if player collides with obstacle
      */
     public boolean willCollide(int nextPlayerX, int nextPlayerY){
 	int nextPlayerXWidth = nextPlayerX + BRICK_SIZE;

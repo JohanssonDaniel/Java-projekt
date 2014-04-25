@@ -11,9 +11,9 @@ import java.util.List;
 public class BoardController {
 
     private BoardView theView = new BoardView();
-    private BoardModel theModel = new BoardModel(GameView.PIXEL_WIDTH, GameView.PIXEL_HEIGHT);
+    private BoardModel theModel = new BoardModel(GameView.getPixelWidth(), GameView.getPixelHeight());
 
-    private List<BoardListener> board_listeners = new ArrayList<BoardListener>();
+    private List<BoardListener> boardListeners = new ArrayList<BoardListener>();
 
     public BoardController() {
         this.theModel.createEnemies();
@@ -22,11 +22,11 @@ public class BoardController {
     }
 
     public void addBoardListener(BoardListener bl) {
-        board_listeners.add(bl);
+        boardListeners.add(bl);
     }
 
     public void notifyListeners() {
-        for (BoardListener listener : board_listeners) {
+        for (BoardListener listener : boardListeners) {
             listener.boardChanged();
         }
     }

@@ -6,7 +6,7 @@ import java.awt.event.*;
 /**
  * The GameController is the controller that communicates the inforamtion from the Board and Player to the GameView and GameModel
  */
-public class GameController implements WindowListener, BoardListener {
+public class GameController extends WindowAdapter implements BoardListener {
     private GameModel theModel = new GameModel(this);
     private GameView theView = new GameView(this);
 
@@ -21,7 +21,6 @@ public class GameController implements WindowListener, BoardListener {
         boardController.notifyListeners();
 
         theView.addKeyListener(new KeyAdapter() {
-            @Override
             public void keyPressed(KeyEvent e) {
                 testKey(e.getKeyCode());
             }
@@ -33,7 +32,7 @@ public class GameController implements WindowListener, BoardListener {
 
     /**
      * Keyboard inputs that change the position of the player (jumping) or interupts the gameProcess by pausing
-     * @param keyCode
+     * @param keyCode Input keyCode
      */
     private void testKey(int keyCode) {
         if (keyCode == KeyEvent.VK_M){
@@ -109,7 +108,7 @@ public class GameController implements WindowListener, BoardListener {
 
     /**
      * Gets the rendered images from the other controllers and the GameModel so that the GameView can render them together
-     * @param g
+     * @param g Graphic paramater
      */
     public void playerDraw(Graphics g) {
         playerController.draw(g);
@@ -129,7 +128,7 @@ public class GameController implements WindowListener, BoardListener {
 
     /**
      * tells the PlayerController to check wether the player will Collide and die in the next update
-     * @return
+     * @return if player will collide
      */
 
     public boolean getPlayerWillCollider() {
@@ -153,23 +152,9 @@ public class GameController implements WindowListener, BoardListener {
         paintScreen();
     }
 
-    /**
-     * Standard methods for window controlls
-     * @param e
-     */
-    @Override
-    public void windowOpened(WindowEvent e) {
-
-    }
-
     @Override
     public void windowClosing(WindowEvent e) {
         theModel.stopGame();
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-
     }
 
     @Override
@@ -185,11 +170,6 @@ public class GameController implements WindowListener, BoardListener {
     @Override
     public void windowActivated(WindowEvent e) {
         theModel.resumeGame();
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-
     }
 
 }

@@ -114,7 +114,7 @@ public class PlayerModel {
 
     /**
      * Checks wether the player will collide with something that would end the game
-     * @return
+     * @return if player collides
      */
     public boolean willCollide(){
 

@@ -12,25 +12,23 @@ public class TriangleObstacle implements GameObstacle {
      * trinagleHeight is the bottom of the triangle
      *
      * the same goes for playerHeight and playerWidth )
-     * @param playerPositionX
-     * @param playerPositionY
-     * @return
+     * @param playerPositionX Position of player in X-axis
+     * @param playerPositionY Position of player in Y-axis
+     * @return if player intersects with osbtacle
      */
 
     @Override
     public boolean intersects(int playerPositionX, int playerPositionY, int objectX, int objectY, int objectWidth, int objectHeight) {
         int triangleWidth = objectWidth;
-        int triangleHeight = objectHeight;
-        int playerWidth = objectWidth;
+	int playerWidth = objectWidth;
         int playerHeight = objectHeight;
-        if (playerWidth <= 0 || playerHeight <= 0 || triangleWidth <= 0 || triangleHeight <= 0) {
+        if (playerWidth <= 0 || playerHeight <= 0 || triangleWidth <= 0 || objectHeight <= 0) {
             return false;
         }
-        int trianglePositionX = objectX;
-        playerWidth += playerPositionX;
+	playerWidth += playerPositionX;
         playerHeight += playerPositionY;
-        triangleWidth += trianglePositionX;
-        if (trianglePositionX <= playerPositionX && playerPositionX <= triangleWidth || trianglePositionX <= playerWidth && playerWidth <= triangleWidth){
+        triangleWidth += objectX;
+        if (objectX <= playerPositionX && playerPositionX <= triangleWidth || objectX <= playerWidth && playerWidth <= triangleWidth){
             if (playerHeight > objectY) {
                 return true;
             }

@@ -15,9 +15,9 @@ public class OvalObstacle implements GameObstacle {
      * ovalHeight is the bottom of the oval
      *
      * the same goes for playerHeight and playerWidth )
-     * @param playerPositionX
-     * @param playerPositionY
-     * @return
+     * @param playerPositionX Position of player in X-axis
+     * @param playerPositionY Position of player in Y-axis
+     * @return if player intersects with osbtacle
      */
     @Override
     public boolean intersects(int playerPositionX, int playerPositionY, int objectX, int objectY, int objectWidth, int objectHeight) {
@@ -28,14 +28,13 @@ public class OvalObstacle implements GameObstacle {
         if (playerWidth <= 0 || playerHeight <= 0 || ovalWidth <= 0 || ovalHeight <= 0) {
             return false;
         }
-        int ovalPositionX = objectX;
-        int ovalPositionY = objectY;
+
         playerWidth += playerPositionX;
         playerHeight += playerPositionY;
-        ovalWidth += ovalPositionX;
-        ovalHeight += ovalPositionY;
-        if ((playerWidth >= ovalPositionX && !(playerPositionX > ovalWidth)) &&
-	    (playerHeight > ovalPositionY && !(playerPositionY > ovalHeight))){
+        ovalWidth += objectX;
+        ovalHeight += objectY;
+        if ((playerWidth >= objectX && !(playerPositionX > ovalWidth)) &&
+	    (playerHeight > objectY && !(playerPositionY > ovalHeight))){
             return true;
         }
         return false;

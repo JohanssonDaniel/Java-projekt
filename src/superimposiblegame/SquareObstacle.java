@@ -14,9 +14,9 @@ public class SquareObstacle implements GameObstacle {
      * brickHeight is the bottom of the brick
      *
      * the same goes for playerHeight and playerWidth )
-     * @param playerPositionX
-     * @param playerPositionY
-     * @return
+     * @param playerPositionX Position of player in X-axis
+     * @param playerPositionY Position of player in Y-axis
+     * @return if player intersects with osbtacle
      */
 
     @Override
@@ -28,13 +28,12 @@ public class SquareObstacle implements GameObstacle {
         if (playerWidth <= 0 || playerHeight <= 0 || brickWidth <= 0 || brickHeight <= 0) {
             return false;
         }
-        int brickPositionX = objectX;
-        int brickPositionY = objectY;
-        playerWidth += playerPositionX;
+
+	playerWidth += playerPositionX;
         playerHeight += playerPositionY;
-        brickWidth += brickPositionX;
-        brickHeight += brickPositionY;
-        if ((playerWidth >= brickPositionX && !(playerPositionX > brickWidth)) && (playerHeight > brickPositionY && !(playerPositionY > brickHeight))){
+        brickWidth += objectX;
+        brickHeight += objectY;
+        if ((playerWidth >= objectX && !(playerPositionX > brickWidth)) && (playerHeight > objectY && !(playerPositionY > brickHeight))){
             return true;
         }
         return false;

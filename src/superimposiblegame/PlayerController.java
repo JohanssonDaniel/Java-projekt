@@ -42,6 +42,7 @@ public class PlayerController  {
     }
 
     public void draw(Graphics g){
-        theView.draw(g, theModel.getPlayerPositionX(), theModel.getPlayerPositionY(), theModel.getPlayerHeight(), theModel.getPlayerWidth());
+        theView.draw(g, theModel.getPlayerPositionX(), theModel.getPlayerPositionY(), PlayerModel.getPlayerHeight(), PlayerModel
+		.getPlayerWidth());
     }
 }

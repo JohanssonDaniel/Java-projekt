@@ -17,8 +17,14 @@ public class GameView extends JFrame {
     private GameController gameController;
     private JPanel gamePanel;       // This is where the game is drawn
 
-    public static final int PIXEL_WIDTH = 800;
-    public static final int PIXEL_HEIGHT = 600;
+    private static final int PIXEL_WIDTH = 800;
+    private static final int PIXEL_HEIGHT = 600;
+
+    private final static int RESET_STRING_X = 10;
+    private final static int RESET_STRING_Y = 50;
+
+    private final static int GAME_OVER_IMAGE_X = 200;
+    private final static int GAME_OVER_IMAGE_Y = 100;
 
     private Graphics doubleBufferedGraphic = null;
     private Image doubleBufferedImage = null;
@@ -53,6 +59,14 @@ public class GameView extends JFrame {
         pack();
     }
 
+    public static int getPixelHeight() {
+	return PIXEL_HEIGHT;
+    }
+
+    public static int getPixelWidth() {
+	return PIXEL_WIDTH;
+    }
+
 
     /*public void addNotify()  { //TROR DEN SKALL VARA HÄR?
         super.addNotify();
@@ -63,13 +77,15 @@ public class GameView extends JFrame {
         gamePanel.addKeyListener(keyListener);
     }
 
+    private final static String MENU_IMG_URL = "src/Images/altmenu.png";
+    private final static String GAME_OVER_IMG_URL = "src/Images/altover.png";
     /**
      * Loads the custom gameover screen and menu from the project
      */
     private void loadImages() {
         try {
-            menuImage = ImageIO.read(new File("src/Images/altmenu.png"));
-            gameOverImage = ImageIO.read(new File("src/Images/altover.png"));
+	    menuImage = ImageIO.read(new File(MENU_IMG_URL));
+            gameOverImage = ImageIO.read(new File(GAME_OVER_IMG_URL));
 
         }   catch (IOException ex){
             System.out.println("Error: " + ex);
@@ -107,29 +123,31 @@ public class GameView extends JFrame {
 
     /**
      * Show how many times the player has reseted, is incremented when the player pressed the R key
-     * @param graphics
+     * @param graphics Graphic paramater
      */
+
     private void showResets(Graphics graphics){
         if (!gameController.isShowMenu()) {
             graphics.setColor(Color.black);
             graphics.setFont(resetFont);
-            graphics.drawString("Resets: " + gameController.getResetCounter(), 10, 50);
+            graphics.drawString("Resets: " + gameController.getResetCounter(), RESET_STRING_X, RESET_STRING_Y);
         }
     }
 
     /**
      * Show the gameover screen
-     * @param graphics
+     * @param graphics Graphic paramater
      */
+
     private void showGameOver(Graphics graphics){
         if (!gameController.isShowMenu()) {
-            graphics.drawImage(gameOverImage, 200, 100, null);
+            graphics.drawImage(gameOverImage, GAME_OVER_IMAGE_X, GAME_OVER_IMAGE_Y, null);
         }
     }
 
     /**
      * Show the game menu
-     * @param graphics
+     * @param graphics Graphic paramater
      */
     private void showMenu(Graphics graphics){
         graphics.drawImage(menuImage, 0, 0, null);
@@ -148,8 +166,9 @@ public class GameView extends JFrame {
         try{
             graphics.dispose();
         }
-        catch (NullPointerException e)
-        { System.out.println("Graphics context error: " + e);  }
+        catch (NullPointerException e) {
+	    System.out.println("Graphics context error: " + e);
+	}
     }
 
 }
