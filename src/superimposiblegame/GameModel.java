@@ -5,12 +5,14 @@ package superimposiblegame;
  *
  * GameModel models the game via the run function which when they will update and render
  */
-@SuppressWarnings("MagicNumber")
+
 public class GameModel implements Runnable {
 
     private Thread animator;
     private GameController theController;
 
+    private final static int RUN_SLEEP_MS = 20;
+    private final static int LOAD_BEFORE_START_MENU_MS = 200;
     private volatile boolean running = false;
     private volatile boolean gameOver = false;
     private volatile boolean isPaused = false;
@@ -85,7 +87,7 @@ public class GameModel implements Runnable {
     // called when the JFrame is closing
     { running = false; }
 
-    public void run() {
+    @SuppressWarnings("SuppressionAnnotation") public void run() {
 
         running = true;
         startMenu();
@@ -96,7 +98,9 @@ public class GameModel implements Runnable {
             //theController.paintScreen();
 
             try {
-                Thread.sleep(20);
+		//Thread sleeps every 20 ms
+		//noinspection BusyWait
+		Thread.sleep(RUN_SLEEP_MS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -109,9 +113,9 @@ public class GameModel implements Runnable {
      * boardChanged is used to show the start menu at the start of the game
      */
 
-    public void startMenu(){
+    private void startMenu(){
         try {
-            Thread.sleep(200);
+            Thread.sleep(LOAD_BEFORE_START_MENU_MS);
             theController.boardChanged();
         } catch (InterruptedException e) {
             e.printStackTrace();

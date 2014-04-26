@@ -1,5 +1,6 @@
 package superimposiblegame;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -7,12 +8,11 @@ import java.util.Iterator;
  * Created by pierre on 2014-04-16.
  * BoardModel contains all the obstacles in the game and the floor. It also includes that recieves the player position and checks whether an obstacle will hit or not
  */
-@SuppressWarnings("MagicNumber")
 public class BoardModel {
 
     private final int pixelWidth;
     private final int pixelHeight;
-    private final ArrayList<Obstacle> brickArrayList;
+    private final AbstractList<Obstacle> brickArrayList;
     private final ArrayList<Obstacle> brickEnemies;
 
     private final static int BRICK_SIZE = Obstacle.SIZE;
@@ -35,8 +35,9 @@ public class BoardModel {
     }
 
     /**
-     * Hardcoded level, every row is an obstacle that is added to the board
+     * Hardcoded level (hence the MagicNumber suppresion), every row is an obstacle that is added to the board
      */
+    @SuppressWarnings("MagicNumber")
     public void createEnemies() {
 
         brickArrayList.add(new Obstacle(400, heightOffset - BRICK_SIZE, new OvalObstacle()));

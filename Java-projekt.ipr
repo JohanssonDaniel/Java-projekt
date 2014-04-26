@@ -994,6 +994,8 @@
             <list>
               <option value="UnusedParameters" />
               <option value="ResultOfObjectAllocationIgnored" />
+              <option value="RefusedBequest" />
+              <option value="MagicNumber" />
             </list>
           </option>
         </inspection_tool>

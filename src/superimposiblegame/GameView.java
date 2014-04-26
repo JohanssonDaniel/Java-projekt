@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * Created by pierre on 2014-04-18.
- * The Fram which the game is rendered on
+ * The Frame which the game is rendered on
  */
 public class GameView extends JFrame {
 
@@ -34,7 +34,6 @@ public class GameView extends JFrame {
 
     private Font resetFont;
     private final static int FONT_SIZE = 28;
-    //private int resetCounter;
 
     public GameView(GameController gameController){
         super("superimposiblegame");
@@ -67,25 +66,23 @@ public class GameView extends JFrame {
 	return PIXEL_WIDTH;
     }
 
-
-    /*public void addNotify()  { //TROR DEN SKALL VARA HÄR?
-        super.addNotify();
-        gameController.startGame();
-    }*/
-
-    public void addKeyListener(KeyListener keyListener){
+    //Adds KeyListener, overrides synchronized method.
+    @SuppressWarnings("RefusedBequest")
+    @Override public synchronized void addKeyListener(KeyListener keyListener){
         gamePanel.addKeyListener(keyListener);
     }
 
-    private final static String MENU_IMG_URL = "src/Images/altmenu.png";
-    private final static String GAME_OVER_IMG_URL = "src/Images/altover.png";
     /**
      * Loads the custom gameover screen and menu from the project
      */
     private void loadImages() {
+
         try {
-	    menuImage = ImageIO.read(new File(MENU_IMG_URL));
-            gameOverImage = ImageIO.read(new File(GAME_OVER_IMG_URL));
+	    String menuImg = "altmenu.png";
+	    String gameOverImg = "altover.png";
+
+	    menuImage = ImageIO.read(new File(menuImg));
+            gameOverImage = ImageIO.read(new File(gameOverImg));
 
         }   catch (IOException ex){
             System.out.println("Error: " + ex);
@@ -163,12 +160,10 @@ public class GameView extends JFrame {
         graphics = this.getGraphics();
         if ((graphics != null) && (doubleBufferedImage != null))
             graphics.drawImage(doubleBufferedImage, 0, 0, null);
-        try{
-            graphics.dispose();
-        }
-        catch (NullPointerException e) {
-	    System.out.println("Graphics context error: " + e);
-	}
+
+	assert graphics != null;
+	graphics.dispose();
+
     }
 
 }
