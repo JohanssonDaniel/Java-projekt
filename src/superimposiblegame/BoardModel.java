@@ -35,9 +35,9 @@ public class BoardModel {
     }
 
     /**
-     * Hardcoded level (hence the MagicNumber suppresion), every row is an obstacle that is added to the board
+     * Hardcoded level (hence the "Magic Number" warning), every row is an obstacle that is added to the board
      */
-    @SuppressWarnings("MagicNumber")
+
     public void createEnemies() {
 
         brickArrayList.add(new Obstacle(400, heightOffset - BRICK_SIZE, new OvalObstacle()));

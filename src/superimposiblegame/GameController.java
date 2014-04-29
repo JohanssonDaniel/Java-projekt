@@ -22,7 +22,7 @@ public class GameController extends WindowAdapter implements BoardListener {
 
         theView.addKeyListener(new KeyAdapter() {
 	    //Overrides method
-	    @SuppressWarnings("RefusedBequest") @Override
+	    @Override
 	    public void keyPressed(KeyEvent e) {
                 testKey(e.getKeyCode());
             }
@@ -154,25 +154,21 @@ public class GameController extends WindowAdapter implements BoardListener {
         paintScreen();
     }
     //Overrides WindowListener method
-    @SuppressWarnings("RefusedBequest") @Override
     public void windowClosing(WindowEvent e) {
         theModel.stopGame();
     }
 
     //Overrides WindowListener method
-    @SuppressWarnings("RefusedBequest") @Override
     public void windowIconified(WindowEvent e) {
         theModel.pauseGame();
     }
 
     //Overrides WindowListener method
-    @SuppressWarnings("RefusedBequest") @Override
     public void windowDeiconified(WindowEvent e) {
         theModel.resumeGame();
     }
 
     //Overrides WindowListener method
-    @SuppressWarnings("RefusedBequest") @Override
     public void windowActivated(WindowEvent e) {
         theModel.resumeGame();
     }

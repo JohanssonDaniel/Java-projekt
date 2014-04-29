@@ -7,10 +7,9 @@ package superimposiblegame;
 public final class MVCGame {
     private MVCGame() {}
 
-    @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public static void main(String[] args) {
 
-	//We dont need to use it as a variable, hence the SuppressWarnings.
+	//We dont need to use it as a variable, we just start the game. Hence the warning "new GameController() is ignored"
 	new GameController();
     }
 }

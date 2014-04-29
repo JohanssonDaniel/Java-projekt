@@ -67,7 +67,6 @@ public class GameView extends JFrame {
     }
 
     //Adds KeyListener, overrides synchronized method.
-    @SuppressWarnings("RefusedBequest")
     @Override public synchronized void addKeyListener(KeyListener keyListener){
         gamePanel.addKeyListener(keyListener);
     }
