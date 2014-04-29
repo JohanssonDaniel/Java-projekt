@@ -90,6 +90,7 @@ public class GameController extends WindowAdapter implements BoardListener {
         }
         //resetCounter++;
         theModel.addResetCounter();
+	theModel.startGame();
     }
 
     // GAMEVIEW USE THESE
