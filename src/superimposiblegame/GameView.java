@@ -68,7 +68,8 @@ public class GameView extends JFrame {
 
     //Adds KeyListener, overrides synchronized method.
     @Override public synchronized void addKeyListener(KeyListener keyListener){
-        gamePanel.addKeyListener(keyListener);
+	super.addKeyListener(keyListener);
+	gamePanel.addKeyListener(keyListener);
     }
 
     /**

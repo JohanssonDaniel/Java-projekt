@@ -24,6 +24,7 @@ public class GameController extends WindowAdapter implements BoardListener {
 	    //Overrides method
 	    @Override
 	    public void keyPressed(KeyEvent e) {
+		super.keyPressed(e);
                 testKey(e.getKeyCode());
             }
         });
@@ -154,23 +155,27 @@ public class GameController extends WindowAdapter implements BoardListener {
         gameRender();
         paintScreen();
     }
-    //Overrides WindowListener method
+    // Overrides WindowListener method
     public void windowClosing(WindowEvent e) {
+	super.windowClosing(e);
         theModel.stopGame();
     }
 
     //Overrides WindowListener method
     public void windowIconified(WindowEvent e) {
+	super.windowIconified(e);
         theModel.pauseGame();
     }
 
     //Overrides WindowListener method
     public void windowDeiconified(WindowEvent e) {
+	super.windowDeiconified(e);
         theModel.resumeGame();
     }
 
     //Overrides WindowListener method
     public void windowActivated(WindowEvent e) {
+	super.windowActivated(e);
         theModel.resumeGame();
     }
 
