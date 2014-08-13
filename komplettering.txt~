@@ -97,7 +97,7 @@ vara bättre att helt enkelt göra
 och låta runIntersect() ta fram de värden som behövs.  Och motsvarande
 för runDraw().
 
-    KOMMENTAR: Här har vi gjort precis som du beskrivit och vi har lagt till spelaren storlek eftersom vi inte antar att spelaren storlek är samma som varje hinder. Därmed ser det ut så här nu  "obstacle.intersect(nextPlayerX, nextPlayerY, playerWidth, playerHeight)" i klassen BoardModel rad 154.
+    KOMMENTAR: Här har vi gjort precis som du beskrivit och vi har lagt till spelaren storlek eftersom vi inte antar att spelaren storlek är samma som varje hinder. Därmed ser det ut så här nu  "obstacle.intersect(nextPlayerX, nextPlayerY, playerWidth, playerHeight)"
 
 Jag skulle också föredra att kalla metoderna draw() och intersect()
 istället för run...().  Anledningen är att vi inte behöver avslöja för
