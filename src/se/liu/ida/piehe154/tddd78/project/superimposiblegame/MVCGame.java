@@ -1,5 +1,7 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame;
 
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.GameController;
+
 /**
  * Created by pierre on 4/7/14.
  */
