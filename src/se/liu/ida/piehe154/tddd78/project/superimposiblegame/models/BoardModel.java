@@ -4,6 +4,9 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.OvalShape;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.SquareShape;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.TriangleShape;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,8 +24,12 @@ public class BoardModel {
 
     private final static int BRICK_SIZE = Obstacle.SIZE;
     private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 10; // how many pixels the bricks move to the right every update
+    private final static char SQUARE = 'x';
+    private final static char OVAL = 'o';
+    private final static char TRIANGLE = 't';
 
     private final int heightOffset;
+    private BufferedReader map = null;
 
     public BoardModel(int pixelWidth, int pixelHeight) {
         this.pixelWidth = pixelWidth;
@@ -44,6 +51,37 @@ public class BoardModel {
 
     public void createEnemies() {
 
+        String thisLine = null;
+        String mapUrl = "maps/map.txt";
+        File inFile = new File(mapUrl);
+        // open input stream test.txt for reading purpose.
+
+        char brick;
+        Integer pointX = 600;
+
+        try{
+            BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+            while ((thisLine = br.readLine()) != null) {
+                for (int x = 0; x < thisLine.length(); x++) {
+                    brick = thisLine.charAt(x);
+                    if (brick == SQUARE) {
+                        bricks.add(new Obstacle(pointX, heightOffset - (x*BRICK_SIZE), new SquareShape()));
+                    } else if (brick == OVAL) {
+                        bricks.add(new Obstacle(pointX, heightOffset - (x*BRICK_SIZE), new OvalShape()));
+                    }
+                    else if (brick == TRIANGLE) {
+                        bricks.add(new Obstacle(pointX, heightOffset - (x*BRICK_SIZE), new TriangleShape()));
+                    }
+                }
+                pointX += BRICK_SIZE;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+/*
+    public void createEnemies() {
+        mapInput();
         bricks.add(new Obstacle(400, heightOffset - BRICK_SIZE, new OvalShape()));
         bricks.add(new Obstacle(500, heightOffset - BRICK_SIZE, new TriangleShape()));
         bricks.add(new Obstacle(700, heightOffset - BRICK_SIZE, new SquareShape()));
@@ -92,7 +130,7 @@ public class BoardModel {
         bricks.add(new Obstacle(2400, heightOffset - BRICK_SIZE, new SquareShape()));
 
     }
-
+*/
     /**
      * adds squareObstacles to the board which is later seen as floor by the player
      */
