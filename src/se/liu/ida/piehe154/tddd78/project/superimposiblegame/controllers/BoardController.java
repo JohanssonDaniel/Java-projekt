@@ -21,9 +21,14 @@ public class BoardController {
     private List<BoardListener> boardListeners = new ArrayList<BoardListener>();
 
     public BoardController() {
-        this.theModel.createEnemies();
+    }
+
+    public void initMap(String map) {
+
+        this.theModel.createEnemies(map);
         this.theModel.createFloor();
         this.theModel.seperateEnemies();
+        notifyListeners();
     }
 
     public void addBoardListener(BoardListener bl) {

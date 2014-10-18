@@ -6,6 +6,7 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.GameView;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 
 /**
  * The GameController is the controller that communicates the inforamtion from the Board and Player to the GameView and GameModel
@@ -17,24 +18,57 @@ public class GameController extends WindowAdapter implements BoardListener {
     private PlayerController playerController;
     private BoardController boardController;
 
+    private String choosenMap;
+
+    public enum STATE {
+        MAIN_MENU,
+        GAME
+    };
+
+    public STATE State = STATE.GAME;
+
     public GameController() {
-        this.boardController = new BoardController();
-        this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
-
-        boardController.addBoardListener(this);
-        boardController.notifyListeners();
-
-        theView.addKeyListener(new KeyAdapter() {
-	    //Overrides method
-	    @Override
-	    public void keyPressed(KeyEvent e) {
-		super.keyPressed(e);
-                testKey(e.getKeyCode());
-            }
-        });
+        chooseMap();
 
         theView.addWindowListener(this);
         theModel.startGame();
+    }
+
+    public boolean gameState() {
+        return State == STATE.GAME;
+    }
+
+    private void chooseMap() {
+        this.boardController = new BoardController();
+        this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
+
+        choosenMap = "map";
+        boardController.initMap(choosenMap);
+
+        boardController.addBoardListener(this);
+        boardController.notifyListeners(); //BEHÖVER VI DENNA?
+
+        //final File folder = new File("maps");
+        //listFilesForFolder(folder);
+
+        theView.addKeyListener(new KeyAdapter() {
+            //Overrides method
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                testKey(e.getKeyCode());
+            }
+        });
+    }
+
+    public void listFilesForFolder(final File folder) {
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                listFilesForFolder(fileEntry);
+            } else {
+                System.out.println(fileEntry.getName());
+            }
+        }
     }
 
     /**
@@ -42,42 +76,45 @@ public class GameController extends WindowAdapter implements BoardListener {
      * @param keyCode Input keyCode
      */
     private void testKey(int keyCode) {
-        if (keyCode == KeyEvent.VK_M){
-            if (theModel.isShowMenu()){
-                //isPaused = false;
-                //showMenu = false;
-                theModel.setPaused(false);
-                theModel.setShowMenu(false);
+            if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menu
+                if (theModel.isShowMenu()){
+                    //isPaused = false;
+                    //showMenu = false;
+                    theModel.setPaused(false);
+                    theModel.setShowMenu(false);
+                }
+                else{
+                    //isPaused = true;
+                    //showMenu = true;
+                    theModel.setPaused(true);
+                    theModel.setShowMenu(true);
+                    boardController.notifyListeners(); //So we see the menu
+                }
             }
-            else{
-                //isPaused = true;
-                //showMenu = true;
-                theModel.setPaused(true);
-                theModel.setShowMenu(true);
-                boardController.notifyListeners(); //So we see the menu
+            else if (keyCode == KeyEvent.VK_ESCAPE) { //Quit game
+                theModel.stopGame();
             }
-        }
-        else if (keyCode == KeyEvent.VK_ESCAPE) {
-            theModel.stopGame();
-        }
-        else if (keyCode == KeyEvent.VK_P){
-            if (theModel.isPaused()){
-                //isPaused = false;
-                theModel.setPaused(false);
+            else if (keyCode == KeyEvent.VK_P){ //Pauses/resumes the game
+                if (theModel.isPaused()){
+                    //isPaused = false;
+                    theModel.setPaused(false);
+                }
+                else {
+                    theModel.pauseGame();
+                    boardController.notifyListeners();
+                }
             }
-            else {
-                theModel.pauseGame();
-                boardController.notifyListeners();
+            else if (keyCode == KeyEvent.VK_C) {
+                this.State = STATE.MAIN_MENU;
             }
-        }
-        else if (keyCode == KeyEvent.VK_R){
-            resetGame();
-        }
-        if (!theModel.isPaused() && !theModel.isGameOver()){
-            if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
-                playerController.jump();
+            else if (keyCode == KeyEvent.VK_R){ // Restarts the game
+                resetGame();
             }
-        }
+            if (!theModel.isPaused() && !theModel.isGameOver()){
+                if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
+                    playerController.jump();
+                }
+            }
     }
 
     /**
@@ -86,6 +123,7 @@ public class GameController extends WindowAdapter implements BoardListener {
     private void resetGame() {
         boardController = new BoardController();
         boardController.addBoardListener(this);
+        boardController.initMap(choosenMap);
 
         //int START_Y_POSITION = boardController.getFloor();
         playerController = new PlayerController(boardController);
@@ -95,7 +133,7 @@ public class GameController extends WindowAdapter implements BoardListener {
         }
         //resetCounter++;
         theModel.addResetCounter();
-	theModel.startGame();
+	    theModel.startGame();
     }
 
     // GAMEVIEW USE THESE

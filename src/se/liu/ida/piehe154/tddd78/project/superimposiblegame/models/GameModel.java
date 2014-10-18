@@ -62,7 +62,7 @@ public class GameModel implements Runnable {
     }
 
     /**
-     * Statrs the run thread (method)
+     * Starts the run thread (method)
      */
     public void startGame()
     {//Creates an new animator thread and then starts it
@@ -89,7 +89,8 @@ public class GameModel implements Runnable {
     // called when the JFrame is closing
     { running = false; }
 
-    @SuppressWarnings("SuppressionAnnotation") public void run() {
+    @SuppressWarnings("SuppressionAnnotation")
+    public void run() {
 
         running = true;
         startMenu();
@@ -115,7 +116,7 @@ public class GameModel implements Runnable {
      * boardChanged is used to show the start menu at the start of the game
      */
 
-    private void startMenu(){
+    public void startMenu(){
         try {
             Thread.sleep(LOAD_BEFORE_START_MENU_MS);
             theController.boardChanged();
@@ -129,7 +130,7 @@ public class GameModel implements Runnable {
      * If the player will crash in this update which would mean that it is gameover
      */
     private void gameUpdate(){
-        if(!gameOver && !isPaused) {
+        if(!gameOver && !isPaused && theController.gameState()) {
             if (theController.getPlayerWillCollider()) {
                 gameOver = true;
             }

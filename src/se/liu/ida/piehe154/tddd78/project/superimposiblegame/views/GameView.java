@@ -51,13 +51,20 @@ public class GameView extends JFrame {
         gamePanel.requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
         loadImages();
         doubleBufferedImage = null;
-
         resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
+
         container.add(gamePanel, "Center");
         //resetCounter = 0;
         setResizable(false);
         setVisible(true);
         pack();
+    }
+
+    public void renderMainMenu(Graphics g){
+        Font headFont = new Font("arial", Font.BOLD, 50);
+        g.setFont(headFont);
+        g.setColor(Color.black);
+        g.drawString("Super Impossible Game", PIXEL_WIDTH/2, 100);
     }
 
     public static int getPixelHeight() {
@@ -70,8 +77,8 @@ public class GameView extends JFrame {
 
     //Adds KeyListener, overrides synchronized method.
     @Override public synchronized void addKeyListener(KeyListener keyListener){
-	super.addKeyListener(keyListener);
-	gamePanel.addKeyListener(keyListener);
+        super.addKeyListener(keyListener);
+        gamePanel.addKeyListener(keyListener);
     }
 
     /**
@@ -80,37 +87,42 @@ public class GameView extends JFrame {
     private void loadImages() {
 
         try {
-	    String menuImg = "altmenu.png";
-	    String gameOverImg = "altover.png";
+            String menuImg = "altmenu.png";
+            String gameOverImg = "altover.png";
 
-	    menuImage = ImageIO.read(new File(menuImg));
+            menuImage = ImageIO.read(new File(menuImg));
             gameOverImage = ImageIO.read(new File(gameOverImg));
 
-        }   catch (IOException ex){
+        } catch (IOException ex){
             System.out.println("Error: " + ex);
         }
     }
 
-    /**
-     * gets the rendered images from the contoller and combindes them to one rendered image
-     */
-    public void gameRender()
-    {//Creates the image that is later printed out
+
+    public void initRender() {
         if (doubleBufferedImage == null){
             doubleBufferedImage = createImage(PIXEL_WIDTH, PIXEL_HEIGHT);
             if (doubleBufferedImage == null) {
                 System.out.println("doubleBufferedImage is null");
                 return;
             }
-            else
+            else {
                 doubleBufferedGraphic = doubleBufferedImage.getGraphics();
+            }
         }
         doubleBufferedGraphic.setColor(Color.white);
         doubleBufferedGraphic.fillRect(0, 0, PIXEL_WIDTH, PIXEL_HEIGHT);
-
+    }
+    /**
+     * gets the rendered images from the contoller and combindes them to one rendered image
+     */
+    public void gameRender()
+    {//Creates the image that is later printed out
+        initRender();
         gameController.boardDisplay(doubleBufferedGraphic);
         gameController.playerDraw(doubleBufferedGraphic);
         showResets(doubleBufferedGraphic);
+        //renderMainMenu(doubleBufferedGraphic);
 
         if (gameController.isGameOver()){
             showGameOver(doubleBufferedGraphic);

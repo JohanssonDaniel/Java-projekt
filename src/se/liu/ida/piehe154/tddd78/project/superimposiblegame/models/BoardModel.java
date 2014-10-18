@@ -6,7 +6,6 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.TriangleShape
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +28,6 @@ public class BoardModel {
     private final static char TRIANGLE = 't';
 
     private final int heightOffset;
-    private BufferedReader map = null;
 
     public BoardModel(int pixelWidth, int pixelHeight) {
         this.pixelWidth = pixelWidth;
@@ -38,6 +36,7 @@ public class BoardModel {
         bricks = new ArrayList<Obstacle>();
         brickEnemies = new ArrayList<Obstacle>();
         heightOffset = this.pixelHeight - BRICK_SIZE; // Moves the coords for the bricks one brick height up
+
     }
 
 
@@ -49,88 +48,43 @@ public class BoardModel {
      * Hardcoded level (hence the "Magic Number" warning), every row is an obstacle that is added to the board
      */
 
-    public void createEnemies() {
+    public void createEnemies(String mapName) {
 
-        String thisLine = null;
-        String mapUrl = "maps/map.txt";
+        String thisLine;
+        String mapUrl = "maps/" + mapName + ".txt";
         File inFile = new File(mapUrl);
         // open input stream test.txt for reading purpose.
 
         char brick;
         Integer pointX = 600;
+        ArrayList<String> mapLines = new ArrayList<String>();
 
         try{
             BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+
             while ((thisLine = br.readLine()) != null) {
-                for (int x = 0; x < thisLine.length(); x++) {
-                    brick = thisLine.charAt(x);
-                    if (brick == SQUARE) {
-                        bricks.add(new Obstacle(pointX, heightOffset - (x*BRICK_SIZE), new SquareShape()));
-                    } else if (brick == OVAL) {
-                        bricks.add(new Obstacle(pointX, heightOffset - (x*BRICK_SIZE), new OvalShape()));
-                    }
-                    else if (brick == TRIANGLE) {
-                        bricks.add(new Obstacle(pointX, heightOffset - (x*BRICK_SIZE), new TriangleShape()));
-                    }
-                }
-                pointX += BRICK_SIZE;
+                mapLines.add(thisLine);
             }
+
         }catch(Exception e){
             e.printStackTrace();
         }
+        for (int n =0; n < mapLines.size(); n++) {
+            thisLine = mapLines.get(n);
+            for (int x = 0; x < thisLine.length(); x++) {
+                brick = thisLine.charAt(x);
+                if (brick == SQUARE) {
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new SquareShape())); //(x+1) To get the Obstacle above the floor
+                } else if (brick == OVAL) {
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new OvalShape()));
+                } else if (brick == TRIANGLE) {
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new TriangleShape()));
+                }
+            }
+            pointX += BRICK_SIZE;
+        }
     }
-/*
-    public void createEnemies() {
-        mapInput();
-        bricks.add(new Obstacle(400, heightOffset - BRICK_SIZE, new OvalShape()));
-        bricks.add(new Obstacle(500, heightOffset - BRICK_SIZE, new TriangleShape()));
-        bricks.add(new Obstacle(700, heightOffset - BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(730, heightOffset - BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(800, heightOffset - BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(830, heightOffset - BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(860, heightOffset - BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(890, heightOffset - 2* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(920, heightOffset - 2* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(950, heightOffset - 2* BRICK_SIZE, new SquareShape()));
 
-        bricks.add(new Obstacle(1010, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        //bricks.add(new Brick(1040, heightOffset - 3*BRICK_SIZE));
-        bricks.add(new Obstacle(1080, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1150, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1220, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1290, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1360, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-
-        bricks.add(new Obstacle(1430, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1500, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1570, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-
-        bricks.add(new Obstacle(1640, heightOffset - 4* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1710, heightOffset - 4* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1780, heightOffset - 4* BRICK_SIZE, new SquareShape()));
-
-        bricks.add(new Obstacle(1840, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1900, heightOffset - 2* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(1960, heightOffset - BRICK_SIZE, new SquareShape()));
-
-
-        bricks.add(new Obstacle(2000, heightOffset - BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2030, heightOffset - 2* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2060, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2090, heightOffset - 4* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2120, heightOffset - 5* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2150, heightOffset - 6* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2180, heightOffset - 7* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2210, heightOffset - 8* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2240, heightOffset - 9* BRICK_SIZE, new SquareShape()));
-
-        bricks.add(new Obstacle(2300, heightOffset - 6* BRICK_SIZE, new SquareShape()));
-        bricks.add(new Obstacle(2360, heightOffset - 3* BRICK_SIZE, new SquareShape()));
-
-        bricks.add(new Obstacle(2400, heightOffset - BRICK_SIZE, new SquareShape()));
-
-    }
-*/
     /**
      * adds squareObstacles to the board which is later seen as floor by the player
      */
@@ -190,12 +144,12 @@ public class BoardModel {
     public boolean willCollide(int nextPlayerX, int nextPlayerY, int playerWidth, int playerHeight){
 	int nextPlayerXWidth = nextPlayerX + BRICK_SIZE;
         for (Obstacle obstacle : brickEnemies){
-	    int nextObstacleXWidth = obstacle.getPositionX() + BRICK_SIZE;
-	    if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position
-		//if (obstacle.intersects(nextPlayerX, nextPlayerY)) {
-        if (obstacle.intersect(nextPlayerX, nextPlayerY, playerWidth, playerHeight) )
-		    return true;
-	    }
+            int nextObstacleXWidth = obstacle.getPositionX() + BRICK_SIZE;
+            if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position
+                //if (obstacle.intersects(nextPlayerX, nextPlayerY)) {
+                if (obstacle.intersect(nextPlayerX, nextPlayerY, playerWidth, playerHeight) )
+                    return true;
+            }
         }
         return false;
     }
