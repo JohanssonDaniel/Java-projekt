@@ -19,15 +19,19 @@ public class GameModel implements Runnable {
     private volatile boolean gameOver = false;
     private volatile boolean isPaused = false;
     private boolean showMenu;
+    private boolean showMapChooser;
     private int resetCounter;
 
     public GameModel(GameController theController) {
         this.theController = theController;
         animator = null;
         isPaused = true;
-        showMenu = true;
+        showMapChooser = true;
+        showMenu = false;
         resetCounter = 0;
     }
+
+    public void setShowMapChooser(boolean showMapChooser) { this.showMapChooser = showMapChooser; }
 
     public void setShowMenu(boolean showMenu) {
         this.showMenu = showMenu;
@@ -48,6 +52,8 @@ public class GameModel implements Runnable {
     public boolean isShowMenu() {
         return showMenu;
     }
+
+    public boolean isShowMapChooser() { return showMapChooser; }
 
     public boolean isGameOver() {
         return gameOver;
@@ -72,11 +78,11 @@ public class GameModel implements Runnable {
         }
     }
 
-    public void resumeGame()
-    // called when the JFrame is activated / deiconified
-    { if (!showMenu) {
-        isPaused = false;
-    }
+    public void resumeGame() {
+        // called when the JFrame is activated / deiconified
+         if (!showMenu) {
+            isPaused = false;
+        }
     }
 
 
@@ -101,9 +107,9 @@ public class GameModel implements Runnable {
             //theController.paintScreen();
 
             try {
-		//Thread sleeps every 20 ms
-		//noinspection BusyWait
-		Thread.sleep(RUN_SLEEP_MS);
+                //Thread sleeps every 20 ms
+                //noinspection BusyWait
+                Thread.sleep(RUN_SLEEP_MS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -126,10 +132,11 @@ public class GameModel implements Runnable {
     }
 
     /**
-     * Asks the GameController ro ask the other contollers to update themselves
-     * If the player will crash in this update which would mean that it is gameover
+     * Asks the GameController to ask the other contollers to update themselves
+     * If the player will crash in this update would mean that it is gameover
      */
     private void gameUpdate(){
+        if (theController.hasPlayerWonTheGame()) setGameOver(true);
         if(!gameOver && !isPaused && theController.gameState()) {
             if (theController.getPlayerWillCollider()) {
                 gameOver = true;

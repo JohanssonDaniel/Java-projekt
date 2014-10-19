@@ -1,3 +1,39 @@
+$$$$$$$$$$$$$$$$$$$$$$$$$ KOMPLETTERING 2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+Examinatorns kommentarer:
+--------------------------------------------------
+
+Såvitt jag kan se har alla problem vi beskrev fixats utom ett:
+"Projektet har dessutom inte ännu nått den nödvändiga omfattningen,
+speciellt med tanke på att vissa delar av koden kan förkortas och
+förenklas".  Det gäller fortfarande, och ni behöver fortfarande
+behöver utöka ert projekt en del.
+
+Vi baserar så klart inte bedömningen direkt på kodrader, men man kan
+ändå göra lite statistik över detta för att få en vink om hur
+projekten brukar se ut.  Då har vi sett att de minsta godkända
+projekten av normal "komplexitet" brukar vara cirka 1000 rader *kod*
+(inte inräknat kommentarer och tomrader).  Ert projekt har 710 rader,
+och eftersom ni siktar på en femma är omfattningskraven högre.
+
+I och för sig är det så att vissa projekt är väldigt varierade och
+komplexa för sin storlek, och kan klara en trea på mindre än detta och
+en femma på bara lite över 1000 rader kod.  Men ni har en hel del
+enklare kod (getters, metoder som skickar vidare anrop till någon
+annan, osv) och ligger mer på en "normal" nivå i kodkomplexitet.
+Absolut inget fel med detta!  Det gör helt enkelt att projektet, när
+det nått lagom omfattning, antagligen kommer att ha fler rader kod än
+vissa väldigt "täta" projekt.
+
+    KOMMENTARER:
+
+Vi har nu implementerat så att vi läser in banorna ifrån textfiler
+ifrån katalogen maps, nu kan man alltså välja mellan fler banor att
+spela.
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$ KOMPLETTERING 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 Examinatorns kommentarer:
 --------------------------------------------------
 

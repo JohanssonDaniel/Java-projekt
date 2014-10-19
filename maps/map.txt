@@ -1,6 +1,2 @@
-o
-oo
-ooo
-ooo
-oo
-ott
+s
+t

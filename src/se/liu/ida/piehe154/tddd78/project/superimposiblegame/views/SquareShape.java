@@ -11,7 +11,6 @@ import java.awt.*;
  */
 public class SquareShape implements ObstacleShape
 {
-
     @Override
     public void draw(Graphics g, int x, int y, int width, int height) {
         g.setColor(Color.black);

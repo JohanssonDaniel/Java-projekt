@@ -25,7 +25,7 @@ public class GameController extends WindowAdapter implements BoardListener {
         GAME
     };
 
-    public STATE State = STATE.GAME;
+    public STATE State = STATE.MAIN_MENU;
 
     public GameController() {
         chooseMap();
@@ -41,9 +41,6 @@ public class GameController extends WindowAdapter implements BoardListener {
     private void chooseMap() {
         this.boardController = new BoardController();
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
-
-        choosenMap = "map";
-        boardController.initMap(choosenMap);
 
         boardController.addBoardListener(this);
         boardController.notifyListeners(); //BEHÖVER VI DENNA?
@@ -61,6 +58,7 @@ public class GameController extends WindowAdapter implements BoardListener {
         });
     }
 
+    //TODO: Möjligtvis kan vi läsa in alla .txt filer och sedan väljer användaren vilken bana den vill köra.
     public void listFilesForFolder(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
@@ -76,6 +74,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      * @param keyCode Input keyCode
      */
     private void testKey(int keyCode) {
+        if (gameState()) {
             if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menu
                 if (theModel.isShowMenu()){
                     //isPaused = false;
@@ -115,6 +114,23 @@ public class GameController extends WindowAdapter implements BoardListener {
                     playerController.jump();
                 }
             }
+        } else {
+            if (keyCode == KeyEvent.VK_1){
+                choosenMap = "map";
+                boardController.initMap(choosenMap);
+                theModel.setShowMapChooser(false);
+                theModel.setShowMenu(true);
+                this.State = STATE.GAME;
+                boardController.notifyListeners();
+            } else if (keyCode == KeyEvent.VK_2) {
+                choosenMap = "diehard";
+                boardController.initMap(choosenMap);
+                theModel.setShowMapChooser(false);
+                theModel.setShowMenu(true);
+                this.State = STATE.GAME;
+                boardController.notifyListeners();
+            }
+        }
     }
 
     /**
@@ -146,8 +162,16 @@ public class GameController extends WindowAdapter implements BoardListener {
         return theModel.isShowMenu();
     }
 
+    public boolean isShowMapChooser(){
+        return theModel.isShowMapChooser();
+    }
+
     public int getResetCounter(){
         return theModel.getResetCounter();
+    }
+
+    public boolean hasPlayerWonTheGame() {
+        return boardController.playerWonTheGame();
     }
 
     // GAMEMODEL USE THESE
@@ -156,6 +180,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      * Gets the rendered images from the other controllers and the GameModel so that the GameView can render them together
      * @param g Graphic paramater
      */
+
     public void playerDraw(Graphics g) {
         playerController.draw(g);
     }

@@ -41,6 +41,10 @@ public class BoardController {
         }
     }
 
+    public boolean playerWonTheGame() {
+        return theModel.player_won_the_game;
+    }
+
     public void moveEnemies(){
         theModel.moveEnemiesCloser();
         notifyListeners();

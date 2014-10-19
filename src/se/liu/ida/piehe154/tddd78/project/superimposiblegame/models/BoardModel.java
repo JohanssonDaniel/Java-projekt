@@ -27,6 +27,8 @@ public class BoardModel {
     private final static char OVAL = 'o';
     private final static char TRIANGLE = 't';
 
+    public boolean player_won_the_game = false;
+
     private final int heightOffset;
 
     public BoardModel(int pixelWidth, int pixelHeight) {
@@ -74,11 +76,11 @@ public class BoardModel {
             for (int x = 0; x < thisLine.length(); x++) {
                 brick = thisLine.charAt(x);
                 if (brick == SQUARE) {
-                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new SquareShape())); //(x+1) To get the Obstacle above the floor
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new SquareShape(), new SquareIntersect())); //(x+1) To get the Obstacle above the floor
                 } else if (brick == OVAL) {
-                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new OvalShape()));
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new OvalShape(), new SquareIntersect()));
                 } else if (brick == TRIANGLE) {
-                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new TriangleShape()));
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new TriangleShape(), new TriangleIntersect()));
                 }
             }
             pointX += BRICK_SIZE;
@@ -90,7 +92,7 @@ public class BoardModel {
      */
     public void createFloor(){
         for (int i = 0; i <= pixelWidth; i+= BRICK_SIZE){
-            bricks.add(new Obstacle(i, heightOffset, new SquareShape()));
+            bricks.add(new Obstacle(i, heightOffset, new SquareShape(), new SquareIntersect()));
         }
     }
 
@@ -109,17 +111,21 @@ public class BoardModel {
      * Moves the obstacles on tick closer to the player each update, this gives the illusion that it is the player that moves
      */
     public void moveEnemiesCloser() {
-        Iterator<Obstacle> brickIterator = brickEnemies.iterator();
+        if (!brickEnemies.isEmpty()) {
+            Iterator<Obstacle> brickIterator = brickEnemies.iterator();
 
-        while (brickIterator.hasNext()) {
-            Obstacle brick = brickIterator.next();
-            int newPositionX = brick.getPositionX() - PIXELS_PER_UPDATE;
-            if (newPositionX > -BRICK_SIZE) {
-                brick.setPositionX(newPositionX);
-            } else {
-                brickIterator.remove();
-                bricks.remove(brick);
+            while (brickIterator.hasNext()) {
+                Obstacle brick = brickIterator.next();
+                int newPositionX = brick.getPositionX() - PIXELS_PER_UPDATE;
+                if (newPositionX > -BRICK_SIZE) {
+                    brick.setPositionX(newPositionX);
+                } else {
+                    brickIterator.remove();
+                    bricks.remove(brick);
+                }
             }
+        } else {
+            player_won_the_game = true;
         }
     }
 

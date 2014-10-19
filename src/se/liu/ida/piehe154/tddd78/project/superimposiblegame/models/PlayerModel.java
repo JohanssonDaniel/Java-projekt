@@ -71,8 +71,8 @@ public class PlayerModel {
      */
     private void updateRising() {
 
-	int nextPlayerPositionY = playerPositionY;
- 	int nextPlayerPositionX = playerPositionX + horizontalStep;
+        int nextPlayerPositionY = playerPositionY;
+        int nextPlayerPositionX = playerPositionX + horizontalStep;
 
         if (upCount == MAX_UP_COUNT) {
             playerState = State.FALLING;
