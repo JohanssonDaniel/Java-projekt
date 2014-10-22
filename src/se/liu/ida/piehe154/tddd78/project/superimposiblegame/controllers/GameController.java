@@ -25,20 +25,9 @@ public class GameController extends WindowAdapter implements BoardListener {
         GAME
     };
 
-    public STATE State = STATE.MAIN_MENU;
+    public STATE State = STATE.GAME;
 
-    public GameController() {
-        chooseMap();
-
-        theView.addWindowListener(this);
-        theModel.startGame();
-    }
-
-    public boolean gameState() {
-        return State == STATE.GAME;
-    }
-
-    private void chooseMap() {
+    public GameController(String userMap) {
         this.boardController = new BoardController();
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
@@ -56,7 +45,37 @@ public class GameController extends WindowAdapter implements BoardListener {
                 testKey(e.getKeyCode());
             }
         });
+
+        choosenMap = userMap;
+        boardController.initMap(choosenMap);
+        theView.addWindowListener(this);
+        theModel.startGame();
     }
+
+
+    public boolean gameState() {
+        return State == STATE.GAME;
+    }
+
+    /*private void chooseMap() {
+        this.boardController = new BoardController();
+        this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
+
+        boardController.addBoardListener(this);
+        boardController.notifyListeners(); //BEHÖVER VI DENNA?
+
+        //final File folder = new File("maps");
+        //listFilesForFolder(folder);
+
+        theView.addKeyListener(new KeyAdapter() {
+            //Overrides method
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                testKey(e.getKeyCode());
+            }
+        });
+    }*/
 
     //TODO: Möjligtvis kan vi läsa in alla .txt filer och sedan väljer användaren vilken bana den vill köra.
     public void listFilesForFolder(final File folder) {
@@ -74,7 +93,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      * @param keyCode Input keyCode
      */
     private void testKey(int keyCode) {
-        if (gameState()) {
+        //if (gameState()) {
             if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menu
                 if (theModel.isShowMenu()){
                     //isPaused = false;
@@ -114,7 +133,7 @@ public class GameController extends WindowAdapter implements BoardListener {
                     playerController.jump();
                 }
             }
-        } else {
+        /*} else {
             if (keyCode == KeyEvent.VK_1){
                 choosenMap = "map";
                 boardController.initMap(choosenMap);
@@ -130,7 +149,7 @@ public class GameController extends WindowAdapter implements BoardListener {
                 this.State = STATE.GAME;
                 boardController.notifyListeners();
             }
-        }
+        }*/
     }
 
     /**

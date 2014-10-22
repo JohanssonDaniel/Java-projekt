@@ -26,8 +26,8 @@ public class GameModel implements Runnable {
         this.theController = theController;
         animator = null;
         isPaused = true;
-        showMapChooser = true;
-        showMenu = false;
+        showMapChooser = false;
+        showMenu = true;
         resetCounter = 0;
     }
 
