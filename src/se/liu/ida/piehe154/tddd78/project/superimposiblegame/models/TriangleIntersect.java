@@ -17,10 +17,9 @@ public class TriangleIntersect implements ObstacleIntersect {
         }
 
         //TODO: Här behövs det att fixa så den fungerar i alla lägen, har buggar i sig just nu.
-
-        if (obsLeftSide <= playerLeftSide && playerLeftSide <= obsRightSide){
-            if (obsTopSide < playerBottomSide) return true;
-        }
+        else if ((playerRightSide >= obsLeftSide && playerLeftSide < obsRightSide) && (playerBottomSide > obsTopSide && playerTopSide < obsBottomSide)) {
+	    return true;
+	}
         return false;
     }
 }

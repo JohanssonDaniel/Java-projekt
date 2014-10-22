@@ -202,8 +202,13 @@ public class GameController extends WindowAdapter implements BoardListener {
      * @return if player will collidesWith
      */
 
-    public boolean getPlayerWillCollider() {
-        return playerController.willCollide();
+    public void getPlayerWillCollide() {
+	playerController.willCollide();
+    }
+
+
+    public boolean getGameOver(){
+	return playerController.getGameOver();
     }
 
     /**

@@ -23,13 +23,15 @@ public class BoardModel {
 
     private final static int BRICK_SIZE = Obstacle.SIZE;
     private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 10; // how many pixels the bricks move to the right every update
-    private final static char SQUARE = 'x';
+    private final static char SQUARE = 's';
     private final static char OVAL = 'o';
     private final static char TRIANGLE = 't';
 
     public boolean player_won_the_game = false;
 
     private final int heightOffset;
+
+    private Obstacle currentIntersectedObstacle;
 
     public BoardModel(int pixelWidth, int pixelHeight) {
         this.pixelWidth = pixelWidth;
@@ -39,6 +41,12 @@ public class BoardModel {
         brickEnemies = new ArrayList<Obstacle>();
         heightOffset = this.pixelHeight - BRICK_SIZE; // Moves the coords for the bricks one brick height up
 
+    }
+
+
+
+    public Obstacle getCurrentIntersectedObstacle() {
+	return currentIntersectedObstacle;
     }
 
 
@@ -76,11 +84,11 @@ public class BoardModel {
             for (int x = 0; x < thisLine.length(); x++) {
                 brick = thisLine.charAt(x);
                 if (brick == SQUARE) {
-                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new SquareShape(), new SquareIntersect())); //(x+1) To get the Obstacle above the floor
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new SquareShape(), new SquareIntersect(), "square")); //(x+1) To get the Obstacle above the floor
                 } else if (brick == OVAL) {
-                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new OvalShape(), new SquareIntersect()));
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new OvalShape(), new SquareIntersect(), "oval"));
                 } else if (brick == TRIANGLE) {
-                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new TriangleShape(), new TriangleIntersect()));
+                    bricks.add(new Obstacle(pointX, heightOffset - (x+1)* BRICK_SIZE, new TriangleShape(), new TriangleIntersect(), "triangle"));
                 }
             }
             pointX += BRICK_SIZE;
@@ -92,7 +100,7 @@ public class BoardModel {
      */
     public void createFloor(){
         for (int i = 0; i <= pixelWidth; i+= BRICK_SIZE){
-            bricks.add(new Obstacle(i, heightOffset, new SquareShape(), new SquareIntersect()));
+            bricks.add(new Obstacle(i, heightOffset, new SquareShape(), new SquareIntersect(), "square"));
         }
     }
 
@@ -151,12 +159,14 @@ public class BoardModel {
 	int nextPlayerXWidth = nextPlayerX + BRICK_SIZE;
         for (Obstacle obstacle : brickEnemies){
             int nextObstacleXWidth = obstacle.getPositionX() + BRICK_SIZE;
-            if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position
-                //if (obstacle.intersects(nextPlayerX, nextPlayerY)) {
-                if (obstacle.intersect(nextPlayerX, nextPlayerY, playerWidth, playerHeight) )
-                    return true;
+            if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position {
+                if (obstacle.intersect(nextPlayerX, nextPlayerY, playerWidth, playerHeight) ) {
+		    currentIntersectedObstacle = obstacle;
+		    return true;
+		}
             }
         }
+	currentIntersectedObstacle = null;
         return false;
     }
 }

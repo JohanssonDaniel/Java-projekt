@@ -16,7 +16,7 @@ public class SquareIntersect implements ObstacleIntersect {
             return false;
         }
 
-        if ((playerRightSide >= obsLeftSide && playerLeftSide < obsRightSide) && (playerBottomSide > obsTopSide && playerTopSide < obsBottomSide)){
+        else if ((playerRightSide >= obsLeftSide && playerLeftSide < obsRightSide) && (playerBottomSide > obsTopSide && playerTopSide < obsBottomSide)){
             return true;
         }
         return false;

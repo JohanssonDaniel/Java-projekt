@@ -1,8 +1,10 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.Obstacle;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.PlayerModel;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.PlayerView;
 
+import javax.swing.plaf.nimbus.State;
 import java.awt.*;
 
 /**
@@ -15,20 +17,24 @@ public class PlayerController  {
     private PlayerModel theModel = new PlayerModel(this);
     private BoardController boardController;
 
+    public Obstacle getIntersectedObstacle(){
+	return boardController.getIntersectedObstacle();
+    }
+
     public PlayerController(BoardController boardController) {
         this.boardController = boardController;
     }
 
-    public boolean getCollide(int playerPositionY, int playerPositionX, int playerWidth, int playerHeight) {
+    public Boolean getCollide(int playerPositionY, int playerPositionX, int playerWidth, int playerHeight) {
         return boardController.collidesWith(playerPositionY, playerPositionX, playerWidth, playerHeight);
     }
 
     public boolean getWillCollide(int playerPositionX, int playerPositionY, int playerWidth, int playerHeight){
-        return boardController.willColide(playerPositionX, playerPositionY, playerWidth, playerHeight);
+        return boardController.willCollide(playerPositionX, playerPositionY, playerWidth, playerHeight);
     }
 
-    public boolean willCollide() {
-        return theModel.willCollide();
+    public void willCollide() {
+        theModel.willCollide();
     }
 
     public void jump() {
@@ -47,5 +53,9 @@ public class PlayerController  {
     public void draw(Graphics g){
         theView.draw(g, theModel.getPlayerPositionX(), theModel.getPlayerPositionY(), PlayerModel.getPlayerHeight(), PlayerModel
 		.getPlayerWidth());
+    }
+
+    public boolean getGameOver(){
+	return theModel.getGameOver();
     }
 }

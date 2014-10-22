@@ -12,6 +12,7 @@ import java.awt.*;
 public class Obstacle {
     private final Dimension size;
     private int positionX, positionY;
+    private String shapeName;
     private ObstacleShape obsView;
     private ObstacleIntersect obsIntersect;
     /**
@@ -19,12 +20,13 @@ public class Obstacle {
       */
     public static final int SIZE = 30;
 
-    protected Obstacle(int positionX, int positionY, ObstacleShape obsView, ObstacleIntersect obsIntersect) {
+    protected Obstacle(int positionX, int positionY, ObstacleShape obsView, ObstacleIntersect obsIntersect, String newShapeName) {
         this.obsView = obsView;
         this.obsIntersect = obsIntersect;
         this.positionX = positionX;
         this.positionY = positionY;
         this.size = new Dimension(SIZE,SIZE);
+	this.shapeName = newShapeName;
     }
 
     /**
@@ -50,6 +52,10 @@ public class Obstacle {
     }
     public int getPositionY() {
         return positionY;
+    }
+
+    public String getShapeName() {
+	return shapeName;
     }
 
     public Dimension getSize() { return size; }

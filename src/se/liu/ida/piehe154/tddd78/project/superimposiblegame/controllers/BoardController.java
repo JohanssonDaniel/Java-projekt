@@ -2,6 +2,7 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.BoardListener;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.BoardModel;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.Obstacle;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.BoardView;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.GameView;
 
@@ -19,6 +20,12 @@ public class BoardController {
     private BoardModel theModel = new BoardModel(GameView.getPixelWidth(), GameView.getPixelHeight());
 
     private List<BoardListener> boardListeners = new ArrayList<BoardListener>();
+
+
+    public Obstacle getIntersectedObstacle(){
+	return theModel.getCurrentIntersectedObstacle();
+    }
+
 
     public BoardController() {
     }
@@ -58,7 +65,7 @@ public class BoardController {
         return (theModel.willHitFloor(nextPlayerPositionY) || theModel.willCollide(nextPlayerPositionX, nextPlayerPositionY, playerWidth, playerHeight));
     }
 
-    public boolean willColide(int nextPlayerPositionX, int playerPositionY, int playerWidth, int playerHeight) {
+    public boolean willCollide(int nextPlayerPositionX, int playerPositionY, int playerWidth, int playerHeight) {
         return theModel.willCollide(nextPlayerPositionX, playerPositionY, playerWidth, playerHeight);
     }
 }

@@ -2,6 +2,8 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.PlayerController;
 
+import java.util.Observable;
+
 /**
  * Created by pierre on 2014-04-16.
  * Contians the information of how the player is represented in the game, it size how many updates before it's stops to jump
@@ -28,6 +30,8 @@ public class PlayerModel {
 
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
+
+    private boolean gameOver = false;
 
     public PlayerModel(PlayerController controller) { //int START_Y_POSITION
         this.theController = controller;
@@ -57,7 +61,7 @@ public class PlayerModel {
      * Updates the player based on its state
      */
     public void updatePlayer() {
-        if (playerState == State.NOT_JUMPING || playerState == State.FALLING ){
+        if (playerState == State.FALLING || playerState == State.FALLING ){
             updateFalling();
         }
         else if (playerState == State.RISING) {
@@ -105,7 +109,17 @@ public class PlayerModel {
         int nextPlayerPositionX = playerPositionX + horizontalStep;
 
         if (theController.getCollide(nextPlayerPositionY, nextPlayerPositionX, PLAYER_WIDTH, PLAYER_HEIGHT)) {
-            finishJumping();
+	    if(theController.getIntersectedObstacle() != null) {
+		String shapeName = theController.getIntersectedObstacle().getShapeName();
+		if (shapeName.equals("triangle")) {
+		    gameOver = true;
+		} else if (shapeName.equals("square")) {
+		    finishJumping();
+		} else if (shapeName.equals("oval")) {
+		    playerState = State.NOT_JUMPING;
+		    jump();
+		}
+	    }
         }
         else{
             playerPositionY = nextPlayerPositionY;
@@ -115,16 +129,15 @@ public class PlayerModel {
     }
 
     /**
-     * Checks wether the player will collidesWith with something that would end the game
+     * Checks whether the player will collidesWith with something that would end the game
      * @return if player collides
      */
-    public boolean willCollide(){
+    public void willCollide(){
 
         int nextPlayerPositionX = playerPositionX + horizontalStep;
         if (theController.getWillCollide(nextPlayerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT)){
-            return true;
+            gameOver = true;
         }
-        return false;
     }
 
     public int getPlayerPositionY() {
@@ -141,5 +154,9 @@ public class PlayerModel {
 
     public static int getPlayerWidth() {
         return PLAYER_WIDTH;
+    }
+
+    public boolean getGameOver() {
+	return gameOver;
     }
 }
