@@ -20,13 +20,6 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     private String choosenMap;
 
-    public enum STATE {
-        MAIN_MENU,
-        GAME
-    };
-
-    public STATE State = STATE.GAME;
-
     public GameController(String userMap) {
         this.boardController = new BoardController();
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
@@ -52,31 +45,6 @@ public class GameController extends WindowAdapter implements BoardListener {
         theModel.startGame();
     }
 
-
-    public boolean gameState() {
-        return State == STATE.GAME;
-    }
-
-    /*private void chooseMap() {
-        this.boardController = new BoardController();
-        this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
-
-        boardController.addBoardListener(this);
-        boardController.notifyListeners(); //BEHÖVER VI DENNA?
-
-        //final File folder = new File("maps");
-        //listFilesForFolder(folder);
-
-        theView.addKeyListener(new KeyAdapter() {
-            //Overrides method
-            @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
-                testKey(e.getKeyCode());
-            }
-        });
-    }*/
-
     //TODO: Möjligtvis kan vi läsa in alla .txt filer och sedan väljer användaren vilken bana den vill köra.
     public void listFilesForFolder(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
@@ -93,63 +61,42 @@ public class GameController extends WindowAdapter implements BoardListener {
      * @param keyCode Input keyCode
      */
     private void testKey(int keyCode) {
-        //if (gameState()) {
-            if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menu
-                if (theModel.isShowMenu()){
-                    //isPaused = false;
-                    //showMenu = false;
-                    theModel.setPaused(false);
-                    theModel.setShowMenu(false);
-                }
-                else{
-                    //isPaused = true;
-                    //showMenu = true;
-                    theModel.setPaused(true);
-                    theModel.setShowMenu(true);
-                    boardController.notifyListeners(); //So we see the menu
-                }
+        if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menu
+            if (theModel.isShowMenu()){
+                //isPaused = false;
+                //showMenu = false;
+                theModel.setPaused(false);
+                theModel.setShowMenu(false);
             }
-            else if (keyCode == KeyEvent.VK_ESCAPE) { //Quit game
-                theModel.stopGame();
-            }
-            else if (keyCode == KeyEvent.VK_P){ //Pauses/resumes the game
-                if (theModel.isPaused()){
-                    //isPaused = false;
-                    theModel.setPaused(false);
-                }
-                else {
-                    theModel.pauseGame();
-                    boardController.notifyListeners();
-                }
-            }
-            else if (keyCode == KeyEvent.VK_C) {
-                this.State = STATE.MAIN_MENU;
-            }
-            else if (keyCode == KeyEvent.VK_R){ // Restarts the game
-                resetGame();
-            }
-            if (!theModel.isPaused() && !theModel.isGameOver()){
-                if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
-                    playerController.jump();
-                }
-            }
-        /*} else {
-            if (keyCode == KeyEvent.VK_1){
-                choosenMap = "map";
-                boardController.initMap(choosenMap);
-                theModel.setShowMapChooser(false);
+            else{
+                //isPaused = true;
+                //showMenu = true;
+                theModel.setPaused(true);
                 theModel.setShowMenu(true);
-                this.State = STATE.GAME;
-                boardController.notifyListeners();
-            } else if (keyCode == KeyEvent.VK_2) {
-                choosenMap = "diehard";
-                boardController.initMap(choosenMap);
-                theModel.setShowMapChooser(false);
-                theModel.setShowMenu(true);
-                this.State = STATE.GAME;
+                boardController.notifyListeners(); //So we see the menu
+            }
+        }
+        else if (keyCode == KeyEvent.VK_ESCAPE) { //Quit game
+            theModel.stopGame();
+        }
+        else if (keyCode == KeyEvent.VK_P){ //Pauses/resumes the game
+            if (theModel.isPaused()){
+                //isPaused = false;
+                theModel.setPaused(false);
+            }
+            else {
+                theModel.pauseGame();
                 boardController.notifyListeners();
             }
-        }*/
+        }
+        else if (keyCode == KeyEvent.VK_R){ // Restarts the game
+            resetGame();
+        }
+        if (!theModel.isPaused() && !theModel.isGameOver()){
+            if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
+                playerController.jump();
+            }
+        }
     }
 
     /**
@@ -179,10 +126,6 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     public boolean isShowMenu(){
         return theModel.isShowMenu();
-    }
-
-    public boolean isShowMapChooser(){
-        return theModel.isShowMapChooser();
     }
 
     public int getResetCounter(){

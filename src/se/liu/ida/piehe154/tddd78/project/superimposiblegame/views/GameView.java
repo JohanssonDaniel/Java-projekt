@@ -34,7 +34,6 @@ public class GameView extends JFrame {
     private BufferedImage menuImage = null;
     private BufferedImage gameOverImage = null;
     private BufferedImage gameWonImage = null;
-    private BufferedImage chooseAMap = null;
 
     private Font resetFont;
     private final static int FONT_SIZE = 28;
@@ -92,12 +91,10 @@ public class GameView extends JFrame {
             String menuImg = "altmenu.png";
             String gameOverImg = "altover.png";
             String gameWonImg = "youhaswon.jpeg";
-            String chooseMap = "chooseamap.png";
 
             menuImage = ImageIO.read(new File(menuImg));
             gameOverImage = ImageIO.read(new File(gameOverImg));
             gameWonImage = ImageIO.read(new File(gameWonImg));
-            chooseAMap = ImageIO.read(new File(chooseMap));
 
         } catch (IOException ex){
             System.out.println("Error: " + ex);
@@ -135,9 +132,6 @@ public class GameView extends JFrame {
         }
         if (gameController.isShowMenu()){
             showMenu(doubleBufferedGraphic);
-        }
-        if (gameController.isShowMapChooser()) {
-            showMapChooser(doubleBufferedGraphic);
         }
         if (gameController.hasPlayerWonTheGame()) {
             showGameWon(doubleBufferedGraphic);
@@ -180,10 +174,6 @@ public class GameView extends JFrame {
      */
     private void showMenu(Graphics graphics){
         graphics.drawImage(menuImage, 0, 0, null);
-    }
-
-    private void showMapChooser(Graphics graphics){
-        graphics.drawImage(chooseAMap, 200, 200, null);
     }
 
     /**

@@ -19,19 +19,15 @@ public class GameModel implements Runnable {
     private volatile boolean gameOver = false;
     private volatile boolean isPaused = false;
     private boolean showMenu;
-    private boolean showMapChooser;
     private int resetCounter;
 
     public GameModel(GameController theController) {
         this.theController = theController;
         animator = null;
         isPaused = true;
-        showMapChooser = false;
         showMenu = true;
         resetCounter = 0;
     }
-
-    public void setShowMapChooser(boolean showMapChooser) { this.showMapChooser = showMapChooser; }
 
     public void setShowMenu(boolean showMenu) {
         this.showMenu = showMenu;
@@ -52,8 +48,6 @@ public class GameModel implements Runnable {
     public boolean isShowMenu() {
         return showMenu;
     }
-
-    public boolean isShowMapChooser() { return showMapChooser; }
 
     public boolean isGameOver() {
         return gameOver;
@@ -137,7 +131,7 @@ public class GameModel implements Runnable {
      */
     private void gameUpdate(){
         if (theController.hasPlayerWonTheGame()) setGameOver(true);
-        if(!gameOver && !isPaused && theController.gameState()) {
+        if(!gameOver && !isPaused) {
 	    theController.getPlayerWillCollide();
 	    gameOver = theController.getGameOver();
             theController.playerUpdate();
