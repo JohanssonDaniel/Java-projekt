@@ -61,7 +61,7 @@ public class PlayerModel {
      * Updates the player based on its state
      */
     public void updatePlayer() {
-        if (playerState == State.FALLING || playerState == State.FALLING ){
+        if (playerState == State.NOT_JUMPING || playerState == State.FALLING ){
             updateFalling();
         }
         else if (playerState == State.RISING) {

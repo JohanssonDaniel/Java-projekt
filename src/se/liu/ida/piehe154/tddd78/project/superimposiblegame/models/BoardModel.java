@@ -144,6 +144,7 @@ public class BoardModel {
      */
     public boolean willHitFloor(int nextPlayerPositionY) {
         if (nextPlayerPositionY >= heightOffset){
+	    currentIntersectedObstacle = new Obstacle(0,0,new SquareShape(), new SquareIntersect(), "square");
             return true;
         }
         return false;
