@@ -2,7 +2,9 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.LjudSpelare;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.PlayerController;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
 
+import java.util.HashMap;
 import java.util.Observable;
 
 /**
@@ -31,7 +33,8 @@ public class PlayerModel {
 
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
-    private final LjudSpelare JUMP_SOUND = new LjudSpelare("https://www.dropbox.com/s/6ciy39twgjaalpx/Jump4.wav?dl=1");
+    private HashMap<String, AudioPlayer> playerSFX;
+    //private final LjudSpelare JUMP_SOUND = new LjudSpelare("https://www.dropbox.com/s/6ciy39twgjaalpx/Jump4.wav?dl=1");
 
     private boolean gameOver = false;
 
@@ -46,6 +49,9 @@ public class PlayerModel {
 
         playerState = State.NOT_JUMPING;
         upCount = 0;
+
+	playerSFX = new HashMap<String, AudioPlayer>();
+	playerSFX.put("jump", new AudioPlayer("/Sound/Jump4.wav"));
     }
 
     /**
@@ -54,9 +60,10 @@ public class PlayerModel {
 
     public void jump() {
         if (playerState == State.NOT_JUMPING) {
+	    playerSFX.get("jump").play();
             playerState = State.RISING;
             upCount = 0;
-            JUMP_SOUND.play();
+            //JUMP_SOUND.play();
         }
     }
 

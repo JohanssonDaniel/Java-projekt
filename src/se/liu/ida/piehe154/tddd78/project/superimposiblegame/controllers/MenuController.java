@@ -1,6 +1,7 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Menu;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,17 +11,22 @@ import java.awt.event.ActionListener;
  */
 public class MenuController implements ActionListener{
     private Menu game;
+    private AudioPlayer bgMusic;
 
     public MenuController(Menu game) {
         this.game = game;
+	bgMusic = new AudioPlayer("/Sound/SuperNinjaAssasin.mp3");
+	bgMusic.play();
+
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() ==game.map1) {
             new GameController("map");
+	    bgMusic.stop();
         } else if (e.getSource() == game.map2) {
-            System.out.println("2");
             new GameController("diehard");
+	    bgMusic.stop();
         }
     }
 }
