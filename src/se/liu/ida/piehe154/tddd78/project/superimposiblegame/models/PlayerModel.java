@@ -1,5 +1,6 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.LjudSpelare;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.PlayerController;
 
 import java.util.Observable;
@@ -30,6 +31,7 @@ public class PlayerModel {
 
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
+    private final LjudSpelare JUMP_SOUND = new LjudSpelare("https://www.dropbox.com/s/6ciy39twgjaalpx/Jump4.wav?dl=1");
 
     private boolean gameOver = false;
 
@@ -54,6 +56,7 @@ public class PlayerModel {
         if (playerState == State.NOT_JUMPING) {
             playerState = State.RISING;
             upCount = 0;
+            JUMP_SOUND.play();
         }
     }
 

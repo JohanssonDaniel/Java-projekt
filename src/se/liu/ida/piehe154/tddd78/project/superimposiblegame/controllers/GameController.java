@@ -4,6 +4,7 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.BoardListene
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.GameModel;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.GameView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;

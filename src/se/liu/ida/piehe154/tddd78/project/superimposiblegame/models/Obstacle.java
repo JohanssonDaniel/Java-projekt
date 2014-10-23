@@ -26,7 +26,7 @@ public class Obstacle {
         this.positionX = positionX;
         this.positionY = positionY;
         this.size = new Dimension(SIZE,SIZE);
-	this.shapeName = newShapeName;
+	    this.shapeName = newShapeName;
     }
 
     /**
