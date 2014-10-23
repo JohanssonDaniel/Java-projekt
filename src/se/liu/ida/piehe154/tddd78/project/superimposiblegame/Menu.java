@@ -10,7 +10,7 @@ import java.awt.*;
  * Created by pierre on 4/7/14.
  */
 
-public class Menu extends JFrame{
+public class Menu extends JFrame {
     private JPanel gamePanel;       // This is where the game is drawn
     private MenuController menuController;
     public JButton map1 = new JButton("Map");
