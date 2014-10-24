@@ -5,7 +5,6 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.PlayerC
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
 
 import java.util.HashMap;
-import java.util.Observable;
 
 /**
  * Created by pierre on 2014-04-16.
@@ -17,10 +16,9 @@ public class PlayerModel {
     private int playerPositionY;
     private int playerPositionX;
 
+
     private enum State{NOT_JUMPING, RISING, FALLING}
     private State playerState;
-
-    private final PlayerController theController;
 
     private static final int MAX_UP_COUNT = 8;
     private int upCount;
@@ -38,8 +36,7 @@ public class PlayerModel {
 
     private boolean gameOver = false;
 
-    public PlayerModel(PlayerController controller) { //int START_Y_POSITION
-        this.theController = controller;
+    public PlayerModel() { //int START_Y_POSITION
 
         playerPositionX = PLAYER_START_POSITION_X;
         playerPositionY = PLAYER_START_POSITION_Y;
@@ -58,19 +55,18 @@ public class PlayerModel {
      * Jump changes the state of the player to jumping which will make the player rise in the nextcoming updates
      */
 
-    public void jump() {
+    /*public void jump() {
         if (playerState == State.NOT_JUMPING) {
 	    playerSFX.get("jump").play();
             playerState = State.RISING;
             upCount = 0;
-            //JUMP_SOUND.play();
         }
-    }
+    }*/
 
     /**
      * Updates the player based on its state
      */
-    public void updatePlayer() {
+    /*public void updatePlayer() {
         if (playerState == State.NOT_JUMPING || playerState == State.FALLING ){
             updateFalling();
         }
@@ -82,7 +78,7 @@ public class PlayerModel {
     /**
      * Checks wether the player has jump high enough or updates its Y position
      * If the player jumps into a an obstacle from beneath it it will crash
-     */
+     *//*
     private void updateRising() {
 
         int nextPlayerPositionY = playerPositionY;
@@ -112,7 +108,7 @@ public class PlayerModel {
 
     /**
      * Checks wether the player will fall on a object on the board
-     */
+     *//*
     private void updateFalling() {
 
         int nextPlayerPositionY = playerPositionY + verticalStep;
@@ -141,14 +137,14 @@ public class PlayerModel {
     /**
      * Checks whether the player will collidesWith with something that would end the game
      * @return if player collides
-     */
+     *//*
     public void willCollide(){
 
         int nextPlayerPositionX = playerPositionX + horizontalStep;
         if (theController.getWillCollide(nextPlayerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT)){
             gameOver = true;
         }
-    }
+    }*/
 
     public int getPlayerPositionY() {
         return playerPositionY;
@@ -158,15 +154,78 @@ public class PlayerModel {
         return playerPositionX;
     }
 
-    public static int getPlayerHeight() {
+    public int getPlayerHeight() {
         return PLAYER_HEIGHT;
     }
 
-    public static int getPlayerWidth() {
+    public int getPlayerWidth() {
         return PLAYER_WIDTH;
     }
 
+
+
+    public int getHorizontalStep() {
+	return horizontalStep;
+    }
+
+    public int getVerticalStep() {
+	return verticalStep;
+    }
+
+    public HashMap<String, AudioPlayer> getPlayerSFX() {
+	return playerSFX;
+    }
+
+    public boolean isNotJumping() {
+	return !(playerState == State.RISING);
+    }
+
+    public boolean isStationary(){
+	return playerState == State.NOT_JUMPING;
+    }
+
+    public void setPlayerPositionY(final int playerPositionY) {
+	this.playerPositionY = playerPositionY;
+    }
+
+    public void setPlayerPositionX(final int playerPositionX) {
+	this.playerPositionX = playerPositionX;
+    }
+
+    public void setUpCount(int upCount) {
+	this.upCount = upCount;
+    }
+
+    public void playJumpSound(){
+
+    }
+
+    public void setPlayerJumping() {
+	playerState = State.RISING;
+    }
+
+    public void setPlayerStopJumping(){
+	playerState = State.NOT_JUMPING;
+    }
+    public void increaseUpCount() {upCount++;}
+
     public boolean getGameOver() {
 	return gameOver;
+    }
+
+    public State getPlayerState() {
+	return playerState;
+    }
+
+    public static int getMaxUpCount() {
+	return MAX_UP_COUNT;
+    }
+
+    public boolean reachedMaxUpCount() {
+	return upCount == MAX_UP_COUNT;
+    }
+
+    public void setPlayerFalling() {
+	playerState = State.FALLING;
     }
 }

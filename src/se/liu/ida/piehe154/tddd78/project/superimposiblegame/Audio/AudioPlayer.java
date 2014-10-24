@@ -6,15 +6,16 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 /**
- * Created by DannePanne on 2014-10-23.
+ * Created by Daniel Johansson on 2014-10-23.
  */
 public class AudioPlayer
 {
     private Clip clip;
     public AudioPlayer(String s) {
 	try {
-	    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
-		    getClass().getResourceAsStream(s));
+	    AudioInputStream audioInputStream =
+		    AudioSystem.getAudioInputStream(
+		    	getClass().getResourceAsStream(s));
 	    AudioFormat baseFormat = audioInputStream.getFormat();
 	    AudioFormat decodeFormat = new AudioFormat(
 		    AudioFormat.Encoding.PCM_SIGNED,

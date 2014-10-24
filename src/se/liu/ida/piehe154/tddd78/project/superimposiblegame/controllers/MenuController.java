@@ -17,8 +17,8 @@ public class MenuController implements ActionListener{
         this.game = game;
 	bgMusic = new AudioPlayer("/Sound/SuperNinjaAssasin.mp3");
 	bgMusic.play();
-
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() ==game.map1) {

@@ -30,7 +30,7 @@ public class Obstacle {
     }
 
     /**
-     * brickWidth is the righ side of the brick
+     * brickWidth is the right side of the brick
      * brickHeight is the bottom of the brick
      *
      * the same goes for playerHeight and playerWidth )

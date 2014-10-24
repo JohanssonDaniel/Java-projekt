@@ -171,7 +171,7 @@ public class GameController extends WindowAdapter implements BoardListener {
 
 
     public boolean getGameOver(){
-	return playerController.getGameOver();
+	return playerController.isGameOver();
     }
 
     /**
