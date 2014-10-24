@@ -42,7 +42,7 @@ public class PlayerModel {
         playerPositionY = PLAYER_START_POSITION_Y;
 
         verticalStep = PLAYER_HEIGHT; //A players jump of its height each update
-        horizontalStep = PLAYER_WIDTH / 10;
+        horizontalStep = PLAYER_WIDTH / 5;
 
         playerState = State.NOT_JUMPING;
         upCount = 0;
@@ -202,6 +202,8 @@ public class PlayerModel {
 
     public void setPlayerJumping() {
 	playerState = State.RISING;
+	playerSFX.get("jump").play();
+	playerSFX.get("jump").stop();
     }
 
     public void setPlayerStopJumping(){

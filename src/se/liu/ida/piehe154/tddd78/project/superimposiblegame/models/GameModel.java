@@ -1,6 +1,16 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.GameController;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.OvalShape;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.SquareShape;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.TriangleShape;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by pierre on 2014-04-18.
@@ -130,12 +140,65 @@ public class GameModel implements Runnable {
      * If the player will crash in this update would mean that it is gameover
      */
     private void gameUpdate(){
-        if (theController.hasPlayerWonTheGame()) setGameOver(true);
+        if (theController.hasPlayerWonTheGame()){
+	    setGameOver(true);
+	    saveCompletedLevel(theController.getChoosenMap());
+	}
         if(!gameOver && !isPaused) {
 	    theController.getPlayerWillCollide();
 	    gameOver = theController.getGameOver();
             theController.playerUpdate();
             theController.boardMoveEnemies();
         }
+    }
+
+    private void saveCompletedLevel(String mapName) {
+	File file = new File("completedMaps/completed.txt");
+	try {
+	    if (!file.exists()) {
+		file.createNewFile();
+	    }
+	} catch (Exception e){
+	    e.printStackTrace();
+	}
+	String thisLine;
+	String mapUrl = "completedMaps/completed.txt";
+	boolean alreadyCompleted = false;
+	File inFile = new File(mapUrl);
+	// open input stream test.txt for reading purpose.
+
+	ArrayList<String> mapLines = new ArrayList<String>();
+
+	try {
+	    BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+
+	    while ((thisLine = br.readLine()) != null) {
+		mapLines.add(thisLine);
+	    }
+
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+	for (int n = 0; n < mapLines.size(); n++) {
+	    thisLine = mapLines.get(n);
+	    if ((thisLine.equals(mapName))) {
+		alreadyCompleted = true;
+	    }
+	}
+	if(!alreadyCompleted){
+	    addToFile(mapName, file);
+	}
+    }
+
+    private void addToFile(final String mapName, File file) {
+	try {
+	    FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(),true);
+	    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+	    bufferedWriter.write(mapName);
+	    bufferedWriter.newLine();
+	    bufferedWriter.close();
+	}catch(Exception e){
+	    e.printStackTrace();
+	}
     }
 }

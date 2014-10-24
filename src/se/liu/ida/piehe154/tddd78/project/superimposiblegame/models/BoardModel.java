@@ -22,7 +22,7 @@ public class BoardModel {
     private final ArrayList<Obstacle> brickEnemies;
 
     private final static int BRICK_SIZE = Obstacle.SIZE;
-    private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 10; // how many pixels the bricks move to the right every update
+    private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 5; // how many pixels the bricks move to the right every update
     private final static char SQUARE = 's';
     private final static char OVAL = 'o';
     private final static char TRIANGLE = 't';

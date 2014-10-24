@@ -214,4 +214,7 @@ public class GameController extends WindowAdapter implements BoardListener {
         theModel.resumeGame();
     }
 
+    public String getChoosenMap() {
+	return choosenMap;
+    }
 }
