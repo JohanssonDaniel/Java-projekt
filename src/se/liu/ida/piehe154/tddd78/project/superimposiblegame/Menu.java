@@ -7,6 +7,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,7 @@ public class Menu extends JFrame {
     public JLabel welcome = new JLabel("Super Impossible Game");
     public JLabel description = new JLabel("please choose a map");
 
-
+    private static ArrayList<JButton> buttons = new ArrayList<JButton>();
     private static ArrayList<String> completedMaps = new ArrayList<String>();
     private static ArrayList<String> allMaps = new ArrayList<String>();
 
@@ -69,6 +70,7 @@ public class Menu extends JFrame {
             mapButton.addActionListener(menuController);
             mapButton.setBorder(orangeBorder);
             add(mapButton);
+            buttons.add(n, mapButton);
         }
 
         setSize(800, 800);
@@ -93,7 +95,7 @@ public class Menu extends JFrame {
 
     }
 
-    public static void findAllMaps(final File folder) {
+    private static void findAllMaps(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
                 findAllMaps(fileEntry);
@@ -104,6 +106,17 @@ public class Menu extends JFrame {
                     System.out.println(name.substring(0,indexOfFileExtension));
                     allMaps.add(name.substring(0,indexOfFileExtension));
                 }
+            }
+        }
+    }
+
+    public void updateButtons() {
+        readCompletedMaps();
+        for (int n = 0; n < buttons.size(); n++) {
+            JButton button = buttons.get(n);
+            String mapName = button.getText();
+            if (completedMaps.contains(mapName)){
+                button.setBackground(Color.GREEN);
             }
         }
     }

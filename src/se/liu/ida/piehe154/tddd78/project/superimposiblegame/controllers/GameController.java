@@ -3,6 +3,7 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.BoardListener;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.GameModel;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.GameView;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Menu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,10 +19,12 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     private PlayerController playerController;
     private BoardController boardController;
+    private Menu menu;
 
     private String choosenMap;
 
-    public GameController(String userMap) {
+    public GameController(String userMap, Menu menu) {
+        this.menu = menu;
         this.boardController = new BoardController(theView.getWidth(), theView.getPixelHeight());
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
@@ -158,6 +161,10 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     public void paintScreen() {
         theView.paintScreen();
+    }
+
+    public void updateMenu() {
+        menu.updateButtons();
     }
 
     /**

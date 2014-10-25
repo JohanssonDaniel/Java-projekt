@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
  * Created by pierre on 2014-10-22.
  */
 public class MenuController implements ActionListener{
-    private Menu game;
+    public Menu menu;
     private AudioPlayer bgMusic;
 
-    public MenuController(Menu game) {
-        this.game = game;
+    public MenuController(Menu menu) {
+        this.menu = menu;
 	    bgMusic = new AudioPlayer("/Sound/SuperNinjaAssasin.mp3");
 	    bgMusic.play();
     }
@@ -25,6 +25,6 @@ public class MenuController implements ActionListener{
         JButton buttonPressed;
         buttonPressed = (JButton)e.getSource();
         String mapName = buttonPressed.getText();
-        new GameController(mapName);
+        new GameController(mapName, menu);
     }
 }

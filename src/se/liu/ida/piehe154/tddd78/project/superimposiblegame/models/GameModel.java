@@ -137,6 +137,7 @@ public class GameModel implements Runnable {
         if (theController.hasPlayerWonTheGame()) {
             setGameOver(true);
             saveCompletedLevel(theController.getChoosenMap());
+            theController.updateMenu();
         }
         if (!gameOver && !isPaused) {
             theController.getPlayerWillCollide();
