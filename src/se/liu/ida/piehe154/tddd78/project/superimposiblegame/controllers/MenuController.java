@@ -15,18 +15,18 @@ public class MenuController implements ActionListener{
 
     public MenuController(Menu game) {
         this.game = game;
-	bgMusic = new AudioPlayer("/Sound/SuperNinjaAssasin.mp3");
-	bgMusic.play();
+	    bgMusic = new AudioPlayer("/Sound/SuperNinjaAssasin.mp3");
+	    bgMusic.play();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == game.buttons.get(0)) {
             new GameController("map");
-	    bgMusic.stop();
+	        bgMusic.stop();
         } else if (e.getSource() == game.buttons.get(1)) {
             new GameController("diehard");
-	    bgMusic.stop();
+	        bgMusic.stop();
         }
     }
 }

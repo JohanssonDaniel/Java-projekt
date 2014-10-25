@@ -1,11 +1,6 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.MenuController;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.Obstacle;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.ObstacleTypes;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.OvalShape;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.SquareShape;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.TriangleShape;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -21,8 +16,8 @@ import java.util.ArrayList;
 public class Menu extends JFrame {
     private JPanel gamePanel;       // This is where the game is drawn
     private MenuController menuController;
-    public JButton map1 = new JButton("Map");
-    public JButton map2 = new JButton("Diehard");
+
+    private static File mapDirectory = new File("maps/");
     public JLabel welcome = new JLabel("Super Impossible Game");
     public JLabel description = new JLabel("please choose a map");
 
@@ -50,10 +45,6 @@ public class Menu extends JFrame {
 
     private void buttons(){
         setLayout(new FlowLayout());
-        /*map1.setPreferredSize(new Dimension(500, 100));
-        map1.setBackground(Color.CYAN);
-        map2.setPreferredSize(new Dimension(500,100));
-        map2.setBackground(Color.CYAN);*/
         Font welcomeFont = new Font("SansSerif", Font.BOLD, 34);
         Font descFont = new Font("SansSerif", Font.PLAIN, 22);
 
@@ -62,79 +53,66 @@ public class Menu extends JFrame {
         description.setFont(descFont);
         description.setPreferredSize(new Dimension(240,50));
 
-	MenuController menuController = new MenuController(this);
-
-	LineBorder orangeBorder = new LineBorder(Color.ORANGE,2,true);
-	add(welcome); add(description);
-	for (int n = 0; n < allMaps.size(); n++) {
-	    String mapName = allMaps.get(n);
-	    JButton map = new JButton(mapName);
-	    map.setPreferredSize(new Dimension(500, 100));
-	    if (completedMaps.contains(mapName)){
-		map.setBackground(Color.GREEN);
-	    }else{
-		map.setBackground(Color.CYAN);
-	    }
-	    map.setFont(descFont);
-	    map.addActionListener(menuController);
-	    map.setBorder(orangeBorder);
-	    add(map);
-	    buttons.add(n,map);
-	}
-
-        /*map1.setFont(descFont);
-        map2.setFont(descFont);*/
-
-         //add(map1); add(map2);
-	/*map1.addActionListener(menuController);
-        map2.addActionListener(menuController);
+        menuController = new MenuController(this);
 
         LineBorder orangeBorder = new LineBorder(Color.ORANGE,2,true);
-        map1.setBorder(orangeBorder);
-        map2.setBorder(orangeBorder);*/
+        add(welcome); add(description);
+        for (int n = 0; n < allMaps.size(); n++) {
+            String mapName = allMaps.get(n);
+            JButton map = new JButton(mapName);
+            map.setPreferredSize(new Dimension(500, 50));
+            if (completedMaps.contains(mapName)){
+                map.setBackground(Color.GREEN);
+            }else{
+                map.setBackground(Color.CYAN);
+            }
+            map.setFont(descFont);
+            map.addActionListener(menuController);
+            map.setBorder(orangeBorder);
+            add(map);
+            buttons.add(n,map);
+        }
 
         setSize(800, 800);
         setVisible(true);
         pack();
     }
     private static void readCompletedMaps() {
-	String thisLine;
-	File inFile = new File("completedMaps/completed.txt");
-	// open input stream test.txt for reading purpose.
+        String thisLine;
+        File inFile = new File("completedMaps/completed.txt");
+        // open input stream test.txt for reading purpose.
 
-	try{
-	    BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+        try{
+            BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
 
-	    while ((thisLine = br.readLine()) != null) {
-		completedMaps.add(thisLine);
-	    }
+            while ((thisLine = br.readLine()) != null) {
+                completedMaps.add(thisLine);
+            }
 
-	}catch(Exception e){
-	    e.printStackTrace();
-	}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
-    private static void readAllMaps() {
-    	String thisLine;
-    	File inFile = new File("maps/allMaps");
-    	// open input stream test.txt for reading purpose.
 
-    	try{
-    	    BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
-
-    	    while ((thisLine = br.readLine()) != null) {
-    		allMaps.add(thisLine);
-    	    }
-
-    	}catch(Exception e){
-    	    e.printStackTrace();
-    	}
-
+    public static void findAllMaps(final File folder) {
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                findAllMaps(fileEntry);
+            } else {
+                String name = fileEntry.getName().toString();
+                if (name.endsWith(".txt")) {
+                    int indexOfFileExtension = name.indexOf('.', 0); //We only want the name of map, so we remove .txt in filename
+                    System.out.println(name.substring(0,indexOfFileExtension));
+                    allMaps.add(name.substring(0,indexOfFileExtension));
+                }
+            }
         }
+    }
+
     public static void main(String[] args) {
-        //new GameController("map");
-	readCompletedMaps();
-	readAllMaps();
+        readCompletedMaps();
+        findAllMaps(mapDirectory);
         new Menu();
     }
 }

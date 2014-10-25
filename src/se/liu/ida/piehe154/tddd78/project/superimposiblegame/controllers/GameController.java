@@ -192,7 +192,6 @@ public class GameController extends WindowAdapter implements BoardListener {
     }
     // Overrides WindowListener method
     public void windowClosing(WindowEvent e) {
-	super.windowClosing(e);
         theModel.stopGame();
     }
 

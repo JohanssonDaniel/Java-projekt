@@ -14,8 +14,7 @@ import java.util.ArrayList;
  * GameModel models the game via the run function which when they will update and render
  */
 
-public class GameModel implements Runnable
-{
+public class GameModel implements Runnable {
 
     private Thread animator;
     private GameController theController;
@@ -29,60 +28,60 @@ public class GameModel implements Runnable
     private int resetCounter;
 
     public GameModel(GameController theController) {
-	this.theController = theController;
-	animator = null;
-	isPaused = true;
-	showMenu = true;
-	resetCounter = 0;
+        this.theController = theController;
+        animator = null;
+        isPaused = true;
+        showMenu = true;
+        resetCounter = 0;
     }
 
     public void setShowMenu(boolean showMenu) {
-	this.showMenu = showMenu;
+        this.showMenu = showMenu;
     }
 
     public void setPaused(boolean isPaused) {
-	this.isPaused = isPaused;
+        this.isPaused = isPaused;
     }
 
     public void setGameOver(boolean gameOver) {
-	this.gameOver = gameOver;
+        this.gameOver = gameOver;
     }
 
     public boolean isPaused() {
-	return isPaused;
+        return isPaused;
     }
 
     public boolean isShowMenu() {
-	return showMenu;
+        return showMenu;
     }
 
     public boolean isGameOver() {
-	return gameOver;
+        return gameOver;
     }
 
     public int getResetCounter() {
-	return resetCounter;
+        return resetCounter;
     }
 
     public void addResetCounter() {
-	resetCounter++;
+        resetCounter++;
     }
 
     /**
      * Starts the run thread (method)
      */
     public void startGame() {//Creates an new animator thread and then starts it
-	if (animator == null || !running) {
-	    animator = new Thread(this);
-	    animator.start();
-	}
+        if (animator == null || !running) {
+            animator = new Thread(this);
+            animator.start();
+        }
     }
 
     public void resumeGame() {
-	// called when the JFrame is activated / deiconified
-	if (!showMenu) {
-	    isPaused = false;
-	}
+        // called when the JFrame is activated / deiconified
+        if (!showMenu) {
+            isPaused = false;
+        }
     }
 
 
@@ -98,23 +97,22 @@ public class GameModel implements Runnable
     @SuppressWarnings("SuppressionAnnotation")
     public void run() {
 
-	running = true;
-	startMenu();
+        running = true;
+        startMenu();
 
-	while (running) {
-	    gameUpdate();
-	    //theController.gameRender();
-	    //theController.paintScreen();
+        while (running) {
+            gameUpdate();
+            //theController.gameRender();
+            //theController.paintScreen();
 
-	    try {
-		//Thread sleeps every 20 ms
-		//noinspection BusyWait
-		Thread.sleep(RUN_SLEEP_MS);
-	    } catch (InterruptedException e) {
-		e.printStackTrace();
-	    }
-	}
-	System.exit(0);
+            try {
+                //Thread sleeps every 20 ms
+                //noinspection BusyWait
+                Thread.sleep(RUN_SLEEP_MS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -123,12 +121,12 @@ public class GameModel implements Runnable
      */
 
     public void startMenu() {
-	try {
-	    Thread.sleep(LOAD_BEFORE_START_MENU_MS);
-	    theController.boardChanged();
-	} catch (InterruptedException e) {
-	    e.printStackTrace();
-	}
+        try {
+            Thread.sleep(LOAD_BEFORE_START_MENU_MS);
+            theController.boardChanged();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -136,65 +134,65 @@ public class GameModel implements Runnable
      * mean that it is gameover
      */
     private void gameUpdate() {
-	if (theController.hasPlayerWonTheGame()) {
-	    setGameOver(true);
-	    saveCompletedLevel(theController.getChoosenMap());
-	}
-	if (!gameOver && !isPaused) {
-	    theController.getPlayerWillCollide();
-	    gameOver = theController.getGameOver();
-	    theController.playerUpdate();
-	    theController.boardMoveEnemies();
-	}
+        if (theController.hasPlayerWonTheGame()) {
+            setGameOver(true);
+            saveCompletedLevel(theController.getChoosenMap());
+        }
+        if (!gameOver && !isPaused) {
+            theController.getPlayerWillCollide();
+            gameOver = theController.getGameOver();
+            theController.playerUpdate();
+            theController.boardMoveEnemies();
+        }
     }
 
     private void saveCompletedLevel(String mapName) {
-	File file = new File("completedMaps/completed.txt");
-	try {
-	    if (!file.exists()) {
-		file.createNewFile();
-	    }
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
-	String thisLine;
-	String mapUrl = "completedMaps/completed.txt";
-	boolean alreadyCompleted = false;
-	File inFile = new File(mapUrl);
-	// open input stream test.txt for reading purpose.
+        File file = new File("completedMaps/completed.txt");
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String thisLine;
+        String mapUrl = "completedMaps/completed.txt";
+        boolean alreadyCompleted = false;
+        File inFile = new File(mapUrl);
+        // open input stream test.txt for reading purpose.
 
-	ArrayList<String> mapLines = new ArrayList<String>();
+        ArrayList<String> mapLines = new ArrayList<String>();
 
-	try {
-	    BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+        try {
+            BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
 
-	    while ((thisLine = br.readLine()) != null) {
-		mapLines.add(thisLine);
-	    }
+            while ((thisLine = br.readLine()) != null) {
+                mapLines.add(thisLine);
+            }
 
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
-	for (int n = 0; n < mapLines.size(); n++) {
-	    thisLine = mapLines.get(n);
-	    if ((thisLine.equals(mapName))) {
-		alreadyCompleted = true;
-	    }
-	}
-	if (!alreadyCompleted) {
-	    addToFile(mapName, file);
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (int n = 0; n < mapLines.size(); n++) {
+            thisLine = mapLines.get(n);
+            if ((thisLine.equals(mapName))) {
+                alreadyCompleted = true;
+            }
+        }
+        if (!alreadyCompleted) {
+            addToFile(mapName, file);
+        }
     }
 
     private void addToFile(final String mapName, File file) {
-	try {
-	    FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(), true);
-	    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-	    bufferedWriter.write(mapName);
-	    bufferedWriter.newLine();
-	    bufferedWriter.close();
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+        try {
+            FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(), true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(mapName);
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
