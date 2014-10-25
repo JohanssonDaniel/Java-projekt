@@ -3,6 +3,7 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Menu;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,12 +22,9 @@ public class MenuController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == game.buttons.get(0)) {
-            new GameController("map");
-	        bgMusic.stop();
-        } else if (e.getSource() == game.buttons.get(1)) {
-            new GameController("diehard");
-	        bgMusic.stop();
-        }
+        JButton buttonPressed;
+        buttonPressed = (JButton)e.getSource();
+        String mapName = buttonPressed.getText();
+        new GameController(mapName);
     }
 }

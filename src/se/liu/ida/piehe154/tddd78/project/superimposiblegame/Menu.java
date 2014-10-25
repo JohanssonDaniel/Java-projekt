@@ -24,7 +24,6 @@ public class Menu extends JFrame {
 
     private static ArrayList<String> completedMaps = new ArrayList<String>();
     private static ArrayList<String> allMaps = new ArrayList<String>();
-    public ArrayList<JButton> buttons = new ArrayList<JButton>();
 
     public Menu() {
         Container container = getContentPane();
@@ -37,7 +36,7 @@ public class Menu extends JFrame {
 
         container.setPreferredSize(new Dimension(600, 600));
         container.add(gamePanel, "Center");
-        //resetCounter = 0;
+
         setResizable(false);
         setVisible(true);
         pack();
@@ -59,18 +58,17 @@ public class Menu extends JFrame {
         add(welcome); add(description);
         for (int n = 0; n < allMaps.size(); n++) {
             String mapName = allMaps.get(n);
-            JButton map = new JButton(mapName);
-            map.setPreferredSize(new Dimension(500, 50));
+            JButton mapButton = new JButton(mapName);
+            mapButton.setPreferredSize(new Dimension(500, 50));
             if (completedMaps.contains(mapName)){
-                map.setBackground(Color.GREEN);
+                mapButton.setBackground(Color.GREEN);
             }else{
-                map.setBackground(Color.CYAN);
+                mapButton.setBackground(Color.CYAN);
             }
-            map.setFont(descFont);
-            map.addActionListener(menuController);
-            map.setBorder(orangeBorder);
-            add(map);
-            buttons.add(n,map);
+            mapButton.setFont(descFont);
+            mapButton.addActionListener(menuController);
+            mapButton.setBorder(orangeBorder);
+            add(mapButton);
         }
 
         setSize(800, 800);
