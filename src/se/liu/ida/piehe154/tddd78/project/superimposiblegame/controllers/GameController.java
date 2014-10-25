@@ -23,7 +23,7 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     public GameController(String userMap, Menu menu) {
         this.menu = menu;
-        this.boardController = new BoardController(theView.getWidth(), theView.getPixelHeight());
+        this.boardController = new BoardController(theView.getPixelWidth(), theView.getPixelHeight());
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
         boardController.addBoardListener(this);

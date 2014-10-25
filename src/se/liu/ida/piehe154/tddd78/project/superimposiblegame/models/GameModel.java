@@ -157,9 +157,8 @@ public class GameModel implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String thisLine;
         String mapUrl = "completedMaps/completed.txt";
-        boolean alreadyCompleted = false;
+
         File inFile = new File(mapUrl);
         // open input stream test.txt for reading purpose.
 
@@ -167,17 +166,25 @@ public class GameModel implements Runnable {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(inFile));
-
-            while ((thisLine = br.readLine()) != null) {
+            String thisLine = br.readLine();
+            while (thisLine != null) {
                 mapLines.add(thisLine);
+                thisLine = br.readLine();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        checkIfCompleted(mapLines, mapName, file);
+    }
+
+    private void checkIfCompleted(ArrayList<String> mapLines, String mapName, File file) {
+        boolean alreadyCompleted = false;
+
         for (int n = 0; n < mapLines.size(); n++) {
-            thisLine = mapLines.get(n);
-            if ((thisLine.equals(mapName))) {
+            String line = mapLines.get(n);
+            if ((line.equals(mapName))) {
                 alreadyCompleted = true;
             }
         }

@@ -16,7 +16,7 @@ public class BoardModel {
     private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 5; // how many pixels the bricks move to the right every update
     private final int pixelHeight;
 
-    public boolean playerWonTheGame = false;
+    private boolean playerWonTheGame = false;
 
     private final int heightOffset;
 
@@ -76,7 +76,7 @@ public class BoardModel {
         }
     }
 
-    public ArrayList<Obstacle> getBrickEnemies() {
+    public Iterable<Obstacle> getBrickEnemies() {
 	return brickEnemies;
     }
 

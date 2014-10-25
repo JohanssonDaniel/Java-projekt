@@ -47,40 +47,41 @@ public class BoardController{
     }
 
     public void createEnemies(String mapName){
-	String thisLine;
-	String mapUrl = MAP_FOLDER + mapName + TXT_FILE_END;
-	File inFile = new File(mapUrl);
-	// open input stream test.txt for reading purpose.
+        String thisLine;
+        String mapUrl = MAP_FOLDER + mapName + TXT_FILE_END;
+        File inFile = new File(mapUrl);
+        // open input stream test.txt for reading purpose.
 
         ArrayList<String> mapLines = new ArrayList<String>();
 
-	try{
-	    BufferedReader br = new BufferedReader(new FileReader(inFile));
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(inFile));
+            thisLine = br.readLine();
+            while (thisLine != null) {
+                mapLines.add(thisLine);
+                thisLine = br.readLine();
+            }
 
-	    while ((thisLine = br.readLine()) != null) {
-		mapLines.add(thisLine);
-	    }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
-	}catch(Exception e){
-	    e.printStackTrace();
-	}
+        int enemyXCoord = ENEMIES_STARTING_X_COORD;
 
-    int enemyXCoord = ENEMIES_STARTING_X_COORD;
-
-	for (int n =0; n < mapLines.size(); n++) {
-	    thisLine = mapLines.get(n);
-	    for (int row = 0; row < thisLine.length(); row++) {
-            char brick = thisLine.charAt(row);
-            if (brick == SQUARE) {
-		    theModel.addObstacle(new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new SquareShape(),ObstacleTypes.SQUARE)); //(row+1) To get the Obstacle above the floor
-		} else if (brick == OVAL) {
-		    theModel.addObstacle((new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new OvalShape(),ObstacleTypes.OVAL)));
-		} else if (brick == TRIANGLE) {
-		    theModel.addObstacle((new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new TriangleShape(),ObstacleTypes.TRIANGLE)));
-		}
-	    }
-        enemyXCoord += BRICK_SIZE;
-	}
+        for (int n =0; n < mapLines.size(); n++) {
+            thisLine = mapLines.get(n);
+            for (int row = 0; row < thisLine.length(); row++) {
+                char brick = thisLine.charAt(row);
+                if (brick == SQUARE) {
+                    theModel.addObstacle(new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new SquareShape(),ObstacleTypes.SQUARE)); //(row+1) To get the Obstacle above the floor
+                } else if (brick == OVAL) {
+                    theModel.addObstacle((new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new OvalShape(),ObstacleTypes.OVAL)));
+                } else if (brick == TRIANGLE) {
+                    theModel.addObstacle((new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new TriangleShape(),ObstacleTypes.TRIANGLE)));
+                }
+            }
+            enemyXCoord += BRICK_SIZE;
+        }
     }
 
     /**

@@ -61,13 +61,6 @@ public class GameView extends JFrame {
         pack();
     }
 
-    public void renderMainMenu(Graphics g){
-        Font headFont = new Font("arial", Font.BOLD, 50);
-        g.setFont(headFont);
-        g.setColor(Color.black);
-        g.drawString("Super Impossible Game", PIXEL_WIDTH/2, 100);
-    }
-
     public static int getPixelHeight() {
 	return PIXEL_HEIGHT;
     }

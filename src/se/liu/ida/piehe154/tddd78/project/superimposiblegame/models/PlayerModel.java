@@ -85,10 +85,6 @@ public class PlayerModel {
 	this.playerPositionY = playerPositionY;
     }
 
-    public void setPlayerPositionX(final int playerPositionX) {
-	this.playerPositionX = playerPositionX;
-    }
-
     public void setUpCount(int upCount) {
 	this.upCount = upCount;
     }

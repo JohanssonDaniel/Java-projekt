@@ -94,8 +94,10 @@ public class Menu extends JFrame {
             File inFile = new File("completedMaps/completed.txt");
             BufferedReader br = new BufferedReader(new FileReader(inFile));
             String thisLine;
-            while ((thisLine = br.readLine()) != null) {
+            thisLine = br.readLine();
+            while (thisLine != null) {
                 completedMaps.add(thisLine);
+                thisLine = br.readLine();
             }
         }catch(Exception e){
             e.printStackTrace();

@@ -21,12 +21,14 @@ public class MenuController implements ActionListener{
     }
 
 
+    @SuppressWarnings("SuppressionAnnotation")
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton buttonPressed;
         buttonPressed = (JButton)e.getSource();
         String mapName = buttonPressed.getText();
-        //noinspection ResultOfObjectAllocationIgnored
+
+        //We dont need to keep track of our game in our menu
         new GameController(mapName, menu);
     }
 }
