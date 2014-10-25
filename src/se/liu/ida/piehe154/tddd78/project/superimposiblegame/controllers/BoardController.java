@@ -25,7 +25,6 @@ import java.util.List;
 public class BoardController{
 
     private static final int BRICK_SIZE = 30;
-    @SuppressWarnings("HardcodedFileSeparator")
     private static final String MAP_FOLDER = "maps/";
     private static final String TXT_FILE_END = ".txt";
     private static final int ENEMIES_STARTING_X_COORD = 600;   //Enemies starts at X = 600, then we go forward.
@@ -52,27 +51,21 @@ public class BoardController{
         // open input stream test.txt for reading purpose.
 
         List<String> mapLines = new ArrayList<String>();
-	BufferedReader bufferedReader = null;
-        try{
-            bufferedReader = new BufferedReader(new FileReader(inFile));
-            thisLine = bufferedReader.readLine();
-            while (thisLine != null) {
-                mapLines.add(thisLine);
-                thisLine = bufferedReader.readLine();
-            }
-
-        } catch (IOException e) {
-	    e.printStackTrace();
-	} catch(Exception e){
-            e.printStackTrace();
-        }finally {
+	try {
+	    BufferedReader bufferedReader = new BufferedReader(new FileReader(inFile));
 	    try {
-		assert bufferedReader != null;
+		thisLine = bufferedReader.readLine();
+		while (thisLine != null) {
+		    mapLines.add(thisLine);
+		    thisLine = bufferedReader.readLine();
+		}
+
+	    }finally {
 		bufferedReader.close();
-	    }catch (IOException e){
+	    }
+	}catch (IOException e){
 		e.printStackTrace();
 	    }
-	}
 
         int enemyXCoord = ENEMIES_STARTING_X_COORD;
 

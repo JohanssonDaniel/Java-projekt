@@ -7,6 +7,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -154,11 +155,11 @@ public class GameModel implements Runnable {
     }
 
     private void saveCompletedLevel(String mapName) {
-	BufferedReader bufferedReader = null;
+	boolean createdNewFile = false;
 	try {
 	    File file = new File(COMPLETED_TXT_PATH.toString());
 	    if (!file.exists()) {
-		file.createNewFile();
+		createdNewFile = file.createNewFile();
 	    }
 	    String mapUrl = COMPLETED_TXT_PATH.toString();
 
@@ -166,56 +167,53 @@ public class GameModel implements Runnable {
 	    // open input stream test.txt for reading purpose.
 
 	    List<String> mapLines = new ArrayList<String>();
-	    bufferedReader = new BufferedReader(new FileReader(inFile));
-	    String thisLine = bufferedReader.readLine();
-	    while (thisLine != null) {
-		mapLines.add(thisLine);
-		thisLine = bufferedReader.readLine();
-	    }
-	    checkIfCompleted(mapLines, mapName, file);
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}finally {
+	    BufferedReader bufferedReader = new BufferedReader(new FileReader(inFile));
 	    try {
-            assert bufferedReader != null;
-            bufferedReader.close();
-	    }catch (Exception e){
-		e.printStackTrace();
+		String thisLine = bufferedReader.readLine();
+		while (thisLine != null) {
+		    mapLines.add(thisLine);
+		    thisLine = bufferedReader.readLine();
+		}
+		checkIfCompleted(mapLines, mapName, file);
+	    }finally {
+		bufferedReader.close();
 	    }
+	}catch (IOException e){
+	    e.printStackTrace();
+	}
+
+
+	if (createdNewFile){
+	    System.out.println("Created an new completed.txt");
 	}
     }
 
     private void checkIfCompleted(List<String> mapLines, String mapName, File file) {
-        boolean alreadyCompleted = false;
+	boolean alreadyCompleted = false;
 
-        for (int n = 0; n < mapLines.size(); n++) {
-            String line = mapLines.get(n);
-            if ((line.equals(mapName))) {
-                alreadyCompleted = true;
-            }
-        }
-        if (!alreadyCompleted) {
-            addToFile(mapName, file);
-        }
+	for (int n = 0; n < mapLines.size(); n++) {
+	    String line = mapLines.get(n);
+	    if ((line.equals(mapName))) {
+		alreadyCompleted = true;
+	    }
+	}
+	if (!alreadyCompleted) {
+	    addToFile(mapName, file);
+	}
     }
 
     private void addToFile(final String mapName, File file) {
-	BufferedWriter bufferedWriter = null;
-        try {
-            FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(), true);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(mapName);
-            bufferedWriter.newLine();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
+	try {
+	    FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(), true);
+	    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 	    try {
-            if (bufferedWriter != null) {
-                bufferedWriter.close();
-            }
-        }catch (Exception e){
-		e.printStackTrace();
+		bufferedWriter.write(mapName);
+		bufferedWriter.newLine();
+	    } finally {
+		bufferedWriter.close();
 	    }
+	} catch (IOException e) {
+	    e.printStackTrace();
 	}
     }
 }

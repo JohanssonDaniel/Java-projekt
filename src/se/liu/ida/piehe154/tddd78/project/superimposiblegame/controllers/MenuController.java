@@ -14,20 +14,21 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pierre on 2014-10-22.
  */
 public class MenuController implements ActionListener{
-    private static ArrayList<String> completedMaps = new ArrayList<String>();
-    private ArrayList<String> allMaps = new ArrayList<String>();
+    private static List<String> completedMaps = new ArrayList<String>();
+    private Iterable<String> allMaps = new ArrayList<String>();
     private static final Path COMPLETED_MAPS_PATH = Paths.get("completedMaps", "completed.txt");
     private static final Path MENU_MUSIC_PATH = Paths.get("src", "Sound", "SuperNinjaAssasin.mp3");
     private MenuView theView = null;
     private MenuModel theModel = null;
     private AudioPlayer bgMusic;
 
-    public MenuController(ArrayList<String> allMaps) {
+    public MenuController(Iterable<String> allMaps) {
 	this.allMaps = allMaps;
 	bgMusic = new AudioPlayer(MENU_MUSIC_PATH);
 	bgMusic.play();
@@ -62,25 +63,20 @@ public class MenuController implements ActionListener{
 
     private static void readCompletedMaps() {
 	// open input stream test.txt for reading purpose.
-	BufferedReader bufferedReader = null;
-	try{
-	    File inFile = new File(COMPLETED_MAPS_PATH.toAbsolutePath().toString());
-	    bufferedReader = new BufferedReader(new FileReader(inFile));
-	    String thisLine;
-	    thisLine = bufferedReader.readLine();
-	    while (thisLine != null) {
-		completedMaps.add(thisLine);
-		thisLine = bufferedReader.readLine();
-	    }
-	}catch(IOException e){
-	    e.printStackTrace();
-	}finally {
+	File inFile = new File(COMPLETED_MAPS_PATH.toAbsolutePath().toString());
+	try {
+	    BufferedReader bufferedReader = new BufferedReader(new FileReader(inFile));
 	    try {
-            assert bufferedReader != null;
-            bufferedReader.close();
-	    }catch (Exception e){
-		e.printStackTrace();
+		String thisLine = bufferedReader.readLine();
+		while (thisLine != null) {
+		    completedMaps.add(thisLine);
+		    thisLine = bufferedReader.readLine();
+		}
+	    }finally {
+		bufferedReader.close();
 	    }
+	}catch (IOException e){
+	    e.printStackTrace();
 	}
     }
 }

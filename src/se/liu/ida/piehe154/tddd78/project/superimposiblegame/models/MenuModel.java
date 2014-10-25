@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by DannePanne on 2014-10-25.
@@ -18,13 +19,13 @@ public class MenuModel
     private static final Font DESC_FONT = new Font("SansSerif", Font.PLAIN, DESC_FONT_SIZE);
 
     private MenuController menuController;
-    private ArrayList<JButton> buttons = new ArrayList<JButton>();
+    private List<JButton> buttons = new ArrayList<JButton>();
 
     public MenuModel(MenuController menuController) {
 	this.menuController = menuController;
     }
 
-    public void createButtons(Iterable<String> allMaps, ArrayList<String> completedMaps){
+    public void createButtons(Iterable<String> allMaps, List<String> completedMaps){
 
 	LineBorder orangeBorder = new LineBorder(Color.ORANGE,2,true);
 
@@ -42,7 +43,7 @@ public class MenuModel
 	    buttons.add(mapButton);
 	}
     }
-    public void updateButtons(ArrayList<String> completedMaps) {
+    public void updateButtons(List<String> completedMaps) {
 	for (JButton button : buttons) {
 	    String mapName = button.getText();
 	    if (completedMaps.contains(mapName)){
@@ -51,7 +52,7 @@ public class MenuModel
 	}
     }
 
-    public ArrayList<JButton> getButtons() {
+    public Iterable<JButton> getButtons() {
 	return buttons;
     }
 }

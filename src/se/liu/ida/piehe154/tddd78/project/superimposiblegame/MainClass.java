@@ -9,7 +9,7 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.MenuCon
  */
 public final class MainClass
 {
-    protected static ArrayList<String> allMaps = new ArrayList<String>();
+    private static ArrayList<String> allMaps = new ArrayList<String>();
     private static final File MAP_FOLDER = new File("maps");
 
     private static void findAllMaps(List<String> allMaps) {
@@ -27,7 +27,7 @@ public final class MainClass
 		    }
 		}
 	    }
-	}catch (Exception e){
+	}catch (RuntimeException e){
 	    e.printStackTrace();
 	}
     }
