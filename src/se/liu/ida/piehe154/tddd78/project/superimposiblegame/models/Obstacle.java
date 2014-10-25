@@ -32,22 +32,24 @@ public class Obstacle {
      * brickHeight is the bottom of the brick
      *
      * the same goes for playerHeight and playerWidth )
-     * @param playerLeftSide Position of player in X-axis
-     * @param playerTopSide Position of player in Y-axis
+     * @param playerPositionX Position of player in X-axis
+     * @param playerPositionY Position of player in Y-axis
      * @return if player intersects with obstacle
      */
-    public boolean intersect(int obsLeftSide, int obsTopSide, int obsWidth, int obsHeight,int playerLeftSide, int playerTopSide, int playerWidth, int playerHeight) {
-        int obsRightSide = obsWidth + obsLeftSide;
-        int obsBottomSide = obsHeight + obsTopSide;
-        int playerRightSide = playerWidth + playerLeftSide;
-        int playerBottomSide = playerHeight + playerTopSide;
-        if (obsRightSide <= 0 || obsBottomSide <= 0) {
-            return false;
-        }
-        else if ((playerRightSide >= obsLeftSide && playerLeftSide < obsRightSide) && (playerBottomSide > obsTopSide && playerTopSide < obsBottomSide)){
-            return true;
-        }
-        return false;
+    public boolean intersect(int playerPositionX, int playerPositionY, int playerWidth, int playerHeight) {
+	int obsRightSide = SIZE + positionX;
+	int obsBottomSide = SIZE + positionY;
+	int playerRightSide = playerWidth + playerPositionX;
+
+	if (obsRightSide <= 0 || obsBottomSide <= 0) {
+	    return false;
+	}
+
+	else if ((playerRightSide >= positionX && playerPositionX < obsRightSide) &&
+		 (playerPositionY >= positionY && playerPositionY < obsBottomSide)){
+	    return true;
+	}
+	return false;
     }
 
     public void draw(Graphics g, int x, int y, int width, int height) {
