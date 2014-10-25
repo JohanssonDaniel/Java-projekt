@@ -1,3 +1,2 @@
 diehard
-knugen
 map
