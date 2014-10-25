@@ -151,7 +151,7 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     /**
      * tells the PlayerController to check wether the player will Collide and die in the next update
-     * @return if player will collidesWith
+     * Returns true if player will collidesWith
      */
 
     public void getPlayerWillCollide() {

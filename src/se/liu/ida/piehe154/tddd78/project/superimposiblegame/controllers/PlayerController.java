@@ -107,7 +107,7 @@ public class PlayerController
     }
     /**
      * Checks whether the player will collidesWith with something that would end the game
-     * @return if player collides
+     * Returns true if player collides
      */
     public void checkWillCollide(){
 	int nextPosX = theModel.getPlayerPositionX() + theModel.getHorizontalStep();

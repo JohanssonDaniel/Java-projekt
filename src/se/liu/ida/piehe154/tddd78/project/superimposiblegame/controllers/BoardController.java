@@ -15,6 +15,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
@@ -25,7 +27,7 @@ import java.util.List;
 public class BoardController{
 
     private static final int BRICK_SIZE = 30;
-    private static final String MAP_FOLDER = "maps/";
+    private static final String MAP_FOLDER = "maps";
     private static final String TXT_FILE_END = ".txt";
     private static final int ENEMIES_STARTING_X_COORD = 600;   //Enemies starts at X = 600, then we go forward.
     private final int pixelWidth;
@@ -46,8 +48,8 @@ public class BoardController{
 
     public void createEnemies(String mapName){
         String thisLine;
-        String mapUrl = MAP_FOLDER + mapName + TXT_FILE_END;
-        File inFile = new File(mapUrl);
+        Path mapPath = Paths.get(MAP_FOLDER, (mapName + TXT_FILE_END));
+        File inFile = mapPath.toFile();
         // open input stream test.txt for reading purpose.
 
         List<String> mapLines = new ArrayList<String>();

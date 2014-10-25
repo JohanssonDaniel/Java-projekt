@@ -12,6 +12,9 @@ public final class MainClass
     private static ArrayList<String> allMaps = new ArrayList<String>();
     private static final File MAP_FOLDER = new File("maps");
 
+    private MainClass() {
+    }
+
     private static void findAllMaps(List<String> allMaps) {
 	try {
 	    File[] folderFiles = MAP_FOLDER.listFiles();
