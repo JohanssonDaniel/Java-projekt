@@ -21,10 +21,10 @@ public class MenuController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() ==game.map1) {
+        if (e.getSource() == game.buttons.get(0)) {
             new GameController("map");
 	    bgMusic.stop();
-        } else if (e.getSource() == game.map2) {
+        } else if (e.getSource() == game.buttons.get(1)) {
             new GameController("diehard");
 	    bgMusic.stop();
         }

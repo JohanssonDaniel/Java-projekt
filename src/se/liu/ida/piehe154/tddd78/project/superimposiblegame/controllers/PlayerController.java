@@ -1,4 +1,5 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.ObstacleTypes;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.PlayerModel;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.PlayerView;
 import java.awt.*;
@@ -24,7 +25,9 @@ public class PlayerController
 	boardController.notifyListeners();
     }
 
-
+    /**
+     * Updates the player based on its state
+     */
     public void updatePlayer() {
 
 	if (theModel.isNotJumping()) {
@@ -35,22 +38,23 @@ public class PlayerController
 	notifyBoardListener();
     }
 
+    /**
+     * Checks wether the player will fall on a object on the board
+     */
     private void updateFalling() {
 	int nextPlayerPositionY = theModel.getPlayerPositionY() + theModel.getVerticalStep();
 	int nextPlayerPositionX = theModel.getPlayerPositionX() + theModel.getHorizontalStep();
 
-	if (boardController.collidesWith(nextPlayerPositionY, nextPlayerPositionX, theModel.getPlayerHeight(),
+	if (boardController.collidesWith(nextPlayerPositionX, nextPlayerPositionY, theModel.getPlayerHeight(),
 					 theModel.getPlayerWidth())) {
-	    if(boardController.getIntersectedObstacle() != null) {
-		String shapeName = boardController.getIntersectedObstacle().getShapeName();
-		if (shapeName.equals("triangle")) {
-		    gameOver = true;
-		} else if (shapeName.equals("square")) {
-		    finishJumping();
-		} else if (shapeName.equals("oval")) {
-		    finishJumping();
-		    jump();
-		}
+	    ObstacleTypes obstacleType= boardController.getIntersectedObstacle();
+	    if (obstacleType == ObstacleTypes.TRIANGLE) {
+		gameOver = true;
+	    } else if (obstacleType == ObstacleTypes.SQUARE){
+		finishJumping();
+	    } else if (obstacleType == ObstacleTypes.OVAL) {
+		finishJumping();
+		jump();
 	    }
 	}
 	else{
@@ -59,7 +63,10 @@ public class PlayerController
 	notifyBoardListener();
     }
 
-
+    /**
+     * Checks wether the player has jump high enough or updates its Y position
+     * If the player jumps into a an obstacle from beneath it it will crash
+     */
     private void updateRising() {
 	int nextPlayerPositionY = theModel.getPlayerPositionY();
 	int nextPlayerPositionX = theModel.getPlayerPositionX() + theModel.getHorizontalStep();
@@ -68,7 +75,7 @@ public class PlayerController
 		startToFall();
 	}
 	else {
-	    if(boardController.willCollide(nextPlayerPositionY, nextPlayerPositionX, theModel.getPlayerWidth(),
+	    if(boardController.collidesWith(nextPlayerPositionX, nextPlayerPositionY, theModel.getPlayerWidth(),
 					   theModel.getPlayerHeight())){
 		startToFall();
 	    }else{
@@ -101,11 +108,14 @@ public class PlayerController
 	theModel.setPlayerStopJumping();
 	theModel.setUpCount(0);
     }
-
+    /**
+     * Checks whether the player will collidesWith with something that would end the game
+     * @return if player collides
+     */
     public void willCollide(){
 	int nextPosX = theModel.getPlayerPositionX() + theModel.getHorizontalStep();
-	if(boardController.collidesWith(theModel.getPlayerPositionY(),nextPosX,theModel.getPlayerWidth(),theModel.getPlayerHeight())){
-		gameOver = true;
+	if(boardController.collidesWith(nextPosX,theModel.getPlayerPositionY(),theModel.getPlayerWidth(),theModel.getPlayerHeight())){
+	    gameOver = true;
 	}
     }
 

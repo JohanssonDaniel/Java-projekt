@@ -22,7 +22,7 @@ public class GameController extends WindowAdapter implements BoardListener {
     private String choosenMap;
 
     public GameController(String userMap) {
-        this.boardController = new BoardController();
+        this.boardController = new BoardController(theView.getWidth(), theView.getPixelHeight());
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
         boardController.addBoardListener(this);
@@ -40,7 +40,7 @@ public class GameController extends WindowAdapter implements BoardListener {
             }
         });
 
-        choosenMap = userMap;
+        this.choosenMap = userMap;
         boardController.initMap(choosenMap);
         theView.addWindowListener(this);
         theModel.startGame();
@@ -104,7 +104,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      * resets the board and the players position and increments the resetCounter, which is later displayed in the GameView, by one
      */
     private void resetGame() {
-        boardController = new BoardController();
+        boardController = new BoardController(theView.getWidth(), theView.getHeight());
         boardController.addBoardListener(this);
         boardController.initMap(choosenMap);
 
