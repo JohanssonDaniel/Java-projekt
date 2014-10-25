@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by pierre on 2014-04-18.
@@ -27,6 +29,10 @@ public class GameView extends JFrame {
 
     private final static int GAME_OVER_IMAGE_X = 200;
     private final static int GAME_OVER_IMAGE_Y = 100;
+
+    private final static Path MENU_PATH = Paths.get("src", "Images", "altmenu.png");
+    private final static Path GAME_OVER_PATH = Paths.get("src", "Images", "altover.png");
+    private final static Path YOU_WON_PATH = Paths.get("src", "Images", "youwon.jpeg");
 
     private Graphics doubleBufferedGraphic = null;
     private Image doubleBufferedImage = null;
@@ -81,13 +87,9 @@ public class GameView extends JFrame {
     private void loadImages() {
 
         try {
-            String menuImg = "altmenu.png";
-            String gameOverImg = "altover.png";
-            String gameWonImg = "youhaswon.jpeg";
-
-            menuImage = ImageIO.read(new File(menuImg));
-            gameOverImage = ImageIO.read(new File(gameOverImg));
-            gameWonImage = ImageIO.read(new File(gameWonImg));
+            menuImage = ImageIO.read(MENU_PATH.toFile());
+            gameOverImage = ImageIO.read(GAME_OVER_PATH.toFile());
+            gameWonImage = ImageIO.read(YOU_WON_PATH.toFile());
 
         } catch (IOException ex){
             System.out.println("Error: " + ex);
