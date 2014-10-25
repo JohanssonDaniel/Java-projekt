@@ -15,7 +15,8 @@ public final class MainClass
     private static void findAllMaps(List<String> allMaps) {
 	try {
 	    File[] folderFiles = MAP_FOLDER.listFiles();
-	    for (File fileEntry : folderFiles) {
+        assert folderFiles != null;
+        for (File fileEntry : folderFiles) {
 		if (fileEntry.isDirectory()) {
 		    findAllMaps(allMaps);
 		} else {

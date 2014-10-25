@@ -177,7 +177,8 @@ public class GameModel implements Runnable {
 	    e.printStackTrace();
 	}finally {
 	    try {
-		bufferedReader.close();
+            assert bufferedReader != null;
+            bufferedReader.close();
 	    }catch (Exception e){
 		e.printStackTrace();
 	    }
@@ -209,8 +210,10 @@ public class GameModel implements Runnable {
             e.printStackTrace();
         }finally {
 	    try {
-		bufferedWriter.close();
-	    }catch (Exception e){
+            if (bufferedWriter != null) {
+                bufferedWriter.close();
+            }
+        }catch (Exception e){
 		e.printStackTrace();
 	    }
 	}

@@ -4,6 +4,7 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import java.nio.file.Path;
 
 /**
  * Created by Daniel Johansson on 2014-10-23.
@@ -12,11 +13,10 @@ public class AudioPlayer
 {
     private Clip clip = null;
     private static final int SAMPLE_RATE = 16;
-    public AudioPlayer(String s) {
+    public AudioPlayer(Path audioPath) {
 	try {
 	    AudioInputStream audioInputStream =
-		    AudioSystem.getAudioInputStream(
-		    	getClass().getResourceAsStream(s));
+        AudioSystem.getAudioInputStream(audioPath.toAbsolutePath().toFile());
 	    AudioFormat baseFormat = audioInputStream.getFormat();
 	    AudioFormat decodeFormat = new AudioFormat(
 		    AudioFormat.Encoding.PCM_SIGNED,

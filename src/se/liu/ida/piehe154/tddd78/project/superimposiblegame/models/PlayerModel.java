@@ -2,6 +2,8 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.audio.AudioPlayer;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.AbstractMap;
 import java.util.HashMap;
 
@@ -27,6 +29,7 @@ public class PlayerModel {
 
     private final static int PLAYER_START_POSITION_X = 300;
     private final static int PLAYER_START_POSITION_Y = 540;
+    private static final Path JUMP_SOUND_PATH = Paths.get("src", "Sound", "Jump4.wav");
 
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
@@ -44,7 +47,7 @@ public class PlayerModel {
         upCount = 0;
 
 	playerSFX = new HashMap<String, AudioPlayer>();
-	playerSFX.put("jump", new AudioPlayer("/Sound/Jump4.wav"));
+	playerSFX.put("jump", new AudioPlayer(JUMP_SOUND_PATH));
     }
 
     public int getPlayerPositionY() {
