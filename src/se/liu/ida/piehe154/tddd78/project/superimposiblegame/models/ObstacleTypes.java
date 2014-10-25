@@ -6,5 +6,16 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
 public enum ObstacleTypes
 {
-    SQUARE,OVAL,TRIANGLE
+    /**
+     * SQUARE obstacle
+     */
+    SQUARE,
+    /**
+     * OVAL obstacle
+     */
+    OVAL,
+    /**
+     * TRIANGLE obstacle
+     */
+    TRIANGLE
 }
