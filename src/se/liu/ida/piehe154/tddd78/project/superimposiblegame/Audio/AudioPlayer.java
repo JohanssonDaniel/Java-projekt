@@ -1,4 +1,4 @@
-package se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio;
+package se.liu.ida.piehe154.tddd78.project.superimposiblegame.audio;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
  */
 public class AudioPlayer
 {
-    private Clip clip;
+    private Clip clip = null;
     private static final int SAMPLE_RATE = 16;
     public AudioPlayer(String s) {
 	try {
@@ -31,9 +31,7 @@ public class AudioPlayer
 	    AudioInputStream dais = AudioSystem.getAudioInputStream(decodeFormat,audioInputStream);
 	    clip = AudioSystem.getClip();
 	    clip.open(dais);
-
-	}
-	catch (Exception e){
+	} catch (Exception e){
 	    e.printStackTrace();
 	}
     }

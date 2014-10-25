@@ -45,8 +45,7 @@ public class PlayerController
 	int nextPlayerPositionY = theModel.getPlayerPositionY() + theModel.getVerticalStep();
 	int nextPlayerPositionX = theModel.getPlayerPositionX() + theModel.getHorizontalStep();
 
-	if (boardController.collidesWith(nextPlayerPositionX, nextPlayerPositionY, theModel.getPlayerHeight(),
-					 theModel.getPlayerWidth())) {
+	if (boardController.collidesWith(nextPlayerPositionX, nextPlayerPositionY, theModel.getPlayerHeight())) {
 	    ObstacleTypes obstacleType= boardController.getIntersectedObstacle();
 	    if (obstacleType == ObstacleTypes.TRIANGLE) {
 		gameOver = true;
@@ -75,8 +74,7 @@ public class PlayerController
 		startToFall();
 	}
 	else {
-	    if(boardController.collidesWith(nextPlayerPositionX, nextPlayerPositionY, theModel.getPlayerWidth(),
-					   theModel.getPlayerHeight())){
+	    if(boardController.collidesWith(nextPlayerPositionX, nextPlayerPositionY, theModel.getPlayerWidth())){
 		startToFall();
 	    }else{
 		theModel.increaseUpCount();
@@ -99,7 +97,6 @@ public class PlayerController
 
 	if (theModel.isStationary()) {
 	    theModel.setPlayerJumping();
-	    theModel.playJumpSound();
 	    theModel.setUpCount(0);
 	}
     }
@@ -112,9 +109,9 @@ public class PlayerController
      * Checks whether the player will collidesWith with something that would end the game
      * @return if player collides
      */
-    public void willCollide(){
+    public void checkWillCollide(){
 	int nextPosX = theModel.getPlayerPositionX() + theModel.getHorizontalStep();
-	if(boardController.collidesWith(nextPosX,theModel.getPlayerPositionY(),theModel.getPlayerWidth(),theModel.getPlayerHeight())){
+	if(boardController.collidesWith(nextPosX,theModel.getPlayerPositionY(),theModel.getPlayerWidth())){
 	    gameOver = true;
 	}
     }

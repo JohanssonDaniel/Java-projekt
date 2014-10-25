@@ -3,6 +3,7 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by pierre on 2014-04-16.
@@ -10,7 +11,7 @@ import java.util.Iterator;
  */
 public class BoardModel {
     private final AbstractList<Obstacle> bricks;
-    private final ArrayList<Obstacle> brickEnemies;
+    private final List<Obstacle> brickEnemies;
 
     private final static int BRICK_SIZE = Obstacle.SIZE;
     private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 5; // how many pixels the bricks move to the right every update

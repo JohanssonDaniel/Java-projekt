@@ -1,6 +1,6 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.audio.AudioPlayer;
 
 import java.util.AbstractMap;
 import java.util.HashMap;
@@ -87,10 +87,6 @@ public class PlayerModel {
 
     public void setUpCount(int upCount) {
 	this.upCount = upCount;
-    }
-
-    public void playJumpSound(){
-
     }
 
     public void setPlayerJumping() {

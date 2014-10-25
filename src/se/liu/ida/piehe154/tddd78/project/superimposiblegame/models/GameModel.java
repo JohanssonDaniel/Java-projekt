@@ -7,7 +7,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pierre on 2014-04-18.
@@ -27,6 +30,8 @@ public class GameModel implements Runnable {
     private volatile boolean isPaused = false;
     private boolean showMenu;
     private int resetCounter;
+
+    static final Path COMPLETED_TXT_PATH = Paths.get("completedMaps", "completed.txt");
 
     public GameModel(GameController theController) {
         this.theController = theController;
@@ -149,37 +154,37 @@ public class GameModel implements Runnable {
     }
 
     private void saveCompletedLevel(String mapName) {
-        File file = new File("completedMaps/completed.txt");
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String mapUrl = "completedMaps/completed.txt";
+	BufferedReader bufferedReader = null;
+	try {
+	    File file = new File(COMPLETED_TXT_PATH.toString());
+	    if (!file.exists()) {
+		file.createNewFile();
+	    }
+	    String mapUrl = COMPLETED_TXT_PATH.toString();
 
-        File inFile = new File(mapUrl);
-        // open input stream test.txt for reading purpose.
+	    File inFile = new File(mapUrl);
+	    // open input stream test.txt for reading purpose.
 
-        ArrayList<String> mapLines = new ArrayList<String>();
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(inFile));
-            String thisLine = br.readLine();
-            while (thisLine != null) {
-                mapLines.add(thisLine);
-                thisLine = br.readLine();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        checkIfCompleted(mapLines, mapName, file);
+	    List<String> mapLines = new ArrayList<String>();
+	    bufferedReader = new BufferedReader(new FileReader(inFile));
+	    String thisLine = bufferedReader.readLine();
+	    while (thisLine != null) {
+		mapLines.add(thisLine);
+		thisLine = bufferedReader.readLine();
+	    }
+	    checkIfCompleted(mapLines, mapName, file);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}finally {
+	    try {
+		bufferedReader.close();
+	    }catch (Exception e){
+		e.printStackTrace();
+	    }
+	}
     }
 
-    private void checkIfCompleted(ArrayList<String> mapLines, String mapName, File file) {
+    private void checkIfCompleted(List<String> mapLines, String mapName, File file) {
         boolean alreadyCompleted = false;
 
         for (int n = 0; n < mapLines.size(); n++) {
@@ -194,14 +199,20 @@ public class GameModel implements Runnable {
     }
 
     private void addToFile(final String mapName, File file) {
+	BufferedWriter bufferedWriter = null;
         try {
             FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(), true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(mapName);
             bufferedWriter.newLine();
-            bufferedWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }finally {
+	    try {
+		bufferedWriter.close();
+	    }catch (Exception e){
+		e.printStackTrace();
+	    }
+	}
     }
 }

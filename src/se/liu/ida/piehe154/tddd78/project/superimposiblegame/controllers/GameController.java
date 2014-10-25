@@ -3,7 +3,6 @@ package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.BoardListener;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.GameModel;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.GameView;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Menu;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -17,13 +16,13 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     private PlayerController playerController;
     private BoardController boardController;
-    private Menu menu;
+    private MenuController menuController;
 
     private String choosenMap;
 
-    public GameController(String userMap, Menu menu) {
-        this.menu = menu;
-        this.boardController = new BoardController(theView.getPixelWidth(), theView.getPixelHeight());
+    public GameController(String userMap, MenuController menuController) {
+        this.menuController = menuController;
+        this.boardController = new BoardController(GameView.getPixelWidth());
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
         boardController.addBoardListener(this);
@@ -41,7 +40,6 @@ public class GameController extends WindowAdapter implements BoardListener {
         this.choosenMap = userMap;
         boardController.initMap(choosenMap);
         theView.addWindowListener(this);
-        theModel.startGame();
     }
 
     /**
@@ -49,7 +47,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      * @param keyCode Input keyCode
      */
     private void testKey(int keyCode) {
-        if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menu
+        if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menuController
             if (theModel.isShowMenu()){
                 //isPaused = false;
                 //showMenu = false;
@@ -61,7 +59,7 @@ public class GameController extends WindowAdapter implements BoardListener {
                 //showMenu = true;
                 theModel.setPaused(true);
                 theModel.setShowMenu(true);
-                boardController.notifyListeners(); //So we see the menu
+                boardController.notifyListeners(); //So we see the menuController
             }
         }
         else if (keyCode == KeyEvent.VK_ESCAPE) { //Quit game
@@ -91,7 +89,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      * resets the board and the players position and increments the resetCounter, which is later displayed in the GameView, by one
      */
     private void resetGame() {
-        boardController = new BoardController(theView.getWidth(), theView.getHeight());
+        boardController = new BoardController(theView.getWidth());
         boardController.addBoardListener(this);
         boardController.initMap(choosenMap);
 
@@ -148,7 +146,7 @@ public class GameController extends WindowAdapter implements BoardListener {
     }
 
     public void updateMenu() {
-        menu.updateButtons();
+        menuController.updateMenu();
     }
 
     /**
@@ -157,7 +155,7 @@ public class GameController extends WindowAdapter implements BoardListener {
      */
 
     public void getPlayerWillCollide() {
-	playerController.willCollide();
+	playerController.checkWillCollide();
     }
 
 
@@ -207,5 +205,9 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     public String getChoosenMap() {
 	return choosenMap;
+    }
+
+    public void startGame() {
+	theModel.startGame();
     }
 }

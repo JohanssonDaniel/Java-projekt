@@ -1,25 +1,49 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers;
 
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Menu;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.audio.AudioPlayer;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.MenuModel;
+import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.MenuView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by pierre on 2014-10-22.
  */
 public class MenuController implements ActionListener{
-    private Menu menu;
+    private static ArrayList<String> completedMaps = new ArrayList<String>();
+    private static ArrayList<String> allMaps = new ArrayList<String>();
+    private static final String COMPLETED_TXT = "completedMaps/completed.txt";
+    private static final String MENU_MUSIC = "/Sound/SuperNinjaAssasin.mp3";
+    private MenuView theView = null;
+    private MenuModel theModel = null;
     private AudioPlayer bgMusic;
 
-    public MenuController(Menu menu) {
-        this.menu = menu;
-	    bgMusic = new AudioPlayer("/Sound/SuperNinjaAssasin.mp3");
-	    bgMusic.play();
+    public MenuController(ArrayList<String> allMaps) {
+	this.allMaps = allMaps;
+	bgMusic = new AudioPlayer(MENU_MUSIC);
+	bgMusic.play();
     }
 
+    public void createMenu(){
+	theModel  = new MenuModel(this);
+	theView = new MenuView();
+	readCompletedMaps();
+	theModel.createButtons(allMaps, completedMaps);
+	theView.createView(theModel.getButtons());
+    }
+
+    public void updateMenu(){
+	readCompletedMaps();
+	theModel.updateButtons(completedMaps);
+	theView.updateView();
+    }
 
     @SuppressWarnings("SuppressionAnnotation")
     @Override
@@ -28,7 +52,32 @@ public class MenuController implements ActionListener{
         buttonPressed = (JButton)e.getSource();
         String mapName = buttonPressed.getText();
 
-        //We dont need to keep track of our game in our menu
-        new GameController(mapName, menu);
+        //We dont need to keep track of our game in our MenuController
+        GameController gameController = new GameController(mapName, this);
+	gameController.startGame();
+    }
+
+
+    private static void readCompletedMaps() {
+	// open input stream test.txt for reading purpose.
+	BufferedReader bufferedReader = null;
+	try{
+	    File inFile = new File(COMPLETED_TXT);
+	    bufferedReader = new BufferedReader(new FileReader(inFile));
+	    String thisLine;
+	    thisLine = bufferedReader.readLine();
+	    while (thisLine != null) {
+		completedMaps.add(thisLine);
+		thisLine = bufferedReader.readLine();
+	    }
+	}catch(IOException e){
+	    e.printStackTrace();
+	}finally {
+	    try {
+		bufferedReader.close();
+	    }catch (Exception e){
+		e.printStackTrace();
+	    }
+	}
     }
 }

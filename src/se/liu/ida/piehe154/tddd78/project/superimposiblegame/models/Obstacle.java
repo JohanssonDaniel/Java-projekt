@@ -36,7 +36,7 @@ public class Obstacle {
      * @param playerPositionY Position of player in Y-axis
      * @return if player intersects with obstacle
      */
-    public boolean intersect(int playerPositionX, int playerPositionY, int playerWidth, int playerHeight) {
+    public boolean intersect(int playerPositionX, int playerPositionY, int playerWidth) {
 	int obsRightSide = SIZE + positionX;
 	int obsBottomSide = SIZE + positionY;
 	int playerRightSide = playerWidth + playerPositionX;

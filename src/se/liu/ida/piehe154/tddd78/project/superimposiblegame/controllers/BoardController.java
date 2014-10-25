@@ -14,6 +14,7 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
@@ -29,7 +30,6 @@ public class BoardController{
     private static final String TXT_FILE_END = ".txt";
     private static final int ENEMIES_STARTING_X_COORD = 600;   //Enemies starts at X = 600, then we go forward.
     private final int pixelWidth;
-    private final int pixelHeight;
     private BoardView theView = new BoardView();
     private BoardModel theModel = new BoardModel(GameView.getPixelHeight());
 
@@ -39,11 +39,10 @@ public class BoardController{
     private final static char OVAL = 'o';
     private final static char TRIANGLE = 't';
 
-    private ObstacleTypes currentIntersectedObstacleType;
+    private ObstacleTypes currentIntersectedObstacleType = null;
 
-    public BoardController(int pixelWidth, int pixelHeight) {
+    public BoardController(int pixelWidth) {
 	this.pixelWidth = pixelWidth;
-	this.pixelHeight = pixelHeight;
     }
 
     public void createEnemies(String mapName){
@@ -52,19 +51,28 @@ public class BoardController{
         File inFile = new File(mapUrl);
         // open input stream test.txt for reading purpose.
 
-        ArrayList<String> mapLines = new ArrayList<String>();
-
+        List<String> mapLines = new ArrayList<String>();
+	BufferedReader bufferedReader = null;
         try{
-            BufferedReader br = new BufferedReader(new FileReader(inFile));
-            thisLine = br.readLine();
+            bufferedReader = new BufferedReader(new FileReader(inFile));
+            thisLine = bufferedReader.readLine();
             while (thisLine != null) {
                 mapLines.add(thisLine);
-                thisLine = br.readLine();
+                thisLine = bufferedReader.readLine();
             }
 
-        }catch(Exception e){
+        } catch (IOException e) {
+	    e.printStackTrace();
+	} catch(Exception e){
             e.printStackTrace();
-        }
+        }finally {
+	    try {
+		assert bufferedReader != null;
+		bufferedReader.close();
+	    }catch (IOException e){
+		e.printStackTrace();
+	    }
+	}
 
         int enemyXCoord = ENEMIES_STARTING_X_COORD;
 
@@ -128,8 +136,8 @@ public class BoardController{
      * @param nextPlayerPositionY the players next Y position
      * @return true or false
      */
-    public boolean collidesWith(int nextPlayerPositionX, int nextPlayerPositionY, int playerWidth, int playerHeight){
-	return willHitFloor(nextPlayerPositionY) || willCollide(nextPlayerPositionX,nextPlayerPositionY, playerWidth, playerHeight);
+    public boolean collidesWith(int nextPlayerPositionX, int nextPlayerPositionY, int playerWidth){
+	return willHitFloor(nextPlayerPositionY) || willCollide(nextPlayerPositionX,nextPlayerPositionY, playerWidth);
     }
     /**
      * Checks whether the players next y position is the floor
@@ -149,13 +157,13 @@ public class BoardController{
      * @param nextPlayerPositionY Next player position in Y-axis
      * @return if player collides with obstacle
      */
-    private boolean willCollide(int nextPlayerPositionX, int nextPlayerPositionY, int playerWidth, int playerHeight){
+    private boolean willCollide(int nextPlayerPositionX, int nextPlayerPositionY, int playerWidth){
 	Iterable<Obstacle> brickEnemies = theModel.getBrickEnemies();
 	int nextPlayerXWidth = nextPlayerPositionX + BRICK_SIZE;
 	for (Obstacle obstacle : brickEnemies){
 	    int nextObstacleXWidth = obstacle.getPositionX() + BRICK_SIZE;
 	    if (!(nextPlayerXWidth < obstacle.getPositionX() && !(nextPlayerPositionX > nextObstacleXWidth))) { //Ignores obstacle that are behind or ahead of the nextX position {
-		if (obstacle.intersect(nextPlayerPositionX, nextPlayerPositionY, playerWidth, playerHeight) ) {
+		if (obstacle.intersect(nextPlayerPositionX, nextPlayerPositionY, playerWidth) ) {
 		    currentIntersectedObstacleType = obstacle.getObstacleType();
 		    return true;
 		}
