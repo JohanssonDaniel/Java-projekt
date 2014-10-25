@@ -13,6 +13,7 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.TriangleShape
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.*;
 import java.util.List;
 
@@ -23,6 +24,10 @@ import java.util.List;
 public class BoardController{
 
     private static final int BRICK_SIZE = 30;
+    @SuppressWarnings("HardcodedFileSeparator")
+    private static final String MAP_FOLDER = "maps/";
+    private static final String TXT_FILE_END = ".txt";
+    private static final int ENEMIES_STARTING_X_COORD = 600;   //Enemies starts at X = 600, then we go forward.
     private final int pixelWidth;
     private final int pixelHeight;
     private BoardView theView = new BoardView();
@@ -43,16 +48,14 @@ public class BoardController{
 
     public void createEnemies(String mapName){
 	String thisLine;
-	String mapUrl = "maps/" + mapName + ".txt";
+	String mapUrl = MAP_FOLDER + mapName + TXT_FILE_END;
 	File inFile = new File(mapUrl);
 	// open input stream test.txt for reading purpose.
 
-	char brick;
-	Integer pointX = 600;
-	ArrayList<String> mapLines = new ArrayList<String>();
+        ArrayList<String> mapLines = new ArrayList<String>();
 
 	try{
-	    BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+	    BufferedReader br = new BufferedReader(new FileReader(inFile));
 
 	    while ((thisLine = br.readLine()) != null) {
 		mapLines.add(thisLine);
@@ -61,19 +64,22 @@ public class BoardController{
 	}catch(Exception e){
 	    e.printStackTrace();
 	}
+
+    int enemyXCoord = ENEMIES_STARTING_X_COORD;
+
 	for (int n =0; n < mapLines.size(); n++) {
 	    thisLine = mapLines.get(n);
 	    for (int row = 0; row < thisLine.length(); row++) {
-		brick = thisLine.charAt(row);
-		if (brick == SQUARE) {
-		    theModel.addObstacle(new Obstacle(pointX, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new SquareShape(),ObstacleTypes.SQUARE)); //(row+1) To get the Obstacle above the floor
+            char brick = thisLine.charAt(row);
+            if (brick == SQUARE) {
+		    theModel.addObstacle(new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new SquareShape(),ObstacleTypes.SQUARE)); //(row+1) To get the Obstacle above the floor
 		} else if (brick == OVAL) {
-		    theModel.addObstacle((new Obstacle(pointX, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new OvalShape(),ObstacleTypes.OVAL)));
+		    theModel.addObstacle((new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new OvalShape(),ObstacleTypes.OVAL)));
 		} else if (brick == TRIANGLE) {
-		    theModel.addObstacle((new Obstacle(pointX, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new TriangleShape(),ObstacleTypes.TRIANGLE)));
+		    theModel.addObstacle((new Obstacle(enemyXCoord, (theModel.getHeightOffset() - (row+1)*BRICK_SIZE),new TriangleShape(),ObstacleTypes.TRIANGLE)));
 		}
 	    }
-	    pointX += BRICK_SIZE;
+        enemyXCoord += BRICK_SIZE;
 	}
     }
 
@@ -105,7 +111,7 @@ public class BoardController{
     }
 
     public boolean playerWonTheGame() {
-        return theModel.player_won_the_game;
+        return theModel.isPlayerWonTheGame();
     }
 
     public void moveEnemies(){
@@ -143,7 +149,7 @@ public class BoardController{
      * @return if player collides with obstacle
      */
     private boolean willCollide(int nextPlayerPositionX, int nextPlayerPositionY, int playerWidth, int playerHeight){
-	ArrayList<Obstacle> brickEnemies = theModel.getBrickEnemies();
+	Iterable<Obstacle> brickEnemies = theModel.getBrickEnemies();
 	int nextPlayerXWidth = nextPlayerPositionX + BRICK_SIZE;
 	for (Obstacle obstacle : brickEnemies){
 	    int nextObstacleXWidth = obstacle.getPositionX() + BRICK_SIZE;

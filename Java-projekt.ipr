@@ -996,6 +996,7 @@
               <option value="ResultOfObjectAllocationIgnored" />
               <option value="RefusedBequest" />
               <option value="MagicNumber" />
+              <option value="HardcodedFileSeparator" />
             </list>
           </option>
         </inspection_tool>

@@ -1,9 +1,8 @@
 package se.liu.ida.piehe154.tddd78.project.superimposiblegame.models;
 
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.LjudSpelare;
-import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.PlayerController;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Audio.AudioPlayer;
 
+import java.util.AbstractMap;
 import java.util.HashMap;
 
 /**
@@ -31,7 +30,7 @@ public class PlayerModel {
 
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
-    private HashMap<String, AudioPlayer> playerSFX;
+    private AbstractMap<String, AudioPlayer> playerSFX;
 
     public PlayerModel() { //int START_Y_POSITION
 
@@ -75,7 +74,7 @@ public class PlayerModel {
     }
 
     public boolean isNotJumping() {
-	return !(playerState == State.RISING);
+	return playerState != State.RISING;
     }
 
     public boolean isStationary(){

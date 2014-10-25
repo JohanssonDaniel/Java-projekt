@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
  * Created by pierre on 2014-10-22.
  */
 public class MenuController implements ActionListener{
-    public Menu menu;
+    private Menu menu;
     private AudioPlayer bgMusic;
 
     public MenuController(Menu menu) {
@@ -20,11 +20,13 @@ public class MenuController implements ActionListener{
 	    bgMusic.play();
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton buttonPressed;
         buttonPressed = (JButton)e.getSource();
         String mapName = buttonPressed.getText();
+        //noinspection ResultOfObjectAllocationIgnored
         new GameController(mapName, menu);
     }
 }

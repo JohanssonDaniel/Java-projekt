@@ -5,10 +5,8 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.models.GameModel;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.views.GameView;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.Menu;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 
 /**
  * The GameController is the controller that communicates the inforamtion from the Board and Player to the GameView and GameModel
@@ -31,9 +29,6 @@ public class GameController extends WindowAdapter implements BoardListener {
         boardController.addBoardListener(this);
         boardController.notifyListeners(); //BEHÖVER VI DENNA?
 
-        //final File folder = new File("maps");
-        //listFilesForFolder(folder);
-
         theView.addKeyListener(new KeyAdapter() {
             //Overrides method
             @Override
@@ -47,17 +42,6 @@ public class GameController extends WindowAdapter implements BoardListener {
         boardController.initMap(choosenMap);
         theView.addWindowListener(this);
         theModel.startGame();
-    }
-
-    //TODO: Möjligtvis kan vi läsa in alla .txt filer och sedan väljer användaren vilken bana den vill köra.
-    public void listFilesForFolder(final File folder) {
-        for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
-                listFilesForFolder(fileEntry);
-            } else {
-                System.out.println(fileEntry.getName());
-            }
-        }
     }
 
     /**
@@ -199,6 +183,7 @@ public class GameController extends WindowAdapter implements BoardListener {
     }
     // Overrides WindowListener method
     public void windowClosing(WindowEvent e) {
+        super.windowClosing(e);
         theModel.stopGame();
     }
 

@@ -16,7 +16,7 @@ public class BoardModel {
     private final static int PIXELS_PER_UPDATE = BRICK_SIZE / 5; // how many pixels the bricks move to the right every update
     private final int pixelHeight;
 
-    public boolean player_won_the_game = false;
+    public boolean playerWonTheGame = false;
 
     private final int heightOffset;
 
@@ -48,6 +48,12 @@ public class BoardModel {
             }
         }
     }
+
+
+    public boolean isPlayerWonTheGame() {
+        return playerWonTheGame;
+    }
+
     /**
      * Moves the obstacles on tick closer to the player each update, this gives the illusion that it is the player that moves
      */
@@ -66,7 +72,7 @@ public class BoardModel {
                 }
             }
         } else {
-            player_won_the_game = true;
+            playerWonTheGame = true;
         }
     }
 

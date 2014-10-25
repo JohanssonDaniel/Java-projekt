@@ -7,7 +7,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
-import java.lang.reflect.Array;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +19,17 @@ public class Menu extends JFrame {
     private MenuController menuController;
 
     private static File mapDirectory = new File("maps/");
+    private static final int FRAME_WIDTH = 600;
+    private static final int FRAME_HEIGHT = 600;
+    private static final int WELCOME_FONT_SIZE = 34;
+    private static final int DESC_FONT_SIZE = 22;
+    private static final int WELCOME_LABEL_WIDTH = 500;
+    private static final int WELCOME_LABEL_HEIGHT = 150;
+    private static final int DESC_LABEL_WIDTH = 240;
+    private static final int DESC_LABEL_HEIGHT = 50;
+    private static final int MAP_BUTTON_WIDTH = 500;
+    private static final int MAP_BUTTON_HEIGHT = 50;
+
     public JLabel welcome = new JLabel("Super Impossible Game");
     public JLabel description = new JLabel("please choose a map");
 
@@ -29,13 +40,13 @@ public class Menu extends JFrame {
     public Menu() {
         Container container = getContentPane();
         gamePanel = new JPanel();
-        gamePanel.setPreferredSize(new Dimension(600, 600));
+        gamePanel.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         gamePanel.setFocusable(true);
         gamePanel.requestFocus();    // the JPanel now has focus which allows it to recieve keyboard events
 
         buttons();
 
-        container.setPreferredSize(new Dimension(600, 600));
+        container.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         container.add(gamePanel, "Center");
 
         setResizable(false);
@@ -45,13 +56,13 @@ public class Menu extends JFrame {
 
     private void buttons(){
         setLayout(new FlowLayout());
-        Font welcomeFont = new Font("SansSerif", Font.BOLD, 34);
-        Font descFont = new Font("SansSerif", Font.PLAIN, 22);
+        Font welcomeFont = new Font("SansSerif", Font.BOLD, WELCOME_FONT_SIZE);
+        Font descFont = new Font("SansSerif", Font.PLAIN, DESC_FONT_SIZE);
 
         welcome.setFont(welcomeFont);
-        welcome.setPreferredSize(new Dimension(500,150));
+        welcome.setPreferredSize(new Dimension(WELCOME_LABEL_WIDTH,WELCOME_LABEL_HEIGHT));
         description.setFont(descFont);
-        description.setPreferredSize(new Dimension(240,50));
+        description.setPreferredSize(new Dimension(DESC_LABEL_WIDTH,DESC_LABEL_HEIGHT));
 
         menuController = new MenuController(this);
 
@@ -60,7 +71,7 @@ public class Menu extends JFrame {
         for (int n = 0; n < allMaps.size(); n++) {
             String mapName = allMaps.get(n);
             JButton mapButton = new JButton(mapName);
-            mapButton.setPreferredSize(new Dimension(500, 50));
+            mapButton.setPreferredSize(new Dimension(MAP_BUTTON_WIDTH, MAP_BUTTON_HEIGHT));
             if (completedMaps.contains(mapName)){
                 mapButton.setBackground(Color.GREEN);
             }else{
@@ -73,22 +84,19 @@ public class Menu extends JFrame {
             buttons.add(n, mapButton);
         }
 
-        setSize(800, 800);
+        //setSize(800, 800);
         setVisible(true);
         pack();
     }
     private static void readCompletedMaps() {
-        String thisLine;
-        File inFile = new File("completedMaps/completed.txt");
         // open input stream test.txt for reading purpose.
-
         try{
-            BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
-
+            File inFile = new File("completedMaps/completed.txt");
+            BufferedReader br = new BufferedReader(new FileReader(inFile));
+            String thisLine;
             while ((thisLine = br.readLine()) != null) {
                 completedMaps.add(thisLine);
             }
-
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -100,7 +108,7 @@ public class Menu extends JFrame {
             if (fileEntry.isDirectory()) {
                 findAllMaps(fileEntry);
             } else {
-                String name = fileEntry.getName().toString();
+                String name = fileEntry.getName();
                 if (name.endsWith(".txt")) {
                     int indexOfFileExtension = name.indexOf('.', 0); //We only want the name of map, so we remove .txt in filename
                     System.out.println(name.substring(0,indexOfFileExtension));

@@ -5,6 +5,7 @@ import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.GameCon
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
@@ -135,7 +136,7 @@ public class GameModel implements Runnable {
      */
     private void gameUpdate() {
         if (theController.hasPlayerWonTheGame()) {
-            setGameOver(true);
+            gameOver = true;
             saveCompletedLevel(theController.getChoosenMap());
             theController.updateMenu();
         }
@@ -165,7 +166,7 @@ public class GameModel implements Runnable {
         ArrayList<String> mapLines = new ArrayList<String>();
 
         try {
-            BufferedReader br = new BufferedReader(new java.io.FileReader(inFile));
+            BufferedReader br = new BufferedReader(new FileReader(inFile));
 
             while ((thisLine = br.readLine()) != null) {
                 mapLines.add(thisLine);
