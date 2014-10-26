@@ -6,8 +6,7 @@ import java.awt.*;
 
 /**
  * Created by pierre on 2014-04-18.
- * This obstacle is ment to make the player bounce if it lands on it
- * Since it extends Obsacle it implements the intersects and draw function
+ * Draws the image of an Oval
  */
 
 public class OvalShape implements ObstacleShape

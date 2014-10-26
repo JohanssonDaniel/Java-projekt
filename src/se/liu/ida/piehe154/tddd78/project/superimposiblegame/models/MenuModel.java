@@ -9,7 +9,9 @@ import java.util.*;
 import java.util.List;
 
 /**
- * Created by DannePanne on 2014-10-25.
+ * Created by Daniel Johansson 2014-10-25.
+ * The model for the menu is a list of JButtons that gets created at the start of the gae and updated each time
+ * the player completes a game.
  */
 public class MenuModel
 {
@@ -25,6 +27,12 @@ public class MenuModel
 	this.menuController = menuController;
     }
 
+    /**
+     * Creates and saves the same amount of buttons as there are saved maps in a List.
+     * Checks to see if a map is completed and changes the color of the button if that is the case
+     * @param allMaps
+     * @param completedMaps
+     */
     public void createButtons(Iterable<String> allMaps, List<String> completedMaps){
 
 	LineBorder orangeBorder = new LineBorder(Color.ORANGE,2,true);
@@ -43,6 +51,11 @@ public class MenuModel
 	    buttons.add(mapButton);
 	}
     }
+
+    /**
+     * Updates the color of the button if its associated map has been completed
+     * @param completedMaps
+     */
     public void updateButtons(List<String> completedMaps) {
 	for (JButton button : buttons) {
 	    String mapName = button.getText();

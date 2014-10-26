@@ -6,6 +6,7 @@ import java.awt.*;
 
 /**
  * Created by Daniel Johansson on 2014-04-14.
+ * Draws the image of a triangle
  */
 public class TriangleShape implements ObstacleShape
 {

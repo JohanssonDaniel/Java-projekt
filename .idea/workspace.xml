@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b0f3c34-7792-48c8-907b-952a4653f9bf" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\DannePanne\Documents\IdeaProjects\Java-projekt\src\Sound\level1-1.mp3" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UML/Thumbs.db" afterPath="$PROJECT_DIR$/UML/Thumbs.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/audio/AudioPlayer.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/audio/AudioPlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MainClass.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MainClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/MenuModel.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/MenuModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/OvalShape.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/OvalShape.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/PlayerModel.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/PlayerModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/SquareShape.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/SquareShape.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/TriangleShape.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/TriangleShape.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Java-projekt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,31 +80,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AudioPlayer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/audio/AudioPlayer.java">
+      <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="177" max-vertical-offset="1122">
-              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoardController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3060">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3145">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state vertical-scroll-proportion="-14.107142" vertical-offset="1152" max-vertical-offset="1751">
+              <caret line="91" column="6" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -100,32 +93,42 @@
       <file leaf-file-name="PlayerController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2176">
-              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            <state vertical-scroll-proportion="-7.107143" vertical-offset="430" max-vertical-offset="2142">
+              <caret line="41" column="7" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/BoardListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.857142" vertical-offset="2461" max-vertical-offset="3060">
+              <caret line="169" column="114" selection-start-line="169" selection-start-column="112" selection-end-line="169" selection-end-column="114" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-57.07143" vertical-offset="0" max-vertical-offset="3162">
+              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding>
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#1506#1728#0" expanded="true" />
+                <element signature="e#1717#1718#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerView.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1649">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -133,38 +136,48 @@
       <file leaf-file-name="MainClass.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16190477" vertical-offset="0" max-vertical-offset="945">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.2169059" vertical-offset="0" max-vertical-offset="1088">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java">
+      <file leaf-file-name="GameView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3009" max-vertical-offset="3825">
-              <caret line="177" column="22" selection-start-line="177" selection-start-column="22" selection-end-line="177" selection-end-column="22" />
+            <state vertical-scroll-proportion="-32.607143" vertical-offset="39" max-vertical-offset="3179">
+              <caret line="56" column="37" selection-start-line="56" selection-start-column="37" selection-end-line="56" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/PlayerModel.java">
+      <file leaf-file-name="PlayerView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="1564">
-              <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Obstacle.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/Obstacle.java">
+      <file leaf-file-name="BoardView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/BoardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="1224">
-              <caret line="38" column="86" selection-start-line="38" selection-start-column="86" selection-end-line="38" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+              <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -183,10 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/superimposiblegame/GameModel.java" />
-        <option value="$PROJECT_DIR$/src/superimposiblegame/MVCGame.java" />
-        <option value="$PROJECT_DIR$/src/superimposiblegame/GameView.java" />
-        <option value="$PROJECT_DIR$/src/superimposiblegame/GameController.java" />
         <option value="$PROJECT_DIR$/src/se.liu.ida.piehe154.tddd78.project.superimpossiblegame/BoardController.java" />
         <option value="$PROJECT_DIR$/src/se.liu.ida.piehe154.tddd78.project.superimposiblegame/GameController.java" />
         <option value="$PROJECT_DIR$/src/se.liu.ida.piehe154.tddd78.project.superimposiblegame/BoardView.java" />
@@ -220,20 +229,24 @@
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/Obstacle.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/Menu.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/mainGame.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MenuController.java" />
         <option value="$PROJECT_DIR$/completedMaps/completed.txt" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/mainClass.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/MenuModel.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/PlayerModel.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MainClass.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/audio/AudioPlayer.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/MenuModel.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/PlayerModel.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/TriangleShape.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/SquareShape.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/OvalShape.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MainClass.java" />
       </list>
     </option>
   </component>
@@ -503,24 +516,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="audio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java-projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java-projekt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superimposiblegame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -814,6 +809,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32682425" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37307298" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37307298" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -828,7 +824,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17060637" sideWeight="0.49947917" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32682425" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22096609" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22918808" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
@@ -864,7 +859,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="2006">
           <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2082#2083#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2292#2293#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2495#2496#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2702#2703#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2831#2832#0" expanded="true" />
+            <element signature="e#2870#2871#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -872,10 +894,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1139">
           <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +910,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3009">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2082#2083#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2292#2293#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2495#2496#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2702#2703#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2831#2832#0" expanded="true" />
+            <element signature="e#2870#2871#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -929,7 +975,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="3791">
           <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#1506#1728#0" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -937,10 +986,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1139">
           <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -956,7 +1002,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1115" max-vertical-offset="2737">
           <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2082#2083#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2292#2293#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2495#2496#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2702#2703#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2831#2832#0" expanded="true" />
+            <element signature="e#2870#2871#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -987,7 +1060,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1921" max-vertical-offset="3774">
           <caret line="113" column="38" selection-start-line="113" selection-start-column="38" selection-end-line="113" selection-end-column="38" />
-          <folding />
+          <folding>
+            <element signature="e#1506#1728#0" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -995,10 +1071,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1139">
           <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1032,13 +1105,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/OvalShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/komplettering.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2193211" vertical-offset="1291" max-vertical-offset="3383">
@@ -1050,6 +1116,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2907" max-vertical-offset="5627">
           <caret line="171" column="27" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,35 +1124,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1105" max-vertical-offset="4726">
           <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/SquareShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/BoardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/ObstacleTypes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/ObstacleShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1093,21 +1132,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="582">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/BoardListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/BoardModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1598">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,21 +1143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/TriangleShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="52118" max-vertical-offset="164356">
-          <caret line="3284" column="16" selection-start-line="3284" selection-start-column="16" selection-end-line="3284" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/completedMaps/completed.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="582">
@@ -1141,35 +1150,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1207">
-          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/nio/file/Paths.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="2210">
           <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/MenuModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32349166" vertical-offset="54" max-vertical-offset="1088">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding>
-            <element signature="e#788#789#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3213">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1182,54 +1166,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2780" max-vertical-offset="3553">
-          <caret line="177" column="22" selection-start-line="177" selection-start-column="22" selection-end-line="177" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3060">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="3145">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2176">
-          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding>
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/audio/AudioPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="177" max-vertical-offset="1122">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="313" max-vertical-offset="1326">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/BoardModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1598">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/GameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2676" max-vertical-offset="3825">
+          <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/MenuModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1309">
+          <caret line="55" column="79" selection-start-line="55" selection-start-column="79" selection-end-line="55" selection-end-column="79" />
+          <folding>
+            <element signature="e#846#855#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#2219#2220#0" expanded="true" />
+            <element signature="e#2242#2243#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1241,26 +1212,168 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/ObstacleShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/ObstacleTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/PlayerModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="1564">
-          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1044" max-vertical-offset="2057">
+          <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+          <folding>
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1862#1863#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2082#2083#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2292#2293#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2495#2496#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2702#2703#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2831#2832#0" expanded="true" />
+            <element signature="e#2870#2871#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/TriangleShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/SquareShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/OvalShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="52118" max-vertical-offset="164356">
+          <caret line="3284" column="16" selection-start-line="3284" selection-start-column="16" selection-end-line="3284" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/PlayerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/BoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.857142" vertical-offset="2461" max-vertical-offset="3060">
+          <caret line="169" column="114" selection-start-line="169" selection-start-column="112" selection-end-line="169" selection-end-column="114" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1649">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state vertical-scroll-proportion="-14.107142" vertical-offset="1152" max-vertical-offset="1751">
+          <caret line="91" column="6" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/PlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.107143" vertical-offset="430" max-vertical-offset="2142">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/models/BoardListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/controllers/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-57.07143" vertical-offset="0" max-vertical-offset="3162">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding>
+            <element signature="e#1506#1728#0" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/MenuView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/GameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.607143" vertical-offset="39" max-vertical-offset="3179">
+          <caret line="56" column="37" selection-start-line="56" selection-start-column="37" selection-end-line="56" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/views/BoardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/piehe154/tddd78/project/superimposiblegame/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16190477" vertical-offset="0" max-vertical-offset="945">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.2169059" vertical-offset="0" max-vertical-offset="1088">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>

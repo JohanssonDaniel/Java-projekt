@@ -9,7 +9,6 @@ import java.awt.*;
 public class PlayerView {
     public void draw(Graphics g, int playerPositionX, int playerPositionY, int playerWidth, int playerHeight) {
         g.setColor(Color.BLUE);
-        //g.drawOval(playerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT);
         g.fillRect(playerPositionX, playerPositionY, playerWidth, playerHeight);
     }
 }

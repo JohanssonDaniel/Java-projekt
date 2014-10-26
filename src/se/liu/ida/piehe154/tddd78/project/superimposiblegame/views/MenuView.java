@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by DannePanne on 2014-10-25.
+ * Created by Daniel Johansson on 2014-10-25.
+ * The MenuView is a JPanel with Jbuttons and text render on it
  */
 public class MenuView extends JFrame
 {
@@ -37,6 +38,10 @@ public class MenuView extends JFrame
 	pack();
     }
 
+    /**
+     * Draws the text and buttons onto the menu
+     * @param buttons
+     */
     public void createView(Iterable<JButton> buttons){
 
 	setLayout(new FlowLayout());
@@ -59,6 +64,9 @@ public class MenuView extends JFrame
 	pack();
     }
 
+    /**
+     * Updates the view
+     */
     public void updateView() {
 	gamePanel.repaint();
     }

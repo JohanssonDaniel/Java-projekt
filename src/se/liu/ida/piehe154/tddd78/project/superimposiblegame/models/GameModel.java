@@ -193,11 +193,17 @@ public class GameModel implements Runnable {
 	}
     }
 
+    /**
+     * Iterates over maplines and checks if the mapName exist in the list
+     * If not, add it to the list
+     * @param mapLines
+     * @param mapName
+     * @param file
+     */
     private void checkIfCompleted(List<String> mapLines, String mapName, File file) {
 	boolean alreadyCompleted = false;
 
-	for (int n = 0; n < mapLines.size(); n++) {
-	    String line = mapLines.get(n);
+	for (String line : mapLines) {
 	    if ((line.equals(mapName))) {
 		alreadyCompleted = true;
 	    }
@@ -207,6 +213,11 @@ public class GameModel implements Runnable {
 	}
     }
 
+    /**
+     * Adds a string to the specified list
+     * @param mapName
+     * @param file
+     */
     private void addToFile(final String mapName, File file) {
 	try {
 	    FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(), true);

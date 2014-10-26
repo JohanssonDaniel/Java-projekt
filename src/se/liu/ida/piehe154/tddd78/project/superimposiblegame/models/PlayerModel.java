@@ -9,8 +9,8 @@ import java.util.HashMap;
 
 /**
  * Created by pierre on 2014-04-16.
- * Contians the information of how the player is represented in the game, it size how many updates before it's stops to jump
- * It also checks wether it's next position will collidesWith with an object in the GameBoard
+ * Contains the information of how the player is represented in the game, it size how many updates before it's stops to jump
+ * It also checks whether it's next position will collidesWith with an object in the GameBoard
  */
 public class PlayerModel {
 
@@ -29,13 +29,16 @@ public class PlayerModel {
 
     private final static int PLAYER_START_POSITION_X = 300;
     private final static int PLAYER_START_POSITION_Y = 540;
+    /**
+     * Using a hashmap allows us easily add more sound files to the same player
+     */
     private static final Path JUMP_SOUND_PATH = Paths.get("src", "Sound", "Jump4.wav");
 
     private final static int PLAYER_HEIGHT = 30;
     private final static int PLAYER_WIDTH = 30;
     private AbstractMap<String, AudioPlayer> playerSFX;
 
-    public PlayerModel() { //int START_Y_POSITION
+    public PlayerModel() {
 
         playerPositionX = PLAYER_START_POSITION_X;
         playerPositionY = PLAYER_START_POSITION_Y;

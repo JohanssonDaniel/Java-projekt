@@ -10,12 +10,18 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Created by Daniel Johansson on 2014-10-23.
+ * Handles the sound clips that are specified in the classes which uses sound.
+ * Reads the format of the sound file and decode it if it is a .mp3 file.
  */
 public class AudioPlayer
 {
     private Clip clip = null;
     private static final int SAMPLE_RATE = 16;
+
+    /**
+     * Finds the file in the specified path and decodes it
+     * @param audioPath relative file path
+     */
     public AudioPlayer(Path audioPath) {
 	try {
 	    AudioInputStream audioInputStream =
@@ -43,6 +49,9 @@ public class AudioPlayer
 	}
     }
 
+    /**
+     * Plays the clip
+     */
     public void play(){
 	if (clip == null){
 	    return;
@@ -52,6 +61,9 @@ public class AudioPlayer
 	clip.start();
     }
 
+    /**
+     * Stops the clip
+     */
     public void stop(){
 	if (clip.isRunning()){
 	    clip.stop();

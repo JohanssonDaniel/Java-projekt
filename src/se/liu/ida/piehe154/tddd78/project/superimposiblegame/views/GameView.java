@@ -60,7 +60,6 @@ public class GameView extends JFrame {
         resetFont = new Font("FreesiaUFC", Font.BOLD, FONT_SIZE);
 
         container.add(gamePanel, "Center");
-        //resetCounter = 0;
         setResizable(false);
         setVisible(true);
         pack();
@@ -119,7 +118,6 @@ public class GameView extends JFrame {
         gameController.boardDisplay(doubleBufferedGraphic);
         gameController.playerDraw(doubleBufferedGraphic);
         showResets(doubleBufferedGraphic);
-        //renderMainMenu(doubleBufferedGraphic);
 
         if (gameController.isGameOver()){
             showGameOver(doubleBufferedGraphic);

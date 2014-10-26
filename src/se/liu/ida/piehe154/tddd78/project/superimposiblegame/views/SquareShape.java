@@ -6,8 +6,7 @@ import java.awt.*;
 
 /**
  * Created by Daniel Johansson on 2014-04-06.
- * the player can safely land on it but will crash if it hits its side
- * Since it extends Obsacle it implements the intersects and draw function
+ * Draws the image of a square
  */
 public class SquareShape implements ObstacleShape
 {

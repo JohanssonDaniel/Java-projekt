@@ -38,7 +38,7 @@ public class PlayerController
     }
 
     /**
-     * Checks wether the player will fall on a object on the board
+     * Checks whether the player will fall on a object on the board
      */
     private void updateFalling() {
 	int nextPlayerPositionY = theModel.getPlayerPositionY() + theModel.getVerticalStep();
@@ -62,7 +62,7 @@ public class PlayerController
     }
 
     /**
-     * Checks wether the player has jump high enough or updates its Y position
+     * Checks whether the player has jump high enough or updates its Y position
      * If the player jumps into a an obstacle from beneath it it will crash
      */
     private void updateRising() {

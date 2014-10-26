@@ -20,13 +20,18 @@ public class GameController extends WindowAdapter implements BoardListener {
 
     private String choosenMap;
 
+    /**
+     * Contructor for GameController, creates a new BoardController and PlayerController
+     * @param userMap current map name
+     * @param menuController
+     */
     public GameController(String userMap, MenuController menuController) {
         this.menuController = menuController;
         this.boardController = new BoardController(GameView.getPixelWidth());
         this.playerController = new PlayerController(boardController); //Creates a playerController who knows how big the game is and what obstacles there are;
 
         boardController.addBoardListener(this);
-        boardController.notifyListeners(); //BEHÖVER VI DENNA?
+        boardController.notifyListeners();
 
         theView.addKeyListener(new KeyAdapter() {
             //Overrides method
@@ -49,14 +54,10 @@ public class GameController extends WindowAdapter implements BoardListener {
     private void testKey(int keyCode) {
         if (keyCode == KeyEvent.VK_M){ // M starts the Game, or shows the menuController
             if (theModel.isShowMenu()){
-                //isPaused = false;
-                //showMenu = false;
                 theModel.setPaused(false);
                 theModel.setShowMenu(false);
             }
             else{
-                //isPaused = true;
-                //showMenu = true;
                 theModel.setPaused(true);
                 theModel.setShowMenu(true);
                 boardController.notifyListeners(); //So we see the menuController
@@ -67,7 +68,6 @@ public class GameController extends WindowAdapter implements BoardListener {
         }
         else if (keyCode == KeyEvent.VK_P){ //Pauses/resumes the game
             if (theModel.isPaused()){
-                //isPaused = false;
                 theModel.setPaused(false);
             }
             else {
@@ -93,13 +93,10 @@ public class GameController extends WindowAdapter implements BoardListener {
         boardController.addBoardListener(this);
         boardController.initMap(choosenMap);
 
-        //int START_Y_POSITION = boardController.getFloor();
         playerController = new PlayerController(boardController);
         if (theModel.isGameOver()){
-            //gameOver = false;
             theModel.setGameOver(false);
         }
-        //resetCounter++;
         theModel.addResetCounter();
 	    theModel.startGame();
     }

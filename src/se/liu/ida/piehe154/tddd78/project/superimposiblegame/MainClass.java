@@ -5,16 +5,27 @@ import java.util.ArrayList;
 import java.util.List;
 import se.liu.ida.piehe154.tddd78.project.superimposiblegame.controllers.MenuController;
 /**
- * Created by DannePanne on 2014-10-25.
+ * Created by Daniel Johansson on 2014-10-25.
+ * Main class
  */
 public final class MainClass
 {
+    /**
+     * Initialize allMaps
+     */
     private static ArrayList<String> allMaps = new ArrayList<String>();
+    /**
+     * Relative filepath to the folder maps
+     */
     private static final File MAP_FOLDER = new File("maps");
 
     private MainClass() {
     }
 
+    /**
+     * Looks into the maps folder and saves all different .txt files as strings
+     * @param allMaps the list with all strings
+     */
     private static void findAllMaps(List<String> allMaps) {
 	try {
 	    File[] folderFiles = MAP_FOLDER.listFiles();
@@ -35,6 +46,10 @@ public final class MainClass
 	}
     }
 
+    /**
+     * Main class, finds all saved maps and delegates the list to the MenuController
+     * @param args
+     */
     public static void main(String[] args) {
 	findAllMaps(allMaps);
 	MenuController menuController = new MenuController(allMaps);
