@@ -45,7 +45,9 @@ automatiskt och läggs in i menyn så allting är automatiskt och vi behöver
 inte ändra på vår kod någonstans för att lägga till/ändra banor.
 
 Implementerade en audioplayer klass som hanterar ljudfiler. 
-Hanterar .mp3 filer efter att vi impoerade ett biblitotek specifikt för det.
+Hanterar .mp3 filer efter att vi impoerade ett biblitotek specifikt för det. Vi var dock
+tvungna att suppressa ett felmeddelande från kodinspektionen om att mp3Library is unused då vi
+inte direkt kallar på någon funktion från det biblioteket.
 Vi har nu bakgrunds musik i samband med spelstart och vi har hoppljud när spelaren hoppar.
 
 Flyttade om funktioner mellan controller och model i board och player klasserna.
