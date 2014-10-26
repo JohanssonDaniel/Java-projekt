@@ -28,14 +28,25 @@ vissa väldigt "täta" projekt.
 
     KOMMENTARER:
 
+Vi har fått in ~1100 rader kod nu, vi har implementerat ett par nya
+funktioner i vårt spel nu och dem beskrivs litte sammanfattande här
+nedan, och vi har uppdaterat vår projekt rapport där vi gjort ändringar
+i projektet.
+
 Vi har nu implementerat så att vi läser in banorna ifrån textfiler
 ifrån katalogen maps, nu kan man alltså välja mellan fler banor att
 spela.
 
 Avklarade banor sparas undan och får knapparna i början att ändra färg.
+I MenuController läser vi in alla avklarade banor ifrån en textfil i
+/completedMaps/completed.txt, vi skriver ner vilka banor som är klarade i
+denna fil i GameController också. Alla banor som finns under /maps läses in
+automatiskt och läggs in i menyn så allting är automatiskt och vi behöver
+inte ändra på vår kod någonstans för att lägga till/ändra banor.
 
 Implementerade en audioplayer klass som hanterar ljudfiler. 
 Hanterar .mp3 filer efter att vi impoerade ett biblitotek specifikt för det.
+Vi har nu bakgrunds musik i samband med spelstart och vi har hoppljud när spelaren hoppar.
 
 Flyttade om funktioner mellan controller och model i board och player klasserna.
 Nu är boardModel i princip bara en lista med Obstacles och kollisionsdetektering hanteras 
@@ -44,7 +55,7 @@ som ändras i controller klassen.
 
 Intersect hanteras nu exklusvt i Obstacle klassen istället för att ha enskilda kollisionhantering 
 för enskilda Obstacles. Det löste vi genom att specifiera vad för Obstacle det är och så får playerController 
-kolla vad den har krockat med istället. Det är lät oss få spelaren att reagera annorlunda beroende på vad för 
+kolla vad den har krockat med istället. Det lät oss få spelaren att reagera annorlunda beroende på vad för
 obstacle den landat på.
 
 

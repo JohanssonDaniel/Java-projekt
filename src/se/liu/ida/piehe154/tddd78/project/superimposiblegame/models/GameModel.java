@@ -154,6 +154,11 @@ public class GameModel implements Runnable {
         }
     }
 
+    /**
+     * Saves the name of the map if the user has won, so we can
+     * keep track of which maps the user has completed.
+     */
+
     private void saveCompletedLevel(String mapName) {
 	boolean createdNewFile = false;
 	try {

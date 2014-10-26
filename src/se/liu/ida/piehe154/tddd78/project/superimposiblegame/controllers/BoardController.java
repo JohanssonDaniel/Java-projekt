@@ -46,6 +46,12 @@ public class BoardController{
 	this.pixelWidth = pixelWidth;
     }
 
+    /**
+     * Creates enemies from a txt file, using "s", "o", "t"
+     * to create different enemy objects
+     * @param mapName is the name of the file
+     */
+
     public void createEnemies(String mapName){
         String thisLine;
         Path mapPath = Paths.get(MAP_FOLDER, (mapName + TXT_FILE_END));

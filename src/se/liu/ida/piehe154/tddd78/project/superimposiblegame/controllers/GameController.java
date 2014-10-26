@@ -18,7 +18,7 @@ public class GameController extends WindowAdapter implements BoardListener {
     private BoardController boardController;
     private MenuController menuController;
 
-    private static String choosenMap;
+    private String choosenMap;
 
     public GameController(String userMap, MenuController menuController) {
         this.menuController = menuController;

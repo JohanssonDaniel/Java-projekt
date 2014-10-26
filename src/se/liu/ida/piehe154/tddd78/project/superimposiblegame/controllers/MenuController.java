@@ -51,8 +51,11 @@ public class MenuController extends WindowAdapter implements ActionListener{
 	theView.updateView();
     }
 
-    @SuppressWarnings("SuppressionAnnotation")
-    @Override
+    /**
+     * Using the text of the button to use as the name of
+     * the map the user wants to play.
+     */
+
     public void actionPerformed(ActionEvent e) {
         JButton buttonPressed;
         buttonPressed = (JButton)e.getSource();
@@ -63,6 +66,9 @@ public class MenuController extends WindowAdapter implements ActionListener{
 	gameController.startGame();
     }
 
+    /**
+     * Looks for maps that are already completed and its them to the list
+     */
 
     private static void readCompletedMaps() {
 	// open input stream test.txt for reading purpose.
