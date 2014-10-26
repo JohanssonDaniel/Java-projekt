@@ -18,7 +18,6 @@ public class PlayerController
 
     public PlayerController(BoardController boardController) {
 	this.boardController = boardController;
-	theModel.setPlayerStopJumping();
     }
 
     public void notifyBoardListener() {
