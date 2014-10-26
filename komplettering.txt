@@ -1,4 +1,4 @@
-$$$$$$$$$$$$$$$$$$$$$$$$$ KOMPLETTERING 2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$
+﻿$$$$$$$$$$$$$$$$$$$$$$$$$ KOMPLETTERING 2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$   Oct 26, 2014  $$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 Examinatorns kommentarer:
@@ -31,6 +31,23 @@ vissa väldigt "täta" projekt.
 Vi har nu implementerat så att vi läser in banorna ifrån textfiler
 ifrån katalogen maps, nu kan man alltså välja mellan fler banor att
 spela.
+
+Avklarade banor sparas undan och får knapparna i början att ändra färg.
+
+Implementerade en audioplayer klass som hanterar ljudfiler. 
+Hanterar .mp3 filer efter att vi impoerade ett biblitotek specifikt för det.
+
+Flyttade om funktioner mellan controller och model i board och player klasserna.
+Nu är boardModel i princip bara en lista med Obstacles och kollisionsdetektering hanteras 
+i controller klassen. playerModel är nu bara en fyrkant med x och y position, state och storlek
+som ändras i controller klassen.
+
+Intersect hanteras nu exklusvt i Obstacle klassen istället för att ha enskilda kollisionhantering 
+för enskilda Obstacles. Det löste vi genom att specifiera vad för Obstacle det är och så får playerController 
+kolla vad den har krockat med istället. Det är lät oss få spelaren att reagera annorlunda beroende på vad för 
+obstacle den landat på.
+
+
 
 $$$$$$$$$$$$$$$$$$$$$$$$$$ KOMPLETTERING 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$$  Aug 13, 2014   $$$$$$$$$$$$$$$$$$$$$$$$$$$
