@@ -30,8 +30,8 @@ public class MenuModel
     /**
      * Creates and saves the same amount of buttons as there are saved maps in a List.
      * Checks to see if a map is completed and changes the color of the button if that is the case
-     * @param allMaps
-     * @param completedMaps
+     * @param allMaps list of all maps
+     * @param completedMaps list of completed maps
      */
     public void createButtons(Iterable<String> allMaps, List<String> completedMaps){
 
@@ -54,7 +54,7 @@ public class MenuModel
 
     /**
      * Updates the color of the button if its associated map has been completed
-     * @param completedMaps
+     * @param completedMaps list of completed maps
      */
     public void updateButtons(List<String> completedMaps) {
 	for (JButton button : buttons) {

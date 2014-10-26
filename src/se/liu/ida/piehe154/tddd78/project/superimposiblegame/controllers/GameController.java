@@ -23,7 +23,7 @@ public class GameController extends WindowAdapter implements BoardListener {
     /**
      * Contructor for GameController, creates a new BoardController and PlayerController
      * @param userMap current map name
-     * @param menuController
+     * @param menuController MenuController object
      */
     public GameController(String userMap, MenuController menuController) {
         this.menuController = menuController;

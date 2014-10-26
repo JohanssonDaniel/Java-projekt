@@ -40,7 +40,7 @@ public class MenuView extends JFrame
 
     /**
      * Draws the text and buttons onto the menu
-     * @param buttons
+     * @param buttons list of buttons
      */
     public void createView(Iterable<JButton> buttons){
 

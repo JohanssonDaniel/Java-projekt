@@ -46,10 +46,6 @@ public final class MainClass
 	}
     }
 
-    /**
-     * Main class, finds all saved maps and delegates the list to the MenuController
-     * @param args
-     */
     public static void main(String[] args) {
 	findAllMaps(allMaps);
 	MenuController menuController = new MenuController(allMaps);

@@ -171,15 +171,15 @@ public class GameModel implements Runnable {
 	    File inFile = new File(mapUrl);
 	    // open input stream test.txt for reading purpose.
 
-	    List<String> mapLines = new ArrayList<String>();
+	    List<String> completedMaps = new ArrayList<String>();
 	    BufferedReader bufferedReader = new BufferedReader(new FileReader(inFile));
 	    try {
 		String thisLine = bufferedReader.readLine();
 		while (thisLine != null) {
-		    mapLines.add(thisLine);
+		    completedMaps.add(thisLine);
 		    thisLine = bufferedReader.readLine();
 		}
-		checkIfCompleted(mapLines, mapName, file);
+		checkIfCompleted(completedMaps, mapName, file);
 	    }finally {
 		bufferedReader.close();
 	    }
@@ -196,14 +196,14 @@ public class GameModel implements Runnable {
     /**
      * Iterates over maplines and checks if the mapName exist in the list
      * If not, add it to the list
-     * @param mapLines
-     * @param mapName
-     * @param file
+     * @param completedMaps list of completed maps
+     * @param mapName name of map to check in comepletedMaps
+     * @param file name of File to add mapName to
      */
-    private void checkIfCompleted(List<String> mapLines, String mapName, File file) {
+    private void checkIfCompleted(List<String> completedMaps, String mapName, File file) {
 	boolean alreadyCompleted = false;
 
-	for (String line : mapLines) {
+	for (String line : completedMaps) {
 	    if ((line.equals(mapName))) {
 		alreadyCompleted = true;
 	    }
@@ -215,8 +215,8 @@ public class GameModel implements Runnable {
 
     /**
      * Adds a string to the specified list
-     * @param mapName
-     * @param file
+     * @param mapName name of map to add
+     * @param file name of File to add mapName to
      */
     private void addToFile(final String mapName, File file) {
 	try {

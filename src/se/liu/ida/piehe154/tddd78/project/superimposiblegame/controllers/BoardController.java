@@ -131,7 +131,7 @@ public class BoardController{
 
     /**
      * Tells the BoardView to draw the board image
-     * @param g
+     * @param g Graphic parameter
      */
     public void display(Graphics g){
         theView.displayBoard(g, theModel.getBricks());
